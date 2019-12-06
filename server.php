@@ -69,7 +69,7 @@ if(count($errors) == 0){
         }
         $_SESSION['username'] = $username;  
         
-        $_SESSION['success'] = "You're now logged in";
+        $_SESSION['success'] = 1;
         header('location: welcome.php');
 }
 }
