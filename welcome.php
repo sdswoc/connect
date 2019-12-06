@@ -1,6 +1,5 @@
 <?php 
 include('server.php');
-  session_start(); 
 
   if (!isset($_SESSION['username'])) {
   	$_SESSION['msg'] = "You must log in first";
@@ -8,9 +7,7 @@ include('server.php');
   }
   if (isset($_GET['logout'])) {
   	session_destroy();
-      unset($_SESSION['username']);
-      unset($_SESSION['id']);
-      unset($_SESSION['bhawan']);
+      session_unset();
   	header("location: login.php");
   }
   if (isset($_GET['delete'])) {
@@ -18,9 +15,7 @@ include('server.php');
     $sql = "DELETE FROM userData where userID = $temp;";
     mysqli_query($db, $sql);
     session_destroy();
-    unset($_SESSION['username']);
-      unset($_SESSION['id']);
-      unset($_SESSION['bhawan']);
+    session_unset();
     header("location: login.php");
 }
     
