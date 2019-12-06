@@ -1,0 +1,126 @@
+body {
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:14px;
+    padding-right: 25px;
+    background-image: url('res/background.jpeg')
+ }
+ .test{
+   width: 30rem;
+   height: 20rem;
+   box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);   
+   border-radius: 5px;
+   background-color: rgba(255, 255, 255, .15);
+   
+   backdrop-filter: blur(5px);
+ }
+
+ .test2{
+   width: 100%;
+   height: 7 rem;
+   box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);   
+   border-radius: 5px;
+   background-color: rgba(255, 255, 255, .15);
+   
+   backdrop-filter: blur(5px);
+ }
+ .userC{
+position: fixed;
+left: 0;
+bottom: 10;
+width: 100%;
+height: 50px;
+border-radius: 5px;
+background-color: rgba(255, 255, 255, .15);
+backdrop-filter: blur(5px);
+color: black;
+text-align: left;
+font-size: 40px;
+padding-block: 40px;
+font-family: 'Amatic SC', cursive;
+}
+
+img.fb{
+
+opacity: 0.8;
+filter: alpha(opacity=50); /* For IE8 and earlier */
+
+}
+.fun{
+ font-size: 20px;
+ font-family: 'Amatic SC', cursive;
+}
+
+ .box {
+    border:#666666 solid 1px;
+    height: 50px;
+    width: 200px;
+ }
+ .header{
+background-color:rgb(16,10,27);
+background-image:url('res/headtexture.png');
+filter: alpha(opacity=25)
+height: 120px;
+width: 100%;
+border-radius: 20px;
+margin-top: 10px;
+padding-left: 20px;
+padding-top: 5px;
+padding-right: 20px;
+font-family: 'Amatic SC', cursive;
+
+}
+.user{
+   border-radius: 5px;
+background-color: rgba(255, 255, 255, .15);
+backdrop-filter: blur(5px);
+box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);   
+display:block;
+color: white;
+font-size: 40px;
+font-family: 'Amatic SC', cursive;
+
+}
+.signup_box{
+   width: 30rem;
+height: 45rem;
+box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);   
+border-radius: 5px;
+background-color: rgba(255, 255, 255, .15);
+
+backdrop-filter: blur(5px);
+     
+ }
+
+ ::placeholder{
+   
+   opacity: 1;
+   font: Comic sans MS;
+ }
+a{
+ color:white;
+ text-decoration: none;
+ font-size: 28px;
+line-height: 28px;
+-webkit-transition: color 0.5s;
+ transition: color 0.5s
+}  
+
+a:hover{
+ color: orangered;
+}
+.google{
+ 
+ background-color: #357ae8;
+ color:aliceblue;
+  
+ border-radius: 10px;
+ font-family:Century Gothic;
+ font-size: 24px;
+ -webkit-transition: color 1s;
+ transition: color 1s
+}
+
+.google:hover{
+ background-color: aliceblue;
+ color:#357ae8;
+}
