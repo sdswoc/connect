@@ -15,8 +15,7 @@
    <link rel="icon" href="favicon.ico" type="image/x-icon"/>
 <link href="https://fonts.googleapis.com/css?family=Amatic+SC&display=swap" rel="stylesheet">
 <div class="test2">
-    <img src="res/gplogo2.png" height = '110px' width = '110px'>
-     <object align='right'><br><br>
+<a href = 'http://localhost/woc/index.php'><img src="res/gplogo2.png" height = '110px' width = '110px'></a>     <object align='right'><br><br>
 <a class = "google" href = 'http://localhost/woc/NewConnect.php'>&nbsp;&nbsp;Find New Connections&nbsp;&nbsp;</a>&nbsp;&nbsp;&nbsp;&nbsp;
         <a class = "google" href = 'http://localhost/woc/login.php'>&nbsp;&nbsp;Login&nbsp;&nbsp;</a>&nbsp;&nbsp;&nbsp;&nbsp;
         <a class = "google" href = 'http://localhost/woc/finalsignup.php'>&nbsp;Signup&nbsp;&nbsp;</a>

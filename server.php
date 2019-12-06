@@ -47,7 +47,7 @@ if ($user) { // if user exists
               VALUES('$name','$enrl','$bhawan','$username', '$email', '$password')";
     mysqli_query($db, $query);
     $_SESSION['username'] = $username;
-    $_SESSION['success'] = "You are now logged in";
+    $_SESSION['success'] = 1;
     header('location: welcome.php');
 }
   }
@@ -67,6 +67,7 @@ if(count($errors) == 0){
         while($row = mysqli_fetch_array($result)){
             $_SESSION['id'] = $row['userID'];
             $_SESSION['bhawan'] = $row['bhawan'];
+            $_SESSION['name'] = $row['name'];
         }
         $_SESSION['username'] = $username;  
         

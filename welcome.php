@@ -24,7 +24,7 @@ include('server.php');
 <!DOCTYPE html>
 <html>
 <head>
-      <title>Login Page</title>
+      <title>Welcome <?php echo $_SESSION['username'] ?></title>
       <link rel="stylesheet" type="text/css" href="style.css">
       <link rel="stylesheet" type="text/css" href="rem.css">
 
@@ -32,8 +32,7 @@ include('server.php');
    <link rel="icon" href="favicon.ico" type="image/x-icon"/>
    <link href="https://fonts.googleapis.com/css?family=Amatic+SC&display=swap" rel="stylesheet">
 <div class="test2">
-    <img src="res/gplogo2.png" height = '110px' width = '110px'>
-    <object align = "right">
+<a href = 'http://localhost/woc/index.php'><img src="res/gplogo2.png" height = '110px' width = '110px'></a>    <object align = "right">
         <br>
         <br>
       <object align='right'>
@@ -57,24 +56,43 @@ include('server.php');
 
    <br>
     <?php  if (isset($_SESSION['username'])) : ?>
-    <center>	<div class = "user">
+       
 
-        <p>Welcome <strong><?php echo $_SESSION['username']." ! " ?></strong></p>
-        <p> <a class = "google" href="welcome.php?logout=1" >
-          &nbsp;&nbsp;Logout&nbsp;&nbsp;</a> </p>
-        <p> <a class = "google" href="welcome.php?delete=1" >&nbsp;&nbsp;Delete MyAccount&nbsp;&nbsp;</a> </p>
-        <p>  &nbsp;&nbsp;<?php echo $_SESSION['bhawan'] ?>&nbsp;&nbsp;</a> </p>
+<div class = "signup_box" style = "height: 400px; "><br>
+<?php if (!empty($msg)): ?>
+            <div class="alert <?php echo $msg_class ?>" role="alert">
+              <?php echo $msg ?>
+            </div>
+<?php endif; ?>              
+<center>
+<span class="img-div">
+              <div class="img-placeholder"  onClick="triggerClick()">
+                <h4>Update image</h4>
+              </div>
+              <img src="res/profileAB.jpeg"  onClick="triggerClick()" id="profileDisplay">
+            </span>
+            <input type="file" name="profileImage" onChange="displayImage(this)" 
+            id="profileImage" class="form-control" style="display: none;">
+</center>
 
-    </div>
+ <div class="profile-detail">
+   Name: <?php echo $_SESSION['name'] ?><br>
+  Bhawan: <?php echo $_SESSION['bhawan'] ?><br>
+  
+ </div>
+  
+</div>
+
     <?php endif ?>
 </div>
 
 
         <div class="userC">&nbsp;&nbsp;No. of Users:&nbsp;&nbsp;
            <b><?php echo $user_count ?>&nbsp;&nbsp;&nbsp;&nbsp;
-        
+        <object align = 'right'><?php echo $_SESSION['username'] ?></object>
         </div>
 
 		
 </body>
 </html>
+<script src="scripts.js"></script>

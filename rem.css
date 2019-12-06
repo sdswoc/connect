@@ -12,7 +12,28 @@
     font-size: 40px;
     font-family: 'Amatic SC', cursive;
     }
-
+#profileDisplay { display: block; height: 200px; width: 200px; margin: 0px auto; border-radius: 50%; }
+.img-placeholder {
+  width: 200px;
+  color: white;
+  height: 200px;
+  background: black;
+  opacity: 0.6;
+  border-radius: 50%;
+  z-index: 2;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: none;
+}
+.img-placeholder h4 {
+  margin-top: 40%;
+  color: white;
+}
+.img-div:hover .img-placeholder {
+  display: block;
+  cursor: pointer;
+}
     .signup_box{
         width: 30rem;
      height: 45rem;
@@ -22,10 +43,18 @@
      backdrop-filter: blur(5px);
       
       }
+      .profile-detail{
+        font-size: 30px; 
+        font-family: 'Arial', cursive;
+        color:white;
+      }
      
+      
       ::placeholder{
         opacity: 0.6;
         font: Comic sans MS;
         font-size: medium;
         align-content: center;
       }
+
+     
