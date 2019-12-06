@@ -4,6 +4,8 @@
    <head>
       <title>Login Page</title>
       <link rel="stylesheet" type="text/css" href="style.css">
+      <link rel="stylesheet" type="text/css" href="rem.css">
+
    <body bgcolor = "#FFFFFF">
    <link rel="icon" href="favicon.ico" type="image/x-icon"/>
    <link href="https://fonts.googleapis.com/css?family=Amatic+SC&display=swap" rel="stylesheet">
@@ -19,13 +21,12 @@
       </object>  
 </div></object></div><br><br><br>
 
-   <object align='bottom'>
+<object align='bottom'>
         <div class="userC">&nbsp;&nbsp;No. of Users:&nbsp;&nbsp;
            <b><?php echo $user_count ?>&nbsp;&nbsp;&nbsp;&nbsp;
         
         </div>
     </object>
-            
 	
       
 

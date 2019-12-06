@@ -1,3 +1,4 @@
+
 <?php 
 include('server.php');
 
@@ -25,6 +26,8 @@ include('server.php');
 <head>
       <title>Login Page</title>
       <link rel="stylesheet" type="text/css" href="style.css">
+      <link rel="stylesheet" type="text/css" href="rem.css">
+
    <body bgcolor = "#FFFFFF">
    <link rel="icon" href="favicon.ico" type="image/x-icon"/>
    <link href="https://fonts.googleapis.com/css?family=Amatic+SC&display=swap" rel="stylesheet">
@@ -52,9 +55,10 @@ include('server.php');
       </object>  
 </div></object></div>
 
-   
+   <br>
     <?php  if (isset($_SESSION['username'])) : ?>
     <center>	<div class = "user">
+
         <p>Welcome <strong><?php echo $_SESSION['username']." ! " ?></strong></p>
         <p> <a class = "google" href="welcome.php?logout=1" >
           &nbsp;&nbsp;Logout&nbsp;&nbsp;</a> </p>
@@ -64,13 +68,13 @@ include('server.php');
     </div>
     <?php endif ?>
 </div>
-<object align='bottom'>
-        <div class="userC">&nbsp;&nbsp;No. of Users:&nbsp;&nbsp<b><?php echo $user_count ?>&nbsp;&nbsp;&nbsp;&nbsp;</center>
-        <object align='right' style="padding-right: 15px"> 
-                                                  
-            
+
+
+        <div class="userC">&nbsp;&nbsp;No. of Users:&nbsp;&nbsp;
+           <b><?php echo $user_count ?>&nbsp;&nbsp;&nbsp;&nbsp;
+        
         </div>
-    </object>
+
 		
 </body>
 </html>

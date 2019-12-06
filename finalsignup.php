@@ -6,7 +6,8 @@
       <title>Signup Page</title>
       
       <link rel="stylesheet" type="text/css" href="style.css">
- 
+      <link rel="stylesheet" type="text/css" href="rem.css">
+
       
    </head>
    
@@ -47,10 +48,9 @@
 			
       </div>
       <object align='bottom'>
-        <div class="userC">&nbsp;&nbsp;No. of Users:&nbsp;&nbsp;<b><?php echo $user_count ?>&nbsp;&nbsp;&nbsp;&nbsp;</center>
-        <object align='right' style="padding-right: 15px"> 
-                                                  
-            
+        <div class="userC">&nbsp;&nbsp;No. of Users:&nbsp;&nbsp;
+           <b><?php echo $user_count ?>&nbsp;&nbsp;&nbsp;&nbsp;
+        
         </div>
     </object>
    </body>

@@ -4,6 +4,8 @@
    <head>
       <title>Login Page</title>
       <link rel="stylesheet" type="text/css" href="style.css">
+      <link rel="stylesheet" type="text/css" href="rem.css">
+
    <body bgcolor = "#FFFFFF">
    <link rel="icon" href="favicon.ico" type="image/x-icon"/>
    <link href="https://fonts.googleapis.com/css?family=Amatic+SC&display=swap" rel="stylesheet">
@@ -46,9 +48,5 @@
         
         </div>
     </object>
-            
-	
-      
-
    </body>
 </html>
