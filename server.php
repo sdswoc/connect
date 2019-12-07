@@ -1,7 +1,5 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+
 session_start();
 $message = "";
 $username = "";
@@ -68,6 +66,7 @@ if(count($errors) == 0){
             $_SESSION['id'] = $row['userID'];
             $_SESSION['bhawan'] = $row['bhawan'];
             $_SESSION['name'] = $row['name'];
+            $_SESSION['img'] = $row['img'];
         }
         $_SESSION['username'] = $username;  
         $_SESSION['success'] = 1;

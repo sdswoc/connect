@@ -14,6 +14,7 @@ include('server.php');
     $temp = $_SESSION['id'];
     $sql = "DELETE FROM userData where userID = $temp;";
     mysqli_query($db, $sql);
+    session_unset();
     session_destroy();
     header("location: login.php") AND die();
 }
@@ -65,18 +66,25 @@ include('server.php');
             </div>
         <?php endif; ?>              
 <center>
+<?php 
+$userID = $_SESSION['id'];
+include('updateDP.php') ?>
+  <form action="welcome.php" method = "post" enctype="multipart/form-data">
 <span class="img-div">
               <div class="img-placeholder"  onClick="triggerClick()">
-                <h4>Update image</h4>
+                <h4>Update image </h4>
               </div>
-              <img src="res/profileAB.jpeg"  onClick="triggerClick()" id="profileDisplay">
-            </span>
-            <input type="file" name="profileImage" onChange="displayImage(this)" 
+              <img src="userImages/<?php echo $_SESSION['img'] ?>" onerror="userImages/6.jpeg" onClick="triggerClick()" id="profileDisplay">
+</span>
+      
+            <input type="file" name="profileImage" onChange="displayImage(this); this.form.submit();" 
             id="profileImage" class="form-control" style="display: none;">
+      
+  </form>
 </center>
  <div class="profile-detail">
    Name: <?php echo $_SESSION['name'] ?><br>
-  Bhawan: <?php echo $_SESSION['bhawan'] ?><br>
+  Bhawan: <?php echo $_SESSION['img'] ?><br>
   
  </div>
 </div>
@@ -84,7 +92,7 @@ include('server.php');
   </div>
 <div class="column2" >
 <div class = "signup_box" style = "height: 400px; width: 100%;"><br>
-
+     <?php echo $msg_error ?>
 </div>
 
   </div>
