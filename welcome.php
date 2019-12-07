@@ -79,12 +79,12 @@ include('updateDP.php') ?>
       
             <input type="file" name="profileImage" onChange="displayImage(this); this.form.submit();" 
             id="profileImage" class="form-control" style="display: none;">
-      
+   <input type="text" name = "id" value ="<?php echo $_SESSION['id'] ?>" style = "display:none" />  
   </form>
 </center>
  <div class="profile-detail">
    Name: <?php echo $_SESSION['name'] ?><br>
-  Bhawan: <?php echo $_SESSION['img'] ?><br>
+  Img used: <?php echo $_SESSION['img'] ?><br>
   
  </div>
 </div>
@@ -93,6 +93,7 @@ include('updateDP.php') ?>
 <div class="column2" >
 <div class = "signup_box" style = "height: 400px; width: 100%;"><br>
      <?php echo $msg_error ?>
+  
 </div>
 
   </div>

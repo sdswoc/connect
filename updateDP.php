@@ -11,12 +11,13 @@ $path_parts = pathinfo($_FILES["profileImage"]["name"]);
 $extension = $path_parts['extension'];
 $newName = $userID.".".$extension;
 if (!isset($_POST['profileImage'])) {
-
+  $userID = mysqli_real_escape_string($db, $_POST['id']);
 if(move_uploaded_file($_FILES["profileImage"]["tmp_name"], "userImages/".$newName)){
-    $msg_error = "FINALLY SAVED!";
-    $sql = "UPDATE userData SET img ='$newName' where userID = 7;";
+ $_SESSION['img'] = $newName;
+  $msg_error = "FINALLY SAVED!";
+    $sql = "UPDATE userData SET img ='$newName' where userID = $userID;";
    if(mysqli_query($db, $sql)){
-        header('location: welcome.php?logout=1');
+        header('location: welcome.php');
    }
 }
 }
