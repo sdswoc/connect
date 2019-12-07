@@ -23,7 +23,7 @@ if(isset($_POST['reg_user'])){
     $name = mysqli_real_escape_string($db, $_POST['name']);
     $enrl = mysqli_real_escape_string($db, $_POST['enrl']);
     $bhawan = mysqli_real_escape_string($db, $_POST['bhawan']);
-    $bio = "Hey! I'm ".$name ;
+    $bio = "Hey! I am ";
 if (empty($username)) { array_push($errors, "Username is required"); }
 if (empty($email)) { array_push($errors, "Email is required"); }
 if (empty($password_1)) { array_push($errors, "Password is required"); }
@@ -45,8 +45,8 @@ if ($user) { // if user exists
 
   if (count($errors) == 0) {
     $password = $password_1;
-    $query = "INSERT INTO userData (name, enrl, bhawan, username, email, password) 
-              VALUES('$name','$enrl','$bhawan','$username', '$email', '$password')";
+    $query = "INSERT INTO userData (name, enrl, bhawan, username, email, password, bio) 
+              VALUES('$name','$enrl','$bhawan','$username', '$email', '$password', '$bio$name');";
     mysqli_query($db, $query);
         header('location: login.php');
     }

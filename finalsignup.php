@@ -27,7 +27,7 @@
 				
             <div style = "margin:20px">
                <?php echo $message ?>
-            <form method="post" autocomplete="new-password" action="finalsignup.php">
+            <form method="post"  action="finalsignup.php">
             <div align="center"><input type = "text" placeholder="E-mail" name = "email" class = "box" font-family= 'Comic Sans MS'/><br /><br />
                   <br><input type = "text" placeholder="Name" name = "name" class = "box" font-family= 'Comic Sans MS'/><br /><br />
                   <br><input type = "text" placeholder="Username" name = "username" class = "box" font-family= 'Comic Sans MS'/><br /><br />
