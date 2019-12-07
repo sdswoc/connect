@@ -1,5 +1,7 @@
 <?php
-
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 session_start();
 $message = "";
 $username = "";
@@ -45,10 +47,14 @@ if ($user) { // if user exists
     $password = $password_1;
     $query = "INSERT INTO userData (name, enrl, bhawan, username, email, password) 
               VALUES('$name','$enrl','$bhawan','$username', '$email', '$password')";
-    mysqli_query($db, $query);
-    $_SESSION['username'] = $username;
+    if(mysqli_query($db, $query)){
+       $_SESSION['username'] = $username;
     $_SESSION['success'] = 1;
     header('location: welcome.php');
+    }
+    else{
+      $message = "Signup Failed!";
+    };   
 }
   }
 

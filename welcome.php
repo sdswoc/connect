@@ -33,24 +33,24 @@ include('server.php');
    <link rel="icon" href="favicon.ico" type="image/x-icon"/>
    <link href="https://fonts.googleapis.com/css?family=Amatic+SC&display=swap" rel="stylesheet">
 <div class="test2">
-<a href = 'http://localhost/woc/index.php'><img src="res/gplogo2.png" height = '110px' width = '110px'></a>    <object align = "right">
+<a href = 'http://localhost/connect/index.php'><img src="res/gplogo2.png" height = '110px' width = '110px'></a>    <object align = "right">
         <br>
         <br>
       <object align='right'>
-<a class = "google" href = 'http://localhost/woc/NewConnect.php'>&nbsp;&nbsp;Find New Connections&nbsp;&nbsp;</a>&nbsp;&nbsp;&nbsp;&nbsp;
+<a class = "google" href = 'http://localhost/connect/NewConnect.php'>&nbsp;&nbsp;Find New Connections&nbsp;&nbsp;</a>&nbsp;&nbsp;&nbsp;&nbsp;
         
 <?php  if (!isset($_SESSION['username'])) : ?>
-<a class = "google" href = 'http://localhost/woc/login.php'>
+<a class = "google" href = 'http://localhost/connect/login.php'>
         &nbsp;&nbsp;Login&nbsp;&nbsp;
       </a>&nbsp;&nbsp;&nbsp;&nbsp;
-        <a class = "google" href = 'http://localhost/woc/finalsignup.php'>&nbsp;Signup&nbsp;&nbsp;</a>
+        <a class = "google" href = 'http://localhost/connect/finalsignup.php'>&nbsp;Signup&nbsp;&nbsp;</a>
       <?php endif ?>
 
       <?php  if (isset($_SESSION['username'])) : ?>
-<a class = "google" href = 'http://localhost/woc/welcome.php?logout=1'>
+<a class = "google" href = 'http://localhost/connect/welcome.php?logout=1'>
         &nbsp;&nbsp;Logout&nbsp;&nbsp;
       </a>&nbsp;&nbsp;&nbsp;&nbsp;
-        <a class = "google" href = 'http://localhost/woc/finalsignup.php'>&nbsp;Signup&nbsp;&nbsp;</a>
+        <a class = "google" href = 'http://localhost/connect/finalsignup.php'>&nbsp;Signup&nbsp;&nbsp;</a>
       <?php endif ?>
       </object>  
 </div></object></div>

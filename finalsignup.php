@@ -15,10 +15,10 @@
    <link rel="icon" href="favicon.ico" type="image/x-icon"/>
 <link href="https://fonts.googleapis.com/css?family=Amatic+SC&display=swap" rel="stylesheet">
 <div class="test2">
-<a href = 'http://localhost/woc/index.php'><img src="res/gplogo2.png" height = '110px' width = '110px'></a>     <object align='right'><br><br>
-<a class = "google" href = 'http://localhost/woc/NewConnect.php'>&nbsp;&nbsp;Find New Connections&nbsp;&nbsp;</a>&nbsp;&nbsp;&nbsp;&nbsp;
-        <a class = "google" href = 'http://localhost/woc/login.php'>&nbsp;&nbsp;Login&nbsp;&nbsp;</a>&nbsp;&nbsp;&nbsp;&nbsp;
-        <a class = "google" href = 'http://localhost/woc/finalsignup.php'>&nbsp;Signup&nbsp;&nbsp;</a>
+<a href = 'http://localhost/connect/index.php'><img src="res/gplogo2.png" height = '110px' width = '110px'></a>     <object align='right'><br><br>
+<a class = "google" href = 'http://localhost/connect/NewConnect.php'>&nbsp;&nbsp;Find New Connections&nbsp;&nbsp;</a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a class = "google" href = 'http://localhost/connect/login.php'>&nbsp;&nbsp;Login&nbsp;&nbsp;</a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a class = "google" href = 'http://localhost/connect/finalsignup.php'>&nbsp;Signup&nbsp;&nbsp;</a>
       </object> 
 </div></object></div><br><br><br>
       <div align = "center">
@@ -26,7 +26,7 @@
             <div style = " font-family:Comic sans MS; color:white; padding:20px; font-size:30px; font-family:; text-align:center;"><b>Sign Up</b></div>
 				
             <div style = "margin:20px">
-               
+               <?php echo $message ?>
             <form method="post" autocomplete="new-password" action="finalsignup.php">
             <div align="center"><input type = "text" placeholder="E-mail" name = "email" class = "box" font-family= 'Comic Sans MS'/><br /><br />
                   <br><input type = "text" placeholder="Name" name = "name" class = "box" font-family= 'Comic Sans MS'/><br /><br />
