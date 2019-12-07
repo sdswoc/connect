@@ -8,5 +8,6 @@ function triggerClick(e) {
         document.querySelector('#profileDisplay').setAttribute('src', e.target.result);
       }
       reader.readAsDataURL(e.files[0]);
+     
     }
   }

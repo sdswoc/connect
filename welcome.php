@@ -1,4 +1,3 @@
-
 <?php 
 include('server.php');
   if (!isset($_SESSION['username'])) {
@@ -25,13 +24,13 @@ include('server.php');
 <head>
       <title>Welcome <?php echo $_SESSION['username'] ?></title>
       <link rel="stylesheet" type="text/css" href="style.css">
+      <link rel="stylesheet" type="text/css" href="dashboard.css">
       <link rel="stylesheet" type="text/css" href="rem.css">
-      
-
 </head>
-   <body bgcolor = "#FFFFFF">
+<body bgcolor = "#FFFFFF">
    <link rel="icon" href="favicon.ico" type="image/x-icon"/>
    <link href="https://fonts.googleapis.com/css?family=Amatic+SC&display=swap" rel="stylesheet">
+
 <div class="test2">
 <a href = 'http://localhost/connect/index.php'><img src="res/gplogo2.png" height = '110px' width = '110px'></a>    <object align = "right">
         <br>
@@ -53,18 +52,18 @@ include('server.php');
         <a class = "google" href = 'http://localhost/connect/finalsignup.php'>&nbsp;Signup&nbsp;&nbsp;</a>
       <?php endif ?>
       </object>  
-</div></object></div>
-
-   <br>
-    <?php  if (isset($_SESSION['username'])) : ?>
-       
-
-<div class = "signup_box" style = "height: 400px; "><br>
-<?php if (!empty($msg)): ?>
+</object>
+</div>   
+<br>
+<?php  if (isset($_SESSION['username'])) : ?>
+<div class="row">
+<div class="column" >
+    <div class = "signup_box" style = "height: 400px; width: 90%;"><br>
+        <?php if (!empty($msg)): ?>
             <div class="alert <?php echo $msg_class ?>" role="alert">
               <?php echo $msg ?>
             </div>
-<?php endif; ?>              
+        <?php endif; ?>              
 <center>
 <span class="img-div">
               <div class="img-placeholder"  onClick="triggerClick()">
@@ -75,20 +74,26 @@ include('server.php');
             <input type="file" name="profileImage" onChange="displayImage(this)" 
             id="profileImage" class="form-control" style="display: none;">
 </center>
-
  <div class="profile-detail">
    Name: <?php echo $_SESSION['name'] ?><br>
   Bhawan: <?php echo $_SESSION['bhawan'] ?><br>
   
  </div>
+</div>
+
+  </div>
+<div class="column2" >
+<div class = "signup_box" style = "height: 400px; width: 100%;"><br>
+
+</div>
+
+  </div>
   
 </div>
 
-    <?php endif ?>
-</div>
+<?php endif; ?>
 
-
-        <div class="userC">&nbsp;&nbsp;No. of Users:&nbsp;&nbsp;
+<div class="userC">&nbsp;&nbsp;No. of Users:&nbsp;&nbsp;
            <b><?php echo $user_count ?>&nbsp;&nbsp;&nbsp;&nbsp;
         <object align = 'right'><?php echo $_SESSION['username'] ?></object>
         </div>
