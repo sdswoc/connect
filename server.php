@@ -23,7 +23,7 @@ if(isset($_POST['reg_user'])){
     $name = mysqli_real_escape_string($db, $_POST['name']);
     $enrl = mysqli_real_escape_string($db, $_POST['enrl']);
     $bhawan = mysqli_real_escape_string($db, $_POST['bhawan']);
-
+    $bio = "Hey! I'm ".$name ;
 if (empty($username)) { array_push($errors, "Username is required"); }
 if (empty($email)) { array_push($errors, "Email is required"); }
 if (empty($password_1)) { array_push($errors, "Password is required"); }
@@ -47,17 +47,11 @@ if ($user) { // if user exists
     $password = $password_1;
     $query = "INSERT INTO userData (name, enrl, bhawan, username, email, password) 
               VALUES('$name','$enrl','$bhawan','$username', '$email', '$password')";
-    if(mysqli_query($db, $query)){
-       $_SESSION['username'] = $username;
-    $_SESSION['success'] = 1;
-    header('location: welcome.php');
+    mysqli_query($db, $query);
+        header('location: login.php');
     }
-    else{
-      $message = "Signup Failed!";
-    };   
+   
 }
-  }
-
 
   if(isset($_POST['login_user'])){
     $username = mysqli_real_escape_string($db, $_POST['username']);
@@ -76,7 +70,6 @@ if(count($errors) == 0){
             $_SESSION['name'] = $row['name'];
         }
         $_SESSION['username'] = $username;  
-        
         $_SESSION['success'] = 1;
         header('location: welcome.php');
 }
