@@ -59,9 +59,33 @@ include('server.php');
 </div>   
 <br>
 <div class="connect">
-<center> <div class = "signup_box info" style = "height: 400px; width: 90%;"><br></center>
-      </div>
+<center> <div class = "signup_box info" style = "height: 400px; width: 90%;"><br>
+<table>
+<tr>
+<th>Id</th>
+<th>Username</th>
+<th>Password</th>
+</tr>
+<?php
+$conn = mysqli_connect("localhost", "root", "abiit@2019", "rconnect");
+// Check connection
+
+$sql = "SELECT userID, username, password FROM userData";
+$result = mysqli_query($conn, $sql);
+if ($result->num_rows > 0) {
+// output data of each row
+while($row = $result->fetch_assoc()) {
+echo "<tr><td>" . $row["userID"]. "</td><td>" . $row["username"] . "</td><td>"
+. $row["password"]. "</td></tr>";
+}
+echo "</table>";
+} else { echo "0 results"; }
+$conn->close();
+?>
+</table>
 </div>
+</div>
+      </center>
 
      
 <div class="userC">&nbsp;&nbsp;No. of Users:&nbsp;&nbsp;

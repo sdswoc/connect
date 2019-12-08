@@ -83,10 +83,11 @@ include('updateDP.php') ?>
             id="profileImage" class="form-control" style="display: none;">
    <input type="text" name = "id" value ="<?php echo $_SESSION['id'] ?>" style = "display:none" />  
   </form>
-</center>
+</center><br>
  <div class="profile-detail">
    Name: <?php echo $_SESSION['name'] ?><br>
   Img used: <?php echo $_SESSION['img'] ?><br>
+  Bhawan: <?php echo $_SESSION['bhawan'] ?><br>
   
  </div>
 </div>
