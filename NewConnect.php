@@ -1,9 +1,5 @@
 <?php 
 include('server.php');
-if(isset($_SESSION['id'])){
-   header('location: welcome.php');
-}
-
   if (!isset($_SESSION['username'])) {
   	$_SESSION['msg'] = "You must log in first";
   	header('location: login.php');
@@ -62,9 +58,12 @@ if(isset($_SESSION['id'])){
 </object>
 </div>   
 <br>
+<div class="connect">
+<center> <div class = "signup_box info" style = "height: 400px; width: 90%;"><br></center>
+      </div>
+</div>
 
-
-
+     
 <div class="userC">&nbsp;&nbsp;No. of Users:&nbsp;&nbsp;
            <b><?php echo $user_count ?>&nbsp;&nbsp;&nbsp;&nbsp;
         

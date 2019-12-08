@@ -15,7 +15,11 @@
     padding: 10px;
     height: 300px; /* Should be removed. Only for demonstration */
 }
-  
+  .connect{
+    width: 80%;
+    padding: 10px;
+    height: 300px;
+  }
   /* Clear floats after the columns */
   .row:after {
     content: "";
@@ -33,4 +37,7 @@
       bottom: 25px;
       left: 50%;
       display: block;
+  }
+  .signup_box.connect {
+    float:center;
   }

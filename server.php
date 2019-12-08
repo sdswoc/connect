@@ -67,6 +67,7 @@ if(count($errors) == 0){
             $_SESSION['bhawan'] = $row['bhawan'];
             $_SESSION['name'] = $row['name'];
             $_SESSION['img'] = $row['img'];
+            $_SESSION['bio'] = $row['bio'];
         }
         $_SESSION['username'] = $username;  
         $_SESSION['success'] = 1;

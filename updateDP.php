@@ -17,7 +17,7 @@ if(move_uploaded_file($_FILES["profileImage"]["tmp_name"], "userImages/".$newNam
  $_SESSION['img'] = $newName;
  
   $msg_error = "FINALLY SAVED!";
-    $sql = "UPDATE userData SET img =$newName where userID = $userID;";
+    $sql = "UPDATE userData SET img = '$newName' where userID = $userID;";
     if(mysqli_query($db, $sql)){
         header('location: welcome.php');
    }

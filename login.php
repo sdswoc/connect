@@ -1,4 +1,9 @@
-<?php include('server.php') ?>
+<?php include('server.php');
+if(isset($_SESSION['id'])){
+   header('location: welcome.php');
+}
+
+?>
 <html>
    
    <head>

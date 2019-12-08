@@ -105,7 +105,7 @@ include('updateDP.php') ?>
 
 <ul id="myUL">
   <li>Dancing</li>
-  <li class="checked">Listening Music</li>
+  <li>Listening Music</li>
   <li>Cricket</li>
   <li>Singing</li>
   <li>Fooseball</li>
@@ -129,7 +129,7 @@ include('updateDP.php') ?>
 
 <ul id="myUL">
   <li>Gymming</li>
-  <li class="checked">UPSC</li>
+  <li>UPSC</li>
   <li>Competitive Coding</li>
   <li>Branch Change</li>
   <li>Tech Group</li>
