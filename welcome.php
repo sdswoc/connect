@@ -104,12 +104,12 @@ include('updateDP.php') ?>
 </div>
 
 <ul id="myUL">
-  <li>Hit the gym</li>
-  <li class="checked">Pay bills</li>
-  <li>Meet George</li>
-  <li>Buy eggs</li>
-  <li>Read a book</li>
-  <li>Organize office</li>
+  <li>Dancing</li>
+  <li class="checked">Listening Music</li>
+  <li>Cricket</li>
+  <li>Singing</li>
+  <li>Fooseball</li>
+  <li>Reading novels</li>
 </ul>
 
 
@@ -128,12 +128,11 @@ include('updateDP.php') ?>
 </div>
 
 <ul id="myUL">
-  <li>Hit the gym</li>
-  <li class="checked">Pay bills</li>
-  <li>Meet George</li>
-  <li>Buy eggs</li>
-  <li>Read a book</li>
-  <li>Organize office</li>
+  <li>Gymming</li>
+  <li class="checked">UPSC</li>
+  <li>Competitive Coding</li>
+  <li>Branch Change</li>
+  <li>Tech Group</li>
 </ul>
 
 
