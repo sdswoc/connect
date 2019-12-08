@@ -23,8 +23,10 @@ include('server.php');
 <!DOCTYPE html>
 <html>
 <head>
-      <title>Welcome <?php echo $_SESSION['username'] ?></title>
+      <title>Welcome <?php echo $_SESSION['name'] ?></title>
       <link rel="stylesheet" type="text/css" href="style.css">
+      <link rel="stylesheet" type="text/css" href="sample.css">
+
       <link rel="stylesheet" type="text/css" href="dashboard.css">
       <link rel="stylesheet" type="text/css" href="rem.css">
 </head>
@@ -91,8 +93,55 @@ include('updateDP.php') ?>
 
   </div>
 <div class="column2" >
-<div class = "signup_box" style = "height: 400px; width: 100%;"><br>
-     <?php echo $msg_error ?>
+<div class = "signup_box info" style = "height: 400px; width: 100%;"><br>
+<div class = "hobbies" style="width: 45%; float:left; ">
+   <!--HOBBIES-->
+
+   <div id="myDIV" class="header">
+  <h2>HOBBIES</h2>
+  <input type="text" id="myInput" placeholder="Title...">
+  <span onclick="newElement()" class="addBtn">Add</span>
+</div>
+
+<ul id="myUL">
+  <li>Hit the gym</li>
+  <li class="checked">Pay bills</li>
+  <li>Meet George</li>
+  <li>Buy eggs</li>
+  <li>Read a book</li>
+  <li>Organize office</li>
+</ul>
+
+
+
+
+
+</div>
+
+<div class ="goals" style="width: 45%; float:right">
+   <!--GOALS-->
+
+   <div id="myDIV" class="header">
+  <h2>GOALS</h2>
+  <input type="text" id="myInput" placeholder="Title...">
+  <span onclick="newElement()" class="addBtn">Add</span>
+</div>
+
+<ul id="myUL">
+  <li>Hit the gym</li>
+  <li class="checked">Pay bills</li>
+  <li>Meet George</li>
+  <li>Buy eggs</li>
+  <li>Read a book</li>
+  <li>Organize office</li>
+</ul>
+
+
+
+
+
+
+</div>
   
 </div>
 
@@ -110,4 +159,5 @@ include('updateDP.php') ?>
 		
 </body>
 </html>
+<script src="test.js"></script>
 <script src="scripts.js"></script>

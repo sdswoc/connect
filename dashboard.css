@@ -15,12 +15,22 @@
     padding: 10px;
     height: 300px; /* Should be removed. Only for demonstration */
 }
- 
-  
   
   /* Clear floats after the columns */
   .row:after {
     content: "";
     display: table;
     clear: both;
+  }
+
+  .hobbies:after{
+    content: "";
+      background-color: white;
+      position: absolute;
+      width: 3px;
+      height: 350px;
+      top: 25px;
+      bottom: 25px;
+      left: 50%;
+      display: block;
   }
