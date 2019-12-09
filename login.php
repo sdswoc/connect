@@ -33,7 +33,9 @@ if(isset($_SESSION['id'])){
             </div>
 				
             <div style = "margin:30px">
-               
+               <div class="error">
+             <b>  <?php echo $no_username." ".$no_password ?> </b>
+               </div><br>
             <form method="post" action="login.php">
                   <input type = "text" name = "username" class = "box" placeholder="Username"/><br /><br />
                   <br><input type = "password" name = "password" class = "box" placeholder="Password" /><br/><br />

@@ -56,3 +56,13 @@
         font-size: medium;
         align-content: center;
       }
+
+ .error{
+  display:block;
+  background-color:skyblue;
+  color: white; 
+  border-radius: 5px;
+  padding-top: 3px;
+  padding-bottom: 4px;
+  width: 30vw;
+ }

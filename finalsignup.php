@@ -25,8 +25,10 @@
          <div style = "width:500px; " class="signup_box" >
             <div style = " font-family:Comic sans MS; color:white; padding:20px; font-size:30px; font-family:; text-align:center;"><b>Sign Up</b></div>
 				
-            <div style = "margin:20px">
-               <?php echo $message ?>
+            <div style = "margin:5px">
+            <div class="error" id = "error_box">
+             <b>  <?php echo $no_username."<br>".$no_email."<br>".$no_name."<br>".$no_enrl."<br>".$no_bhawan."<br>".$no_password."<br>".$password_mismatch ; ?> </b>
+               </div><br>
             <form method="post"  action="finalsignup.php">
             <div align="center"><input type = "text" placeholder="E-mail" name = "email" class = "box" font-family= 'Comic Sans MS'/><br /><br />
                   <br><input type = "text" placeholder="Name" name = "name" class = "box" font-family= 'Comic Sans MS'/><br /><br />
@@ -35,7 +37,7 @@
                   <br><input type = "password" placeholder="Re-enter Password" name = "password_2" class = "box" font-family= 'Comic Sans MS'/><br/><br />
                   <br><input type = "text" placeholder="Enrl. No." name = "enrl" class = "box" font-family= 'Comic Sans MS'/><br /><br />
                   <br><input type = "text" placeholder="Bhawan" name = "bhawan" class = "box" font-family= 'Comic Sans MS'/><br /><br /></div>
-                  <div align="right"><input type = "submit" value = "Submit " class="google" name="reg_user" align="right";/><br /></div><br><br>
+                  <div align="right"><input type = "submit" value = "Submit " onClick = "display_box()" class="google" name="reg_user" align="right";/><br /></div><br><br>
                   <div font-family="Comic Sans MS" font-size=18px>*Compulsory fields</div>  
                </form>
                <div style = "font-size:14px; color:#cc0000; margin-top:10px"><?php echo $success; ?></div>
@@ -54,3 +56,4 @@
     </object>
    </body>
 </html>
+

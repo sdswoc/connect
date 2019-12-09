@@ -39,9 +39,10 @@ include('server.php');
         <br>
         <br>
       <object align='right'>
-<a class = "google" href = 'http://localhost/connect/NewConnect.php'>&nbsp;&nbsp;Find New Connections&nbsp;&nbsp;</a>&nbsp;&nbsp;&nbsp;&nbsp;
         
 <?php  if (!isset($_SESSION['username'])) : ?>
+  <a class = "google" href = 'http://localhost/connect/NewConnect.php'>&nbsp;&nbsp;Find New Connections&nbsp;&nbsp;</a>&nbsp;&nbsp;&nbsp;&nbsp;
+
 <a class = "google" href = 'http://localhost/connect/login.php'>
         &nbsp;&nbsp;Login&nbsp;&nbsp;
       </a>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -49,6 +50,8 @@ include('server.php');
       <?php endif ?>
 
       <?php  if (isset($_SESSION['username'])) : ?>
+        <a class = "google" href = 'http://localhost/connect/welcome.php'>&nbsp;&nbsp;Back to Dashboard&nbsp;&nbsp;</a>&nbsp;&nbsp;&nbsp;&nbsp;
+
 <a class = "google" href = 'http://localhost/connect/welcome.php?logout=1'>
         &nbsp;&nbsp;Logout&nbsp;&nbsp;
       </a>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -63,20 +66,23 @@ include('server.php');
 <table>
 <tr>
 <th>Id</th>
+<th>Name</th>
 <th>Username</th>
 <th>Password</th>
+<th>Bio</th>
+
 </tr>
 <?php
 $conn = mysqli_connect("localhost", "root", "abiit@2019", "rconnect");
 // Check connection
 
-$sql = "SELECT userID, username, password FROM userData";
+$sql = "SELECT userID, name, username, password, bio FROM userData";
 $result = mysqli_query($conn, $sql);
 if ($result->num_rows > 0) {
 // output data of each row
 while($row = $result->fetch_assoc()) {
-echo "<tr><td>" . $row["userID"]. "</td><td>" . $row["username"] . "</td><td>"
-. $row["password"]. "</td></tr>";
+echo "<tr><td>" . $row["userID"]. "</td><td>" . $row["name"] . "</td><td>" . $row["username"] . "</td><td>"
+. $row["password"]. "</td><td>" . $row["bio"] . "</td></tr>";
 }
 echo "</table>";
 } else { echo "0 results"; }
