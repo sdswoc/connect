@@ -1,0 +1,43 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  /* Create three equal columns that floats next to each other */
+  .column {
+    float: left;
+    width: 33.33%;
+    padding: 10px;
+    height: 300px; /* Should be removed. Only for demonstration */
+  }
+  .column2 {
+    float: right;
+    width: 66.66%;
+    padding: 10px;
+    height: 300px; /* Should be removed. Only for demonstration */
+}
+  .connect{
+    width: 80%;
+    padding: 10px;
+    height: 300px;
+  }
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .hobbies:after{
+    content: "";
+      background-color: white;
+      position: absolute;
+      width: 3px;
+      height: 350px;
+      top: 25px;
+      bottom: 25px;
+      left: 50%;
+      display: block;
+  }
+  .signup_box.connect {
+    float:center;
+  }

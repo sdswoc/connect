@@ -1,0 +1,58 @@
+.userC{
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
+    height: 50px;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, .15);
+    backdrop-filter: blur(5px);
+    color: black;
+    text-align: left;
+    font-size: 40px;
+    font-family: 'Amatic SC', cursive;
+    }
+#profileDisplay { display: block; height: 200px; width: 200px; margin: 0px auto; border-radius: 50%; }
+.img-placeholder {
+  width: 200px;
+  color: white;
+  height: 200px;
+  background: black;
+  opacity: 0.6;
+  border-radius: 50%;
+  z-index: 2;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: none;
+}
+.img-placeholder h4 {
+  margin-top: 40%;
+  color: white;
+}
+.img-div:hover .img-placeholder {
+  display: block;
+  cursor: pointer;
+}
+    .signup_box{
+        width: 30rem;
+     height: 45rem;
+     box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);   
+     border-radius: 5px;
+     background-color: rgba(255, 255, 255, .15);
+     backdrop-filter: blur(5px);
+      
+      }
+      .profile-detail{
+        font-size: 30px; 
+        font-family: 'Arial', cursive;
+        color:white;
+      }
+     
+      
+      ::placeholder{
+        opacity: 0.6;
+        font: Comic sans MS;
+        font-size: medium;
+        align-content: center;
+      }
