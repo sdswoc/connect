@@ -163,4 +163,4 @@ include('updateDP.php') ?>
 </body>
 </html>
 <script src="test.js"></script>
-<script src="scripts.js"></script>
+<script src="profileUpdate.js"></script>
