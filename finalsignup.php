@@ -28,9 +28,12 @@
             <div style = " font-family:Comic sans MS; color:white; padding:20px; font-size:30px; text-align:center;"><b>Sign Up</b></div>
 				
             <div style = "margin:5px">
+            <?php if(!empty($errors)) : ?>
             <div class="error" id = "error_box" style = "width: 19vw;">
              <b>  <?php echo print_r($errors) ?> </b>
-               </div><br>
+               </div>
+            <?php endif; ?>   
+               <br>
             <form method="post"  action="finalsignup.php">
             <div align="center"><input type = "text" placeholder="E-mail" name = "email" class = "box" font-family= 'Comic Sans MS'/><br /><br />
                   <br><input type = "text" placeholder="Name" name = "name" class = "box" font-family= 'Comic Sans MS'/><br /><br />

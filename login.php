@@ -35,9 +35,12 @@ if(isset($_SESSION['id'])){
             </div>
 				
             <div style = "margin:30px">
+            <?php if(!empty($errors)) : ?>
                <div class="error">
              <b>  <?php echo print_r($errors); ?> </b>
-               </div><br>
+               </div>
+            <?php endif ; ?>   
+               <br>
             <form method="post" action="login.php">
                   <input type = "text" name = "username" class = "box" placeholder="Username"/><br /><br />
                   <br><input type = "password" name = "password" class = "box" placeholder="Password" /><br/><br />

@@ -73,6 +73,7 @@
     background-color: #f44336;
     color: white;
     text-align: center;
+    padding-top: 1px;
   }
   
   /* Clear floats after the header */
