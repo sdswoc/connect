@@ -35,7 +35,8 @@ include('server.php');
    <link href="https://fonts.googleapis.com/css?family=Amatic+SC&display=swap" rel="stylesheet">
 
 <div class="test2">
-<a href = 'http://localhost/connect/index.php'><img src="res/gplogo2.png" height = '110px' width = '110px'></a>    <object align = "right">
+&nbsp;&nbsp;&nbsp;&nbsp;
+<a href = 'http://localhost/connect/index.php'><img src="res/gplogo2.png" height = '110px' width = '110px' style = "border-radius: 10px;"></a>    <object align = "right">
         <br>
         <br>
       <object align='right'>
@@ -53,6 +54,8 @@ include('server.php');
         &nbsp;&nbsp;Logout&nbsp;&nbsp;
       </a>&nbsp;&nbsp;&nbsp;&nbsp;
         <a class = "google" href = 'http://localhost/connect/finalsignup.php'>&nbsp;Signup&nbsp;&nbsp;</a>
+        &nbsp;&nbsp;<a class = "google" href = 'http://localhost/connect/welcome.php?delete=1'>&nbsp;Delete my Account&nbsp;&nbsp;</a>
+
       <?php endif ?>
       </object>  
 </object>

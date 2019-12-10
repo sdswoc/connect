@@ -45,7 +45,7 @@ if ($user) { // if user exists
   }  
 
   if (count($errors) == 0) {
-    $password = $password_1;
+    $password = ($password_1);
     $query = "INSERT INTO userData (name, enrl, bhawan, username, email, password, bio) 
               VALUES('$name','$enrl','$bhawan','$username', '$email', '$password', '$bio$name');";
     mysqli_query($db, $query);
@@ -68,13 +68,10 @@ else{
 
 }
 
-
-
-
 if(count($errors) == 0){
     $query = "SELECT * FROM userData WHERE username='$username' AND password='$password'";
     $result = mysqli_query($db, $query);
-   
+
     if(mysqli_num_rows($result) == 1){
         while($row = mysqli_fetch_array($result)){
             $_SESSION['id'] = $row['userID'];
@@ -83,13 +80,11 @@ if(count($errors) == 0){
             $_SESSION['img'] = $row['img'];
             $_SESSION['bio'] = $row['bio'];
         }
-        $_SESSION['username'] = $username;  
-        $_SESSION['success'] = 1;
+            $_SESSION['username'] = $username;  
+            $_SESSION['success'] = 1;
         header('location: welcome.php');
 }
 }
-
-
 }
   
   ?>
