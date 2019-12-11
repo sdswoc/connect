@@ -14,8 +14,15 @@ include('server.php');
    $follower_id = $_SESSION['id'];
    $id_to_be_followed = $_GET['id'];
    if($follower_id != $id_to_be_followed){
-     $sql = "INSERT INTO followerData (userID, followerID) VALUES($id_to_be_followed,$follower_id)";
+     
+     $existing_query = "SELECT * from followerData where userID = $id_to_be_followed AND followerID = $follower_id";
+     $redundancy_check = mysqli_query($db, $existing_query);
+
+     if(mysqli_num_rows($redundancy_check) == 0){
+        $sql = "INSERT INTO followerData (userID, followerID) VALUES($id_to_be_followed,$follower_id)";
    mysqli_query($db, $sql);
+     }
+    
    }
     
   

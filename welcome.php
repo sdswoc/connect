@@ -85,7 +85,7 @@ include('updateDP.php') ?>
                 <h4>Update image </h4>
               </div>
               <img src="userImages/<?php if(!isset($_SESSION['img'])){
-  $_SESSION['img'] = 'default.jpg';
+  $_SESSION['img'] = 'default.png';
  }; echo $_SESSION['img'] ?>" onClick="triggerClick()" id="profileDisplay">
 </span>
       
@@ -104,7 +104,7 @@ $result = mysqli_query($conn, $sql);
 if ($result->num_rows > 0) {
 // output data of each row
 $row = $result->fetch_assoc();
-echo "Name : ".$_SESSION['name']."<br>Follow Count :".$row['follow_count'];
+echo "Name : ".$_SESSION['name']."<br>Follow Count :  ".$row['follow_count'];
 echo "<br>Bio : ".$row['bio'];
 echo "<br>Bhawan : ".$_SESSION['bhawan'];
 }
