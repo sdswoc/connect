@@ -5,7 +5,7 @@ if (mysqli_connect_errno()) {
     echo "Failed to connect to MySQL: " . mysqli_connect_error();
     exit();
   }
-$msg_error = "NOT SAVED YET!!";
+$msg_error ="NOT SAVED YET!!";
 
 $path_parts = pathinfo($_FILES["profileImage"]["name"]);
 $extension = $path_parts['extension'];

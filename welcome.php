@@ -17,13 +17,13 @@ include('server.php');
     session_unset();
     session_destroy();
     header("location: login.php") AND die();
-}
+} 
 $id = $_SESSION['id'];
 $sql_1 = "SELECT @var1 := COUNT(*) from followerData where userID = $id";
 $sql_2 = "UPDATE userData SET follow_count = @var1 where userID = $id";
 mysqli_query($db, $sql_1);
 mysqli_query($db, $sql_2);
-    
+  
 ?>
 <!DOCTYPE html>
 <html>
@@ -84,7 +84,9 @@ include('updateDP.php') ?>
               <div class="img-placeholder"  onClick="triggerClick()">
                 <h4>Update image </h4>
               </div>
-              <img src="userImages/<?php echo $_SESSION['img'] ?>" onerror="userImages/6.jpeg" onClick="triggerClick()" id="profileDisplay">
+              <img src="userImages/<?php if(!isset($_SESSION['img'])){
+  $_SESSION['img'] = 'default.jpg';
+ }; echo $_SESSION['img'] ?>" onClick="triggerClick()" id="profileDisplay">
 </span>
       
             <input type="file" name="profileImage" onChange="displayImage(this); this.form.submit();" 
