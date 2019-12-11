@@ -12,11 +12,11 @@
     font-size: 40px;
     font-family: 'Amatic SC', cursive;
     }
-#profileDisplay { display: block; height: 200px; width: 200px; margin: 0px auto; border-radius: 50%; }
+#profileDisplay { display: block; height: 150px; width: 150px; margin: 0px auto; border-radius: 50%; }
 .img-placeholder {
-  width: 200px;
+  width: 150px;
   color: white;
-  height: 200px;
+  height: 150px;
   background: black;
   opacity: 0.6;
   border-radius: 50%;

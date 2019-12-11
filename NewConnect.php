@@ -9,7 +9,15 @@ include('server.php');
     session_destroy();
     header("location: welcome.php");
   }
-      
+
+  if (isset($_GET['id'])) {
+   $follower_id = $_SESSION['id'];
+   $id_to_be_followed = $_GET['id'];
+   $sql = "INSERT INTO followerData (userID, followerID) VALUES($id_to_be_followed,$follower_id)";
+   mysqli_query($db, $sql);
+  
+  }
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -67,17 +75,23 @@ include('server.php');
 $conn = mysqli_connect("localhost", "root", "abiit@2019", "rconnect");
 // Check connection
 
-$sql = "SELECT userID, name, username, password, bio FROM userData";
+$sql = "SELECT userID, name, username, bio FROM userData";
 $result = mysqli_query($conn, $sql);
 if ($result->num_rows > 0) {
 // output data of each row
 while($row = $result->fetch_assoc()) {
-echo "<tr><td>" . $row["userID"]. "</td><td>" . $row["name"] . "</td><td>" . $row["username"] . "</td><td>" . $row["bio"] . "</td></tr>";
+$id = $row["userID"];
+echo "<tr><td>" . $row["userID"]. "</td><td>" . $row["name"] . "</td><td>" . $row["username"] . "</td><td>" . $row["bio"] . "</td>";
+echo "<td>";
+echo "<a class = 'google' href = 'http://localhost/connect/NewConnect.php?id=".$id."'>&nbsp;Connect&nbsp;&nbsp;</a>";
+echo "</td>";
 }
-echo "</table>";
-} else { echo "0 results"; }
+} 
+else { echo "0 results"; }
 $conn->close();
 ?>
+</tr>
+
 </table>
 </div>
 </div>

@@ -18,6 +18,11 @@ include('server.php');
     session_destroy();
     header("location: login.php") AND die();
 }
+$id = $_SESSION['id'];
+$sql_1 = "SELECT @var1 := COUNT(*) from followerData where userID = $id";
+$sql_2 = "UPDATE userData SET follow_count = @var1 where userID = $id";
+mysqli_query($db, $sql_1);
+mysqli_query($db, $sql_2);
     
 ?>
 <!DOCTYPE html>
@@ -88,9 +93,22 @@ include('updateDP.php') ?>
   </form>
 </center><br>
  <div class="profile-detail">
-   Name: <?php echo $_SESSION['name'] ?><br>
-  Img used: <?php echo $_SESSION['img'] ?><br>
-  Bhawan: <?php echo $_SESSION['bhawan'] ?><br>
+ <?php
+$conn = mysqli_connect("localhost", "root", "abiit@2019", "rconnect");
+// Check connection
+$id = $_SESSION['id'];
+$sql = "SELECT follow_count, bio FROM userData where userID = $id";
+$result = mysqli_query($conn, $sql);
+if ($result->num_rows > 0) {
+// output data of each row
+$row = $result->fetch_assoc();
+echo "Name : ".$_SESSION['name']."<br>Follow Count :".$row['follow_count'];
+echo "<br>Bio : ".$row['bio'];
+echo "<br>Bhawan : ".$_SESSION['bhawan'];
+}
+
+$conn->close();
+?>
   
  </div>
 </div>
@@ -100,20 +118,23 @@ include('updateDP.php') ?>
 <div class = "signup_box info" style = "height: 400px; width: 100%;"><br>
 <div class = "hobbies" style="width: 45%; float:left; ">
    <!--HOBBIES-->
-
+   
    <div id="myDIV" class="header">
   <h2>HOBBIES</h2>
-  <input type="text" id="myInput" placeholder="Title...">
+  <input type = "list" id="myInput" list = "hobbies" placeholder="Title...">
+  <datalist id="hobbies">
+    <option value="Dancing">
+    <option value="Listening Music">
+    <option value="Cricket">
+    <option value="Singing">
+    <option value="Fooseball">
+    <option value="Reading Novels">
+  </datalist>
   <span onclick="newElement()" class="addBtn">Add</span>
 </div>
 
 <ul id="myUL">
   <li>Dancing</li>
-  <li>Listening Music</li>
-  <li>Cricket</li>
-  <li>Singing</li>
-  <li>Fooseball</li>
-  <li>Reading novels</li>
 </ul>
 
 
@@ -158,8 +179,6 @@ include('updateDP.php') ?>
            <b><?php echo $user_count ?>&nbsp;&nbsp;&nbsp;&nbsp;
         <object align = 'right'><?php echo $_SESSION['username'] ?></object>
         </div>
-
-		
 </body>
 </html>
 <script src="test.js"></script>
