@@ -111,3 +111,7 @@
   .addBtn:hover {
     background-color: #bbb;
   }
+
+  .google.follow_status{
+    width: 70px;
+  }
