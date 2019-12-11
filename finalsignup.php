@@ -16,11 +16,11 @@
 <link href="https://fonts.googleapis.com/css?family=Amatic+SC&display=swap" rel="stylesheet">
 <div class="test2">
 &nbsp;&nbsp;&nbsp;&nbsp;
-<a href = 'http://localhost/connect/index.php'><img src="res/gplogo2.png" height = '110px' width = '110px' style = "border-radius: 10px;"></a>     <object align='right'><br><br>
+<a href = ' index.php'><img src="res/gplogo2.png" height = '110px' width = '110px' style = "border-radius: 10px;"></a>     <object align='right'><br><br>
 <?php if(isset($_SESSION['id'])) : ?>
-<a class = "google" href = 'http://localhost/connect/NewConnect.php'>&nbsp;&nbsp;Find New Connections&nbsp;&nbsp;</a>&nbsp;&nbsp;&nbsp;&nbsp;
-         <?php endif ; ?>        <a class = "google" href = 'http://localhost/connect/login.php'>&nbsp;&nbsp;Login&nbsp;&nbsp;</a>&nbsp;&nbsp;&nbsp;&nbsp;
-        <a class = "google" href = 'http://localhost/connect/finalsignup.php'>&nbsp;Signup&nbsp;&nbsp;</a>
+<a class = "google" href = ' NewConnect.php'>&nbsp;&nbsp;Find New Connections&nbsp;&nbsp;</a>&nbsp;&nbsp;&nbsp;&nbsp;
+         <?php endif ; ?>        <a class = "google" href = ' login.php'>&nbsp;&nbsp;Login&nbsp;&nbsp;</a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a class = "google" href = ' finalsignup.php'>&nbsp;Signup&nbsp;&nbsp;</a>
       </object> 
 </div></object></div><br><br><br>
       <div align = "center">
