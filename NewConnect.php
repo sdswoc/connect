@@ -13,8 +13,11 @@ include('server.php');
   if (isset($_GET['id'])) {
    $follower_id = $_SESSION['id'];
    $id_to_be_followed = $_GET['id'];
-   $sql = "INSERT INTO followerData (userID, followerID) VALUES($id_to_be_followed,$follower_id)";
+   if($follower_id != $id_to_be_followed){
+     $sql = "INSERT INTO followerData (userID, followerID) VALUES($id_to_be_followed,$follower_id)";
    mysqli_query($db, $sql);
+   }
+    
   
   }
 
