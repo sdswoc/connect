@@ -19,9 +19,11 @@ include('server.php');
      $redundancy_check = mysqli_query($db, $existing_query);
 
      if(mysqli_num_rows($redundancy_check) == 0){
+         
         $sql = "INSERT INTO followerData (userID, followerID) VALUES($id_to_be_followed,$follower_id)";
        if(mysqli_query($db, $sql)){
-         $following_status = "Following";
+          
+         $following_status = "Requested";
          echo "<script>
               document.getElementById('follow_status').innerHTML = ".$following_status."
                </script>";
@@ -76,7 +78,7 @@ include('server.php');
 </div>   
 <br>
 <div class="connect">
-<center> <div class = "signup_box info" style = "height: 400px; width: 90%;"><br>
+<center> <div class = "signup_box info" style = "height: 800px; width: 90%;"><br>
 <table>
 <tr>
 <th>Id</th>
@@ -94,15 +96,21 @@ function follow_status($conn, $id, $self_ID){
 
   $query = "SELECT * from followerData where userID = $id AND followerID = $self_ID";
   $check = mysqli_query($conn, $query);
-  if(mysqli_num_rows($check)==1){
-    $msg_return = "Following";
-    $friend_query = "SELECT * from followerData where userID = $self_ID AND followerID = $id";
-    $check_2 = mysqli_query($conn, $friend_query);
-    if(mysqli_num_rows($check_2)==1){
-      $msg_return = "Friends";
-    }
-  }
-  else{$msg_return = "  Follow  ";}
+  $friend_query = "SELECT * from followerData where userID = $self_ID AND followerID = $id";
+  $check_2 = mysqli_query($conn, $friend_query);
+  if(mysqli_num_rows($check) == 1 && mysqli_num_rows($check_2) == 1){
+    $msg_return = "Friends";
+  };
+  if(mysqli_num_rows($check) == 0 && mysqli_num_rows($check_2) == 1){
+    $msg_return = "Follow Back";
+  };
+  if(mysqli_num_rows($check) == 1 && mysqli_num_rows($check_2) == 0){
+    $msg_return = "Requested";
+  };
+  if(mysqli_num_rows($check) == 0 && mysqli_num_rows($check_2) == 0){
+    $msg_return = "Follow";
+  };
+
   return $msg_return;
 }
   
@@ -133,5 +141,6 @@ $conn->close();
      
 <div class="userC">&nbsp;&nbsp;No. of Users:&nbsp;&nbsp;
            <b><?php echo $user_count ?>&nbsp;&nbsp;&nbsp;&nbsp;
-        
+           <object align = 'right'><?php echo $_SESSION['username'] ?></object>
+
         </div>

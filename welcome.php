@@ -123,20 +123,19 @@ $conn->close();
    
    <div id="myDIV" class="header">
   <h2>HOBBIES</h2>
-  <input type = "list" id="myInput" list = "hobbies" placeholder="Title...">
-  <datalist id="hobbies">
-    <option value="Dancing">
-    <option value="Listening Music">
-    <option value="Cricket">
-    <option value="Singing">
-    <option value="Fooseball">
-    <option value="Reading Novels">
-  </datalist>
-  <span onclick="newElement()" class="addBtn">Add</span>
+  <select id="myInput"  onchange=newElement()>
+  <option value="0" id ="deselected-one">Select a hobbie </option> 
+  <option value="1" id="h1">Dancing </option>
+    <option value="2" id="h2">Listening Music</option>
+    <option value="3" id="h3" >Cricket </option>
+    <option value="4" id="h4">Singing</option>
+    <option value="5" id="h5">Fooseball</option>
+    <option value="6" id="h6">Reading Novels</option>
+  </select>
 </div>
 
 <ul id="myUL">
-  <li>Dancing</li>
+  
 </ul>
 
 
@@ -152,7 +151,7 @@ $conn->close();
   <h2>GOALS</h2>
   <input type="text" id="myInput" placeholder="Title...">
   <span onclick="newElement()" class="addBtn">Add</span>
-</div>
+   </div>
 
 <ul id="myUL">
   <li>Gymming</li>
@@ -183,5 +182,5 @@ $conn->close();
         </div>
 </body>
 </html>
-<script src="test.js"></script>
+<script src="list.js"></script>
 <script src="profileUpdate.js"></script>

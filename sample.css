@@ -34,27 +34,7 @@
     background: #ddd;
   }
   
-  /* When clicked on, add a background color and strike out text */
-  ul li.checked {
-    background: #888;
-    color: #fff;
-    text-decoration: line-through;
-  }
-  
-  /* Add a "checked" mark when clicked on */
-  ul li.checked::before {
-    content: '';
-    position: absolute;
-    border-color: #fff;
-    border-style: solid;
-    border-width: 0 2px 2px 0;
-    top: 10px;
-    left: 16px;
-    transform: rotate(45deg);
-    height: 15px;
-    width: 7px;
-  }
-  
+    
   /* Style the close button */
   .close {
     position: absolute;
@@ -84,34 +64,22 @@
   }
   
   /* Style the input */
-  input {
+  select {
     margin: 0;
     border: none;
-    border-radius: 0;
-    width: 75%;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    width: 100%;
+    background-color: blue;
     padding: 10px;
     float: left;
     font-size: 16px;
+    color: white;
   }
   
-  /* Style the "Add" button */
-  .addBtn {
-    padding: 10px;
-    width: 25%;
-    background: #d9d9d9;
-    color: #555;
-    float: left;
-    text-align: center;
-    font-size: 16px;
-    cursor: pointer;
-    transition: 0.3s;
-    border-radius: 0;
+  select option#deselected-one{
+    display:none;
   }
-  
-  .addBtn:hover {
-    background-color: #bbb;
-  }
-
   .google.follow_status{
     width: 70px;
   }
