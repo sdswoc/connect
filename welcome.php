@@ -34,8 +34,26 @@ mysqli_query($db, $sql_2);
 
       <link rel="stylesheet" type="text/css" href="dashboard.css">
       <link rel="stylesheet" type="text/css" href="rem.css">
+      <script>
+      function notify_alert(id){
+               var xhttp = new XMLHttpRequest();
+               xhttp.onreadystatechange = function(){
+                  if(this.readyState == 4 && this.status == 200){
+                      var message = this.responseText;
+                     
+                     if(message !== "0"){
+                        alert(message);
+                     }
+                     
+                  }
+    }
+    xhttp.open("GET", "notify.php?id="+id,false);
+    xhttp.send();
+}
+      
+      </script>
 </head>
-<body bgcolor = "#FFFFFF">
+<body bgcolor = "#FFFFFF" >
    <link rel="icon" href="favicon.ico" type="image/x-icon"/>
    <link href="https://fonts.googleapis.com/css?family=Amatic+SC&display=swap" rel="stylesheet">
 
@@ -86,7 +104,7 @@ include('updateDP.php') ?>
               </div>
               <img src="userImages/<?php if(!isset($_SESSION['img'])){
   $_SESSION['img'] = 'default.png';
- }; echo $_SESSION['img'] ?>" onClick="triggerClick()" id="profileDisplay">
+ }; echo $_SESSION['img'] ?>" onload = notify_alert(<?php echo $_SESSION['id'] ?>) onClick="triggerClick()" id="profileDisplay">
 </span>
       
             <input type="file" name="profileImage" onChange="displayImage(this); this.form.submit();" 
@@ -175,7 +193,7 @@ while($row = $result->fetch_assoc()) {
   <span onclick="newElement()" class="addBtn">Add</span>
    </div>
 
-<ul id="myUL">
+<ul id="hobbieUL">
   <li>Gymming</li>
   <li>UPSC</li>
   <li>Competitive Coding</li>
@@ -198,7 +216,7 @@ while($row = $result->fetch_assoc()) {
 
 <?php endif; ?>
 
-<div class="userC">&nbsp;&nbsp;No. of Users:&nbsp;&nbsp;
+<div class="userC" >&nbsp;&nbsp;No. of Users:&nbsp;&nbsp;
            <b><?php echo $user_count ?>&nbsp;&nbsp;&nbsp;&nbsp;
         <object align = 'right'><?php echo $_SESSION['username'] ?></object>
         </div>

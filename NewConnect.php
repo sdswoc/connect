@@ -22,18 +22,27 @@ include('server.php');
          
         $sql = "INSERT INTO followerData (userID, followerID) VALUES($id_to_be_followed,$follower_id)";
        if(mysqli_query($db, $sql)){
-          
-         $following_status = "Requested";
-         echo "<script>
-              document.getElementById('follow_status').innerHTML = ".$following_status."
-               </script>";
+         $usrname = $_SESSION['username'];
 
-       }  
-  }    
-   }
-    
-  
+        $check_1 = mysqli_query($db,"SELECT * from followerData where userID = $id_to_be_followed AND followerID = $follower_id");
+        $check_2 = mysqli_query($db,"SELECT * from followerData where userID = $follower_id AND followerID = $id_to_be_followed");
+ if(mysqli_num_rows($check_1) == 1 && mysqli_num_rows($check_2) == 1 ){
+   $msg = $usrname." followed you back!";
+   $notify = "INSERT INTO notificationData (typeOf, to_userID, from_userID, message, seen_status) VALUES('accepted_request',$id_to_be_followed , $follower_id, '$msg',0)";
+   mysqli_query($db, $notify);
+ }
+else{
+   $msg = $usrname." started following you! Follow Back?";
+          $notify = "INSERT INTO notificationData (typeOf, to_userID, from_userID, message, seen_status) VALUES('follow_request',$id_to_be_followed , $follower_id, '$msg',0)";
+          mysqli_query($db, $notify);
+}        
+     }  
   }
+  
+  
+  
+ }
+}
 
 ?>
 <!DOCTYPE html>
@@ -45,8 +54,9 @@ include('server.php');
 
       <link rel="stylesheet" type="text/css" href="dashboard.css">
       <link rel="stylesheet" type="text/css" href="rem.css">
+
 </head>
-<body bgcolor = "#FFFFFF">
+<body bgcolor = "#FFFFFF" >
    <link rel="icon" href="favicon.ico" type="image/x-icon"/>
    <link href="https://fonts.googleapis.com/css?family=Amatic+SC&display=swap" rel="stylesheet">
 
@@ -79,7 +89,7 @@ include('server.php');
 <br>
 <div class="connect">
 <center> <div class = "signup_box info" style = "height: 800px; width: 90%;"><br>
-<table>
+<table style = "text-align: center;">
 <tr>
 <th>Id</th>
 <th>Name</th>
