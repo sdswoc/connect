@@ -17,10 +17,11 @@ for (i = 0; i < close.length; i++) {
       http.onreadystatechange = function(){
         if(this.readyState==4 && this.status == 200){
           if(this.responseText === "Deleted"){
-            alert(this.responseText);
+            
             var div = close[i].parentElement;
             div.style.display = "none";
           }
+          alert(this.responseText);
         }
      
       http.open("GET","updateList.php?delete_id="+i,false);
@@ -64,21 +65,9 @@ function newElement() {
 
   for (i = 0; i < close.length; i++) {
     close[i].onclick = function() {
-      var http = new XMLHttpRequest();
-      http.onreadystatechange = function(){
-        if(this.readyState==4 && this.status == 200){
-            $txt = this.responseText;
-          if($txt === "Deleted"){
-            alert($txt);
-            var div = close[i].parentElement;
-            div.style.display = "none";
+      
+           var div = close[i].parentElement;
+           div.style.display = "none";
           }
-        }
-     
-      http.open("GET","updateList.php?delete_id="+i,false);
-     http.send();
-     
+        }     
     }
-  }
-}
-}

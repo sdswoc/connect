@@ -27,11 +27,11 @@ else{
 }
 
 if(isset($_GET['delete_id'])){
-    $delete_ID = $_GET['delete_id'] + 1;
-
+    $delete_ID = $_GET['delete_id'];
+    $selfID = $_SESSION['id'];
     $conn = mysqli_connect("localhost", "root", "abiit@2019", "rconnect");
 
-    if(mysqli_query($conn, "DELETE FROM `hobbieData` WHERE userID = $selfID AND hobbie_ID = $delete_ID")){
+    if(mysqli_query($conn, "DELETE FROM `hobbieData` WHERE userID = $selfID AND hobbie_ID = $delete_ID;")){
         echo "Deleted";
     } 
 }

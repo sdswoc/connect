@@ -122,7 +122,7 @@ $conn->close();
    <!--HOBBIES-->
    
 <div id="myDIV" class="header">
-  <h2>My To Do List</h2>
+  <h2>Hobbies</h2>
   <input list = "hobbies" id="hobbieInput" type="text" placeholder="Title...">
   <datalist id="hobbies">
     <option value="Dancing">
