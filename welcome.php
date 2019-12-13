@@ -13,7 +13,7 @@ include('server.php');
   if (isset($_GET['delete'])) {
     $temp = $_SESSION['id'];
     $sql = "DELETE FROM userData where userID = $temp;";
-    mysqli_query($db, $sql);
+    mysqli_query($db, $sql); 
     session_unset();
     session_destroy();
     header("location: login.php") AND die();
@@ -30,7 +30,7 @@ mysqli_query($db, $sql_2);
 <head>
       <title>Welcome <?php echo $_SESSION['name'] ?></title>
       <link rel="stylesheet" type="text/css" href="style.css">
-      <link rel="stylesheet" type="text/css" href="sample.css">
+      <link rel="stylesheet" type="text/css" href="list.css">
 
       <link rel="stylesheet" type="text/css" href="dashboard.css">
       <link rel="stylesheet" type="text/css" href="rem.css">
@@ -121,21 +121,23 @@ $conn->close();
 <div class = "hobbies" style="width: 45%; float:left; ">
    <!--HOBBIES-->
    
-   <div id="myDIV" class="header">
-  <h2>HOBBIES</h2>
-  <select id="myInput"  onchange=newElement()>
-  <option value="0" id ="deselected-one">Select a hobbie </option> 
-  <option value="1" id="h1">Dancing </option>
-    <option value="2" id="h2">Listening Music</option>
-    <option value="3" id="h3" >Cricket </option>
-    <option value="4" id="h4">Singing</option>
-    <option value="5" id="h5">Fooseball</option>
-    <option value="6" id="h6">Reading Novels</option>
-  </select>
+<div id="myDIV" class="header">
+  <h2>My To Do List</h2>
+  <input list = "hobbies" id="hobbieInput" type="text" placeholder="Title...">
+  <datalist id="hobbies">
+    <option value="Dancing">
+    <option value="Listening Music">
+    <option value="Cricket">
+    <option value="Singing">
+    <option value="Fooseball">
+    <option value="Reading Novels">
+  </datalist>
+
+  <span onclick="newElement()" class="addBtn">Add</span>
 </div>
 
-<ul id="myUL">
-  
+<ul id="hobbieUL">
+
 </ul>
 
 

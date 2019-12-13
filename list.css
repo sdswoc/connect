@@ -9,14 +9,14 @@
   }
   
   /* Style the list items */
-  ul li {
+  #hobbieUL li {
     cursor: pointer;
     position: relative;
     padding: 12px 8px 12px 40px;
     background: #eee;
-    font-size: 14px;
+    font-size: 18px;
     transition: 0.2s;
-    list-style-type:none;
+    list-style-type: none;
     /* make the list items unselectable */
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -25,17 +25,16 @@
   }
   
   /* Set all odd list items to a different color (zebra-stripes) */
-  ul li:nth-child(odd) {
-    background: #f9f9f9;
+#hobbieUL li:nth-child(odd) { background: #f9f9f9;
   }
   
   /* Darker background-color on hover */
-  ul li:hover {
+#hobbieUL li:hover {
     background: #ddd;
   }
   
-    
-  /* Style the close button */
+   
+    /* Style the close button */
   .close {
     position: absolute;
     right: 0;
@@ -51,9 +50,9 @@
   /* Style the header */
   .header {
     background-color: #f44336;
+    padding: 30px 40px;
     color: white;
     text-align: center;
-    padding-top: 1px;
   }
   
   /* Clear floats after the header */
@@ -64,22 +63,30 @@
   }
   
   /* Style the input */
-  select {
+  input {
     margin: 0;
     border: none;
-    border-top-left-radius: 25px;
-    border-top-right-radius: 25px;
-    width: 100%;
-    background-color: blue;
+    border-radius: 0;
+    width: 75%;
     padding: 10px;
     float: left;
     font-size: 16px;
-    color: white;
   }
   
-  select option#deselected-one{
-    display:none;
+  /* Style the "Add" button */
+  .addBtn {
+    padding: 10px;
+    width: 25%;
+    background: #d9d9d9;
+    color: #555;
+    float: left;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 0;
   }
-  .google.follow_status{
-    width: 70px;
+  
+  .addBtn:hover {
+    background-color: #bbb;
   }
