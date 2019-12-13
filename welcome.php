@@ -137,7 +137,27 @@ $conn->close();
 </div>
 
 <ul id="hobbieUL">
+<?php 
+function hobbieID_to_name($a){
+  if($a==1){return "Dancing";}
+  if($a==2){return "Listening Music";}
+  if($a==3){return "Cricket";}
+  if($a==4){return "Singing";}
+  if($a==5){return "Fooseball";}
+  if($a==6){return "Reading Novels";}
+}
+$selfID = $_SESSION['id'];
+$conn = mysqli_connect("localhost", "root", "abiit@2019", "rconnect");
 
+$sql = "SELECT * from hobbieData where userID = $selfID";
+$result = mysqli_query($conn, $sql);
+if ($result->num_rows > 0) {
+while($row = $result->fetch_assoc()) {
+  $hobbieName = hobbieID_to_name($row['hobbie_ID']);
+  echo "<li>".$hobbieName."</li>";
+}
+}
+?>
 </ul>
 
 

@@ -12,25 +12,19 @@ for (i = 0; i < myNodelist.length; i++) {
 var close = document.getElementsByClassName("close");
 var i;
 for (i = 0; i < close.length; i++) {
-    close[i].onclick = function() {
-      var http = new XMLHttpRequest();
-      http.onreadystatechange = function(){
-        if(this.readyState==4 && this.status == 200){
-          if(this.responseText === "Deleted"){
-            
-            var div = close[i].parentElement;
-            div.style.display = "none";
-          }
-          alert(this.responseText);
-        }
-     
-      http.open("GET","updateList.php?delete_id="+i,false);
-     http.send();
-     
-    }
+  close[i].onclick = function() {
+    var div = this.parentElement;
+    div.style.display = "none";
   }
 }
 
+// Add a "checked" symbol when clicking on a list item
+var list = document.querySelector('ul');
+list.addEventListener('click', function(ev) {
+  if (ev.target.tagName === 'LI') {
+    ev.target.classList.toggle('checked');
+  }
+}, false);
 
 // Create a new list item when clicking on the "Add" button
 function newElement() {
@@ -41,19 +35,17 @@ function newElement() {
   if (inputValue === '') {
     alert("You must write something!");
   } else {
-     var xhttp = new XMLHttpRequest();
-     xhttp.onreadystatechange = function(){
-         if(this.readyState==4 && this.status == 200){
-            $txt = this.responseText; 
-            
-            if($txt === "canAdd"){document.getElementById("hobbieUL").appendChild(li);}
-            else{alert($txt);}
-         }
-     }
-     xhttp.open("GET","updateList.php?id="+inputValue,true);
-     xhttp.send();
-
-    
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function(){
+        if(this.readyState==4 && this.status == 200){
+           $txt = this.responseText; 
+           
+           if($txt === "canAdd"){document.getElementById("hobbieUL").appendChild(li);}
+           else{alert($txt);}
+        }
+    }
+    xhttp.open("GET","updateList.php?id="+inputValue,true);
+    xhttp.send();
   }
   document.getElementById("hobbieInput").value = "";
 
@@ -65,9 +57,10 @@ function newElement() {
 
   for (i = 0; i < close.length; i++) {
     close[i].onclick = function() {
-      
-           var div = close[i].parentElement;
-           div.style.display = "none";
-          }
-        }     
+      var div = this.parentElement;
+      div.style.display = "none";
     }
+  }
+}
+
+   
