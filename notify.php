@@ -4,6 +4,7 @@ $id = $_GET['id'];
 $conn = mysqli_connect("localhost", "root", "abiit@2019", "rconnect");
 
 $notifications = mysqli_query($conn, "SELECT * FROM notificationData WHERE to_userID = $id && seen_status = 0");
+$notif_count = $notifications->num_rows;
 if ($notifications->num_rows > 0) {
     // output data of each row
     while($row = $notifications->fetch_assoc()) {
@@ -15,3 +16,5 @@ if ($notifications->num_rows > 0) {
 else{
     echo "0";
 }
+
+?>
