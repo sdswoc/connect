@@ -34,10 +34,16 @@ mysqli_query($db, $sql_2);
         <title>Welcome
             <?php echo $_SESSION['name'] ?>
         </title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="style.css">
         <link rel="stylesheet" type="text/css" href="list.css">
         <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
         <link rel="stylesheet" type="text/css" href="dashboard.css">
         <link rel="stylesheet" type="text/css" href="rem.css">
         <script>
@@ -50,12 +56,38 @@ mysqli_query($db, $sql_2);
                         if (message !== "0") {
                             alert(message);
                         }
-
                     }
                 }
                 xhttp.open("GET", "notify.php?id=" + id, false);
                 xhttp.send();
             }
+
+            function updateBio(id) {
+                var bio_extract = document.getElementById('bio').value;
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        alert(this.responseText);
+                    }
+                }
+                xhttp.open("GET", "notify.php?bio_update_id=" + id+"&bio=" + bio_extract, false);
+                xhttp.send();
+
+            }
+
+            function updateBhawan(id) {
+                var bhawan_extract = document.getElementById('bhawan').value;
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        alert(this.responseText);
+                    }
+                }
+                xhttp.open("GET", "notify.php?bhawan_update_id=" + id+"&bhawan=" + bhawan_extract, false);
+                xhttp.send();
+
+            }
+            
         </script>
     </head>
 
@@ -70,51 +102,44 @@ mysqli_query($db, $sql_2);
                 <br>
                 <br>
                 <object align='right'>
-                    <div style="width: 100%;">
-                    <a href="#" onclick = notify_alert(<?php echo $_SESSION['id'] ?>) class="button-badge">
-  <i class="fa fa-bell"></i>
-  <span class="badge alert"><?php echo $notif_count ?></span>
-</a>
-                       
-                        &nbsp;&nbsp;&nbsp;&nbsp;
+                    <a id="notif_trigger" href="#" onclick= notify_alert(<?php echo $_SESSION[ 'id'] ?>) style = "text-decoration: none;"><i class = "fa fa-bell"></i>
+                &nbsp;&nbsp;<span id="notif_count" style="color:white" ><?php echo $notif_count ?></span</a> &nbsp;&nbsp;
+                    <a class="google" href='NewConnect.php' style="text-decoration: none;">&nbsp;&nbsp;Find New Connections&nbsp;&nbsp;</a>&nbsp;&nbsp;&nbsp;&nbsp;
 
-                        <a class="google" href='NewConnect.php'>&nbsp;&nbsp;Find New Connections&nbsp;&nbsp;</a>&nbsp;&nbsp;&nbsp;&nbsp;
-
-                        <?php  if (!isset($_SESSION['username'])) : ?>
-                            <a class="google" href='login.php'>
+                    <?php  if (!isset($_SESSION['username'])) : ?>
+                        <a class="google" href='login.php'>
         &nbsp;&nbsp;Login&nbsp;&nbsp;
       </a>&nbsp;&nbsp;&nbsp;&nbsp;
-                            <a class="google" href='finalsignup.php'>&nbsp;Signup&nbsp;&nbsp;</a>
-                            <?php endif ?>
+                        <a class="google" href='finalsignup.php'>&nbsp;Signup&nbsp;&nbsp;</a>
+                        <?php endif ?>
 
-                                <?php  if (isset($_SESSION['username'])) : ?>
-                                    <a class="google" href='welcome.php?logout=1'>
-        &nbsp;&nbsp;Logout&nbsp;&nbsp;
-      </a>&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <a class="google" href='finalsignup.php'>&nbsp;Signup&nbsp;&nbsp;</a> &nbsp;&nbsp;
-                                    <a class="google" href='welcome.php?delete=1'>&nbsp;Delete my Account&nbsp;&nbsp;</a>
-                                    <?php endif ?>
-                    </div>
+                            <?php  if (isset($_SESSION['username'])) : ?>
+                                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                    More Options..
+                                </button>
+                                <div class="dropdown-menu" style="z-index: 2;">
+                                    <a class="dropdown-item google" href='welcome.php?logout=1'>Logout</a>
+                                    <a class="dropdown-item google" href='finalsignup.php'>Signup</a>
+                                    <a class="dropdown-item google" href='welcome.php?delete=1'>Delete my Account</a>
+                                </div>
+
+                                <?php endif ?>
+
                 </object>
             </object>
         </div>
         <br>
         <?php  if (isset($_SESSION['username'])) : ?>
-            <div class="row">
+            <div class="row" style="z-index: 0;">
                 <div class="column">
-                    <div class="signup_box" style="height: 400px; width: 90%;">
+                    <div class="signup_box" style="height: 400px; width: 90%; overflow: auto">
                         <br>
-                        <?php if (!empty($msg)): ?>
-                            <div class="alert <?php echo $msg_class ?>" role="alert">
-                                <?php echo $msg ?>
-                            </div>
-                            <?php endif; ?>
-                                <center>
-                                    <?php 
+                        <center>
+                            <?php 
 $userID = $_SESSION['id'];
 include('updateDP.php') ?>
-                                        <form action="welcome.php" method="post" enctype="multipart/form-data">
-                                            <span class="img-div">
+                                <form action="welcome.php" method="post" enctype="multipart/form-data">
+                                    <span class="img-div">
               <div class="img-placeholder"  onClick="triggerClick()">
                 <h4>Update image </h4>
               </div>
@@ -123,13 +148,13 @@ include('updateDP.php') ?>
  }; echo $_SESSION['img'] ?>"  onClick="triggerClick()" id="profileDisplay">
 </span>
 
-                                            <input type="file" name="profileImage" onChange="displayImage(this); this.form.submit();" id="profileImage" class="form-control" style="display: none;">
-                                            <input type="text" name="id" value="<?php echo $_SESSION['id'] ?>" style="display:none" />
-                                        </form>
-                                </center>
-                                <br>
-                                <div class="profile-detail">
-                                    <?php
+                                    <input type="file" name="profileImage" onChange="displayImage(this); this.form.submit();" id="profileImage" class="form-control" style="display: none;">
+                                    <input type="text" name="id" value="<?php echo $_SESSION['id'] ?>" style="display:none" />
+                                </form>
+                        </center>
+                        <br>
+
+                        <?php
 $conn = mysqli_connect("localhost", "root", "abiit@2019", "rconnect");
 // Check connection
 $id = $_SESSION['id'];
@@ -138,41 +163,70 @@ $result = mysqli_query($conn, $sql);
 if ($result->num_rows > 0) {
 // output data of each row
 $row = $result->fetch_assoc();
-echo "Name : ".$_SESSION['name']."<br>Follow Count :  ".$row['follow_count'];
-echo "<br>Bio : ".$row['bio'];
-echo "<br>Bhawan : ".$_SESSION['bhawan'];
+$followers_count = $row['follow_count'];
+$bio = $row['bio'];
+$bhawan = $_SESSION['bhawan'];
 }
 
 $conn->close();
 ?>
-
-                                </div>
-                    </div>
-
-                </div>
-                <div class="column2">
-                    <div class="signup_box info" style="height: 400px; width: 100%;">
-                        <br>
-                        <div class="hobbies" style="width: 45%; float:left; ">
-                            <!--HOBBIES-->
-
-                            <div id="myDIV" class="header">
-                                <h2>Hobbies</h2>
-                                <input list="hobbies" id="hobbieInput" type="text" placeholder="Title...">
-                                <datalist id="hobbies">
-                                    <option value="Dancing">
-                                        <option value="Listening Music">
-                                            <option value="Cricket">
-                                                <option value="Singing">
-                                                    <option value="Fooseball">
-                                                        <option value="Reading Novels">
+                            <table class=table table-hover text-center " style = "color:white; ">
+    <div id = "I-card ">
+        <th> </th>
+     <th> <h4><?php echo $_SESSION['name']; ?></h4></th>
+   <tr> <div class="form-group ">
+ <td> <span> Bio:</span> </td><td><textarea id = "bio" class = "col-xs-3 inputsm " rows=1 style = "width: 50%; overflow: auto; " onchange=updateBio(<?php echo $id ?>) >
+ <?php echo $bio ?></textarea></td></tr>
+ <tr><td> <span> Bhawan:</span> </td> 
+ <td> <input placeholder="<?php echo $_SESSION[ 'bhawan'] ?>" onchange=updateBhawan(<?php echo $id ?>) list = "bhawans" id = "bhawan" class = "box" font-family= 'Comic Sans MS'></td>
+                                </tr>
+                                <datalist id="bhawans">
+                                    <option value="Rajendra Bhawan">
+                                        <option value="Sarojini Bhawan">
+                                            <option value="Radhakrishnan Bhawan">
+                                                <option value="Rajeev Bhawan">
+                                                    <option value="Kasturba Bhawan">
+                                                        <option value="Jawahar Bhawan">
+                                                            <option value="Govind Bhawan">
+                                                                <option value="Azad Bhawan">
+                                                                    <option value="Ravindra Bhawan">
                                 </datalist>
+                                <tr>
+                                    <td>No. of followers :</td>
+                                    <td>
+                                        <?php echo $followers_count ?>
+                                    </td>
+                                </tr>
+                    </div>
+                </div>
+                </table>
 
-                                <span onclick="newElement()" class="addBtn">Add</span>
-                            </div>
+            </div>
 
-                            <ul id="hobbieUL">
-                                <?php 
+            </div>
+            <div class="column2">
+                <div class="signup_box info" style="height: 400px; width: 100%;">
+                    <br>
+                    <div class="hobbies" style="width: 45%; float:left; ">
+                        <!--HOBBIES-->
+
+                        <div id="myDIV" class="hobbie_header">
+                            <h2>Hobbies</h2>
+                            <input list="hobbies" id="hobbieInput" type="text" placeholder="Title...">
+                            <datalist id="hobbies">
+                                <option value="Dancing">
+                                    <option value="Listening Music">
+                                        <option value="Cricket">
+                                            <option value="Singing">
+                                                <option value="Fooseball">
+                                                    <option value="Reading Novels">
+                            </datalist>
+
+                            <span onclick="newElement()" class="addBtn">Add</span>
+                        </div>
+
+                        <ul id="hobbieUL">
+                            <?php 
 function hobbieID_to_name($a){
   if($a==1){return "Dancing";}
   if($a==2){return "Listening Music";}
@@ -193,32 +247,32 @@ while($row = $result->fetch_assoc()) {
 }
 }
 ?>
-                            </ul>
+                        </ul>
 
+                    </div>
+
+                    <div class="goals" style="width: 45%; float:right">
+                        <!--GOALS-->
+
+                        <div id="myDIV" class="hobbie_header">
+                            <h2>GOALS</h2>
+                            <input type="text" id="goalInput" placeholder="Title...">
+                            <span onclick="newElement()" class="addBtn">Add</span>
                         </div>
 
-                        <div class="goals" style="width: 45%; float:right">
-                            <!--GOALS-->
-
-                            <div id="myDIV" class="header">
-                                <h2>GOALS</h2>
-                                <input type="text" id="myInput" placeholder="Title...">
-                                <span onclick="newElement()" class="addBtn">Add</span>
-                            </div>
-
-                            <ul id="hobbieUL">
-                                <li>Gymming</li>
-                                <li>UPSC</li>
-                                <li>Competitive Coding</li>
-                                <li>Branch Change</li>
-                                <li>Tech Group</li>
-                            </ul>
-
-                        </div>
+                        <ul id="hobbieUL">
+                            <li>Gymming</li>
+                            <li>UPSC</li>
+                            <li>Competitive Coding</li>
+                            <li>Branch Change</li>
+                            <li>Tech Group</li>
+                        </ul>
 
                     </div>
 
                 </div>
+
+            </div>
 
             </div>
 

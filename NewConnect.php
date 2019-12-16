@@ -48,9 +48,16 @@ else{
 
     <head>
         <title>Connect@IIT-R</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="style.css">
         <link rel="stylesheet" type="text/css" href="sample.css">
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
         <link rel="stylesheet" type="text/css" href="dashboard.css">
         <link rel="stylesheet" type="text/css" href="rem.css">
 
@@ -79,10 +86,14 @@ else{
                             <?php  if (isset($_SESSION['username'])) : ?>
                                 <a class="google" href='  welcome.php'>&nbsp;&nbsp;Back to Dashboard&nbsp;&nbsp;</a>&nbsp;&nbsp;&nbsp;&nbsp;
 
-                                <a class="google" href='  welcome.php?logout=1'>
-        &nbsp;&nbsp;Logout&nbsp;&nbsp;
-      </a>&nbsp;&nbsp;&nbsp;&nbsp;
-                                <a class="google" href='  finalsignup.php'>&nbsp;Signup&nbsp;&nbsp;</a>
+                                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                            More Options..
+                                </button>
+                                        <div class="dropdown-menu" style="z-index: 2;">
+                                            <a class="dropdown-item google" href='welcome.php?logout=1'>Logout</a>
+                                            <a class="dropdown-item google" href='finalsignup.php'>Signup</a>
+                                            <a class="dropdown-item google" href='welcome.php?delete=1'>Delete my Account</a>
+                                        </div>
                                 <?php endif ?>
                 </object>
             </object>
@@ -90,14 +101,14 @@ else{
         <br>
         <div class="connect">
             <center>
-                <div class="signup_box info" style="height: 800px; width: 90%;">
+                <div class="signup_box info" style="height: 600px; width: 90%; overflow:auto;">
                     <br>
-                    <table style="text-align: center; padding: 5px;">
+                    <table class="table table-dark table-hover">
                         <tr>
                             <th>Id</th>
                             <th>Name</th>
                             <th>Username</th>
-                            <th> Profile Pic</th>  
+                            <th>Profile Pic</th>  
                             <th>Bio</th>
                             <th>Follow Status</th>
                         </tr>
@@ -134,7 +145,8 @@ if ($result->num_rows > 0) {
 while($row = $result->fetch_assoc()) {
 $id = $row["userID"];
 $self_ID = $_SESSION['id'];
-echo "<tr><td>" . $row["userID"]. "</td>
+if($row['userID'] != $self_ID){
+  echo "<tr><td>" . $row["userID"]. "</td>
 <td>" . $row["name"] . "</td>
 <td>" . $row["username"] . "</td>
 <td><img src = 'userImages/";
@@ -147,8 +159,10 @@ if(isset($row["img"])){
 <td>" . $row["bio"] . "</td>";
 echo "<td>";
 $msg = follow_status($conn, $id, $self_ID);
-echo "<a class = 'google follow_status' style = 'padding-left: 5px; padding-right: 5px;' href = 'NewConnect.php?id=".$id."'>".$msg."</a>";
+echo "<a class = 'google follow_status' style = 'padding-left: 5px; text-decoration:none; padding-right: 5px;' href = 'NewConnect.php?id=".$id."'>".$msg."</a>";
 echo "</td>";
+}
+
 
 }
 } 
