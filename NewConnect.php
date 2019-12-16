@@ -10,6 +10,9 @@ include('server.php');
     header("location: welcome.php");
   }
 
+$id = $_SESSION['id'];
+  $notifications = mysqli_query($db, "SELECT * FROM notificationData WHERE to_userID = $id && seen_status = 0");
+  $notif_count = $notifications->num_rows;  
   if (isset($_GET['id'])) {
    $follower_id = $_SESSION['id'];
    $id_to_be_followed = $_GET['id'];
@@ -60,6 +63,7 @@ else{
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
         <link rel="stylesheet" type="text/css" href="dashboard.css">
         <link rel="stylesheet" type="text/css" href="rem.css">
+        <script src = "updateProf.js"></script>
 
     </head>
 
@@ -84,7 +88,9 @@ else{
                         <?php endif ?>
 
                             <?php  if (isset($_SESSION['username'])) : ?>
-                                <a class="google" href='  welcome.php'>&nbsp;&nbsp;Back to Dashboard&nbsp;&nbsp;</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                              <a id="notif_trigger" href="#" onclick = notify_alert(<?php echo $_SESSION[ 'id'] ?>) style = "text-decoration: none;"><i class = "fa fa-bell"></i>
+                &nbsp;&nbsp;<span style="color:white" ><?php echo $notif_count ?></span</a> &nbsp;&nbsp;
+                                <a class="google" href='  welcome.php' style="text-decoration: none;">&nbsp;&nbsp;Back to Dashboard&nbsp;&nbsp;</a>&nbsp;&nbsp;&nbsp;&nbsp;
 
                                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                                             More Options..

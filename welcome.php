@@ -46,51 +46,7 @@ mysqli_query($db, $sql_2);
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
         <link rel="stylesheet" type="text/css" href="dashboard.css">
         <link rel="stylesheet" type="text/css" href="rem.css">
-        <script>
-            function notify_alert(id) {
-                var xhttp = new XMLHttpRequest();
-                xhttp.onreadystatechange = function() {
-                    if (this.readyState == 4 && this.status == 200) {
-                        var message = this.responseText;
-
-                        if (message !== "0") {
-                            alert(message);
-                            location.reload(true);
-                        }
-
-                    }
-                }
-                xhttp.open("GET", "notify.php?id=" + id, true);
-                xhttp.send();
-            }
-
-            function updateBio(id) {
-                var bio_extract = document.getElementById('bio').value;
-                var xhttp = new XMLHttpRequest();
-                xhttp.onreadystatechange = function() {
-                    if (this.readyState == 4 && this.status == 200) {
-                        alert(this.responseText);
-                    }
-                }
-                xhttp.open("GET", "notify.php?bio_update_id=" + id + "&bio=" + bio_extract, true);
-                xhttp.send();
-
-            }
-
-            function updateBhawan(id) {
-
-                var xhttp = new XMLHttpRequest();
-                xhttp.onreadystatechange = function() {
-                    if (this.readyState == 4 && this.status == 200) {
-                        alert(this.responseText);
-                    }
-                }
-                var bhawan_extract = document.getElementById('bhawan').value;
-                xhttp.open("GET", "notify.php?bhawan_update_id=" + id + "&bhawan=" + bhawan_extract, true);
-                xhttp.send();
-
-            }
-        </script>
+        <script src="updateProf.js"></script>
     </head>
 
     <body bgcolor="#FFFFFF">
@@ -104,9 +60,12 @@ mysqli_query($db, $sql_2);
                 <br>
                 <br>
                 <object align='right'>
-                    <a id="notif_trigger" href="#" onclick = notify_alert(<?php echo $_SESSION[ 'id'] ?>) style = "text-decoration: none;"><i class = "fa fa-bell"></i>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#view_friends">&ensp;
+                <i class="fa fa-envelope"></i>&ensp;Post something&ensp;</button>
+
+       &emsp;             <a id="notif_trigger" href="#" onclick = notify_alert(<?php echo $_SESSION[ 'id'] ?>) style = "text-decoration: none;"><i class = "fa fa-bell"></i>
                 &nbsp;&nbsp;<span style="color:white" ><?php echo $notif_count ?></span</a> &nbsp;&nbsp;
-                    <a class="google" href='NewConnect.php' style="text-decoration: none;">&nbsp;&nbsp;Find New Connections&nbsp;&nbsp;</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a class="google" href='NewConnect.php' style="text-decoration: none;">&nbsp;&nbsp;View Connections&nbsp;&nbsp;</a>&nbsp;&nbsp;&nbsp;&nbsp;
 
                     <?php  if (!isset($_SESSION['username'])) : ?>
                         <a class="google" href='login.php'>
@@ -178,7 +137,7 @@ $conn->close();
         <th> </th>
      <th> <h4><?php echo $_SESSION['name']; ?></h4></th>
    <tr> <div class="form-group ">
- <td> <span> Bio:</span> </td><td><textarea id = "bio" class = "col-xs-3 inputsm " rows=1 style = "width: 50%; overflow: auto; " onchange=updateBio(<?php echo $_SESSION['id'] ?>) >
+ <td> <span> Bio:</span> </td><td><textarea id = "bio" class = "col-xs-3 inputsm " rows=1 style = "width: 80%; overflow: auto; " onchange=updateBio(<?php echo $_SESSION['id'] ?>) >
  <?php echo $bio ?></textarea></td></tr>
  <tr><td> <span> Bhawan:</span> </td> 
  <td> <input placeholder="<?php echo $_SESSION['bhawan'] ?>" onchange=updateBhawan(<?php echo $_SESSION['id'] ?>) list = "bhawans" id = "bhawan" class = "box" font-family= 'Comic Sans MS'></td>
@@ -285,7 +244,7 @@ while($row = $result->fetch_assoc()) {
             <br>
             <br>
             <div style="margin-left: 15px;">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#view_friends">
+                <center><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#view_friends">
                     View Friends
                 </button>
                 <div class="modal fade" id="view_friends" style = "overflow: auto;">
@@ -485,7 +444,7 @@ $conn->close();
                         </div>
                     </div>
                 </div>
-
+                </center>
             </div>
 
             <?php endif; ?>
