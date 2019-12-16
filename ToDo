@@ -1,8 +1,5 @@
-#7 AJAX 
-#2 Read about inter-connecting various users -- 
-#3 Designing notification panel to see the PUSH NOTIFICATIONS 
-#4 Displaying people who FOLLOW YOU and whom you FOLLOW.
 ON HOLD ----> #5 If already connected, then do not display Connect option
 #6 Storing Hobbies/Goals in DataBase
-#7 View Friends, Followers
-#8 option to unfollow
+---->>> #7 View Friends, Followers
+#8 Share a message to all the followers
+#9 ProfileUpdate feature to be debugged

@@ -2,11 +2,11 @@
 
 
 $conn = mysqli_connect("localhost", "root", "abiit@2019", "rconnect");
-
+$id = $_GET['id'];
 $notifications = mysqli_query($conn, "SELECT * FROM notificationData WHERE to_userID = $id && seen_status = 0");
 
 if(isset($_GET['id'])){
-    $id = $_GET['id'];
+    
     if ($notifications->num_rows > 0) {
     // output data of each row
     while($row = $notifications->fetch_assoc()) {
@@ -34,7 +34,7 @@ if(isset($_GET['bio_update_id'])){
 
 if(isset($_GET['bhawan_update_id'])){
     $selfID = $_GET['bhawan_update_id'];
-    $bhawan_retrieve = addslashes($_GET['bhawan']);
+    $bhawan_retrieve = $_GET['bhawan'];
     if(mysqli_query($conn, "UPDATE userData SET bhawan = '$bhawan_retrieve' WHERE userID = $selfID")){
         echo "Bhawan updated!";
     }

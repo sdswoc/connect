@@ -55,10 +55,12 @@ mysqli_query($db, $sql_2);
 
                         if (message !== "0") {
                             alert(message);
+                            location.reload(true);
                         }
+
                     }
                 }
-                xhttp.open("GET", "notify.php?id=" + id, false);
+                xhttp.open("GET", "notify.php?id=" + id, true);
                 xhttp.send();
             }
 
@@ -70,24 +72,24 @@ mysqli_query($db, $sql_2);
                         alert(this.responseText);
                     }
                 }
-                xhttp.open("GET", "notify.php?bio_update_id=" + id+"&bio=" + bio_extract, false);
+                xhttp.open("GET", "notify.php?bio_update_id=" + id + "&bio=" + bio_extract, true);
                 xhttp.send();
 
             }
 
             function updateBhawan(id) {
-                var bhawan_extract = document.getElementById('bhawan').value;
+
                 var xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = function() {
                     if (this.readyState == 4 && this.status == 200) {
                         alert(this.responseText);
                     }
                 }
-                xhttp.open("GET", "notify.php?bhawan_update_id=" + id+"&bhawan=" + bhawan_extract, false);
+                var bhawan_extract = document.getElementById('bhawan').value;
+                xhttp.open("GET", "notify.php?bhawan_update_id=" + id + "&bhawan=" + bhawan_extract, true);
                 xhttp.send();
 
             }
-            
         </script>
     </head>
 
@@ -102,8 +104,8 @@ mysqli_query($db, $sql_2);
                 <br>
                 <br>
                 <object align='right'>
-                    <a id="notif_trigger" href="#" onclick= notify_alert(<?php echo $_SESSION[ 'id'] ?>) style = "text-decoration: none;"><i class = "fa fa-bell"></i>
-                &nbsp;&nbsp;<span id="notif_count" style="color:white" ><?php echo $notif_count ?></span</a> &nbsp;&nbsp;
+                    <a id="notif_trigger" href="#" onclick = notify_alert(<?php echo $_SESSION[ 'id'] ?>) style = "text-decoration: none;"><i class = "fa fa-bell"></i>
+                &nbsp;&nbsp;<span style="color:white" ><?php echo $notif_count ?></span</a> &nbsp;&nbsp;
                     <a class="google" href='NewConnect.php' style="text-decoration: none;">&nbsp;&nbsp;Find New Connections&nbsp;&nbsp;</a>&nbsp;&nbsp;&nbsp;&nbsp;
 
                     <?php  if (!isset($_SESSION['username'])) : ?>
@@ -129,6 +131,9 @@ mysqli_query($db, $sql_2);
             </object>
         </div>
         <br>
+        <br>
+        <br>
+        <br>
         <?php  if (isset($_SESSION['username'])) : ?>
             <div class="row" style="z-index: 0;">
                 <div class="column">
@@ -143,9 +148,7 @@ include('updateDP.php') ?>
               <div class="img-placeholder"  onClick="triggerClick()">
                 <h4>Update image </h4>
               </div>
-              <img src="userImages/<?php if(!isset($_SESSION['img'])){
-  $_SESSION['img'] = 'default.png';
- }; echo $_SESSION['img'] ?>"  onClick="triggerClick()" id="profileDisplay">
+              <img src="userImages/<?php echo $_SESSION['img'] ?>"  onClick="triggerClick()" id="profileDisplay">
 </span>
 
                                     <input type="file" name="profileImage" onChange="displayImage(this); this.form.submit();" id="profileImage" class="form-control" style="display: none;">
@@ -175,28 +178,28 @@ $conn->close();
         <th> </th>
      <th> <h4><?php echo $_SESSION['name']; ?></h4></th>
    <tr> <div class="form-group ">
- <td> <span> Bio:</span> </td><td><textarea id = "bio" class = "col-xs-3 inputsm " rows=1 style = "width: 50%; overflow: auto; " onchange=updateBio(<?php echo $id ?>) >
+ <td> <span> Bio:</span> </td><td><textarea id = "bio" class = "col-xs-3 inputsm " rows=1 style = "width: 50%; overflow: auto; " onchange=updateBio(<?php echo $_SESSION['id'] ?>) >
  <?php echo $bio ?></textarea></td></tr>
  <tr><td> <span> Bhawan:</span> </td> 
- <td> <input placeholder="<?php echo $_SESSION[ 'bhawan'] ?>" onchange=updateBhawan(<?php echo $id ?>) list = "bhawans" id = "bhawan" class = "box" font-family= 'Comic Sans MS'></td>
-                                </tr>
-                                <datalist id="bhawans">
-                                    <option value="Rajendra Bhawan">
-                                        <option value="Sarojini Bhawan">
-                                            <option value="Radhakrishnan Bhawan">
-                                                <option value="Rajeev Bhawan">
-                                                    <option value="Kasturba Bhawan">
-                                                        <option value="Jawahar Bhawan">
-                                                            <option value="Govind Bhawan">
-                                                                <option value="Azad Bhawan">
-                                                                    <option value="Ravindra Bhawan">
-                                </datalist>
-                                <tr>
-                                    <td>No. of followers :</td>
-                                    <td>
-                                        <?php echo $followers_count ?>
-                                    </td>
-                                </tr>
+ <td> <input placeholder="<?php echo $_SESSION['bhawan'] ?>" onchange=updateBhawan(<?php echo $_SESSION['id'] ?>) list = "bhawans" id = "bhawan" class = "box" font-family= 'Comic Sans MS'></td>
+                                    </tr>
+                                    <datalist id="bhawans">
+                                        <option value="Rajendra Bhawan">
+                                            <option value="Sarojini Bhawan">
+                                                <option value="Radhakrishnan Bhawan">
+                                                    <option value="Rajeev Bhawan">
+                                                        <option value="Kasturba Bhawan">
+                                                            <option value="Jawahar Bhawan">
+                                                                <option value="Govind Bhawan">
+                                                                    <option value="Azad Bhawan">
+                                                                        <option value="Ravindra Bhawan">
+                                    </datalist>
+                                    <tr>
+                                        <td>No. of followers :</td>
+                                        <td>
+                                            <?php echo $followers_count ?>
+                                        </td>
+                                    </tr>
                     </div>
                 </div>
                 </table>
@@ -273,6 +276,215 @@ while($row = $result->fetch_assoc()) {
                 </div>
 
             </div>
+
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div style="margin-left: 15px;">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#view_friends">
+                    View Friends
+                </button>
+                <div class="modal fade" id="view_friends" style = "overflow: auto;">
+                    <div class="modal-dialog">
+                        <div class="modal-content" style="width: 40vw;">
+
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">Friends</h4>
+                            </div>
+
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                                <table class="table table-hover">
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Name</th>
+                                        <th>Username</th>
+                                        <th>Profile Pic</th>
+                                        <th>Bio</th>
+                                    </tr>
+                                    <?php
+$conn = mysqli_connect("localhost", "root", "abiit@2019", "rconnect");
+// Check connection
+
+$sql = "SELECT userID, name, username, img, bio FROM userData";
+$result = mysqli_query($conn, $sql);
+$self_ID = $_SESSION['id']; 
+if ($result->num_rows > 0) {
+// output data of each row
+while($row = $result->fetch_assoc()) {
+$id = $row["userID"];
+$check = mysqli_query($conn, "SELECT * from followerData where userID = $id AND followerID = $self_ID");
+$check_2 = mysqli_query($conn, "SELECT * from followerData where userID = $self_ID AND followerID = $id");
+if(mysqli_num_rows($check) == 1 && mysqli_num_rows($check_2) == 1){
+     echo "<tr><td>" . $row["userID"]. "</td>
+<td>" . $row["name"] . "</td>
+<td>" . $row["username"] . "</td>
+<td><img src = 'userImages/";
+
+if(isset($row["img"])){
+  echo $row['img'];
+}
+ else{ echo 'default.png';}
+ echo "' style = 'border-radius: 50%' width = 50px height = 50px></td>
+<td>" . $row["bio"] . "</td>";
+
+  }
+
+}
+} 
+else { echo "0 results"; }
+$conn->close(); 
+?>
+
+                                </table>
+                            </div>
+
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>&emsp;
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#view_followers">
+                    View Followers
+                </button>
+                <div class="modal fade" id="view_followers" style = "overflow: auto;">
+                    <div class="modal-dialog">
+                        <div class="modal-content" style="width: 40vw;">
+
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">Followers</h4>
+                            </div>
+
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                                <table class="table table-hover">
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Name</th>
+                                        <th>Username</th>
+                                        <th>Profile Pic</th>
+                                        <th>Bio</th>
+                                    </tr>
+                                    <?php
+$conn = mysqli_connect("localhost", "root", "abiit@2019", "rconnect");
+// Check connection
+
+$sql = "SELECT userID, name, username, img, bio FROM userData";
+$result = mysqli_query($conn, $sql);
+$self_ID = $_SESSION['id']; 
+if ($result->num_rows > 0) {
+// output data of each row
+while($row = $result->fetch_assoc()) {
+$id = $row["userID"];
+$check = mysqli_query($conn, "SELECT * from followerData where userID = $id AND followerID = $self_ID");
+$check_2 = mysqli_query($conn, "SELECT * from followerData where userID = $self_ID AND followerID = $id");
+if(mysqli_num_rows($check) == 0 && mysqli_num_rows($check_2) == 1) {
+     echo "<tr><td>" . $row["userID"]. "</td>
+<td>" . $row["name"] . "</td>
+<td>" . $row["username"] . "</td>
+<td><img src = 'userImages/";
+
+if(isset($row["img"])){
+  echo $row['img'];
+}
+ else{ echo 'default.png';}
+ echo "' style = 'border-radius: 50%' width = 50px height = 50px></td>
+<td>" . $row["bio"] . "</td>";
+
+  }
+
+}
+} 
+else { echo "0 results"; }
+$conn->close(); 
+?>
+
+                                </table>
+                            </div>
+
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                &emsp;
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#view_following">
+                    View Following
+                </button>
+                <div class="modal fade" id="view_following" style = "overflow: auto;">
+                    <div class="modal-dialog">
+                        <div class="modal-content" style="width: 40vw;">
+
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">Followers</h4>
+                            </div>
+
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                                <table class="table table-hover">
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Name</th>
+                                        <th>Username</th>
+                                        <th>Profile Pic</th>
+                                        <th>Bio</th>
+                                    </tr>
+                                    <?php
+$conn = mysqli_connect("localhost", "root", "abiit@2019", "rconnect");
+// Check connection
+
+$sql = "SELECT userID, name, username, img, bio FROM userData";
+$result = mysqli_query($conn, $sql);
+$self_ID = $_SESSION['id']; 
+if ($result->num_rows > 0) {
+// output data of each row
+while($row = $result->fetch_assoc()) {
+$id = $row["userID"];
+$check = mysqli_query($conn, "SELECT * from followerData where userID = $id AND followerID = $self_ID");
+$check_2 = mysqli_query($conn, "SELECT * from followerData where userID = $self_ID AND followerID = $id");
+if(mysqli_num_rows($check) == 1 && mysqli_num_rows($check_2) == 0) {
+     echo "<tr><td>" . $row["userID"]. "</td>
+<td>" . $row["name"] . "</td>
+<td>" . $row["username"] . "</td>
+<td><img src = 'userImages/";
+
+if(isset($row["img"])){
+  echo $row['img'];
+}
+ else{ echo 'default.png';}
+ echo "' style = 'border-radius: 50%' width = 50px height = 50px></td>
+<td>" . $row["bio"] . "</td>";
+
+  }
+
+}
+} 
+else { echo "0 results"; }
+$conn->close(); 
+?>
+
+                                </table>
+                            </div>
+
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
             </div>
 
