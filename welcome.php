@@ -46,7 +46,7 @@ mysqli_query($db, $sql_2);
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
         <link rel="stylesheet" type="text/css" href="dashboard.css">
         <link rel="stylesheet" type="text/css" href="rem.css">
-        <script src="updateProf.js"></script>
+        <script src="update_n_share.js"></script>
     </head>
 
     <body bgcolor="#FFFFFF">
@@ -60,12 +60,14 @@ mysqli_query($db, $sql_2);
                 <br>
                 <br>
                 <object align='right'>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#view_friends">&ensp;
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#view_messages">&ensp;
+                <i class="fa fa-comment"></i>&ensp;View Message-Posts&ensp;</button>&emsp;
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#post_message">&ensp;
                 <i class="fa fa-envelope"></i>&ensp;Post something&ensp;</button>
-
+               
        &emsp;             <a id="notif_trigger" href="#" onclick = notify_alert(<?php echo $_SESSION[ 'id'] ?>) style = "text-decoration: none;"><i class = "fa fa-bell"></i>
                 &nbsp;&nbsp;<span style="color:white" ><?php echo $notif_count ?></span</a> &nbsp;&nbsp;
-                    <a class="google" href='NewConnect.php' style="text-decoration: none;">&nbsp;&nbsp;View Connections&nbsp;&nbsp;</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a class="btn btn-primary" role = "button" href='NewConnect.php' style="text-decoration: none;">&nbsp;&nbsp;View Connections&nbsp;&nbsp;</a>&nbsp;&nbsp;&nbsp;&nbsp;
 
                     <?php  if (!isset($_SESSION['username'])) : ?>
                         <a class="google" href='login.php'>
@@ -94,6 +96,30 @@ mysqli_query($db, $sql_2);
         <br>
         <br>
         <?php  if (isset($_SESSION['username'])) : ?>
+            <div class="modal fade" id="post_message" style = "overflow: auto;">
+                    <div class="modal-dialog">
+                        <div class="modal-content" style="width: 30vw;">
+
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">Share something with your followers!</h4>
+                            </div>
+
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                            <input id = "msg_post" class = "col-xs-3 inputlg form-control" rows=1 style = "width: 80%; overflow: auto; "> </input><br>
+                            <p id="msg_status"></p>
+                            </div>
+
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                           
+                           <button type="button" class="btn btn-secondary" onclick = msg_post()>Share</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             <div class="row" style="z-index: 0;">
                 <div class="column">
                     <div class="signup_box" style="height: 400px; width: 90%; overflow: auto">

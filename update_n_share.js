@@ -41,3 +41,18 @@ function updateBhawan(id) {
     xhttp.send();
 
 }
+
+function msg_post(){
+    var xhttp = new XMLHttpRequest();
+    var message = document.getElementById('msg_post').value;
+    if(message == ""){alert("Can\'t share empty message!")}
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById('msg_status').innerHTML = this.responseText;
+            document.getElementById('msg_post').value = "";
+        }
+    }
+    xhttp.open("GET", "feed.php?msg="+message, true);
+    xhttp.send();
+   
+}

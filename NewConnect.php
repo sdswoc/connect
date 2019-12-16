@@ -63,7 +63,7 @@ else{
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
         <link rel="stylesheet" type="text/css" href="dashboard.css">
         <link rel="stylesheet" type="text/css" href="rem.css">
-        <script src = "updateProf.js"></script>
+        <script src = "update_n_share.js"></script>
 
     </head>
 

@@ -40,7 +40,7 @@
             <?php endif; ?>   
                <br>
             <form method="post"  action="finalsignup.php">
-            <div align="center" class="form-group"><input type = "text" style ="width: 80%" placeholder="E-mail" name = "email" class = "form-control" font-family= 'Comic Sans MS'/><br /><br />
+            <div align="center" class="form-group"><input type = "text" style ="width: 80%" placeholder="E-mail" name = "email" class = "form-control" font-family= 'Comic Sans MS'><br /><br />
                   <br><input type = "text" style ="width: 80%" placeholder="Name" name = "name" class = "form-control" font-family= 'Comic Sans MS'/><br /><br />
                   <br><input type = "text" placeholder="Username" style ="width: 80%" name = "username" class = "form-control" font-family= 'Comic Sans MS'/><br /><br />
                   <br><input type = "password" placeholder="Password" style ="width: 80%" name = "password_1" class = "form-control" font-family= 'Comic Sans MS'/><br/><br />

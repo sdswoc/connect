@@ -83,3 +83,8 @@ a:hover{
  background-color: aliceblue;
  color:#357ae8;
 }
+
+.btn.btn-primary:hover{
+   color:blue;
+   background-color:white;
+}
