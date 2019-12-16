@@ -371,7 +371,7 @@ while($row = $result->fetch_assoc()) {
 $id = $row["userID"];
 $check = mysqli_query($conn, "SELECT * from followerData where userID = $id AND followerID = $self_ID");
 $check_2 = mysqli_query($conn, "SELECT * from followerData where userID = $self_ID AND followerID = $id");
-if(mysqli_num_rows($check) == 0 && mysqli_num_rows($check_2) == 1) {
+if(mysqli_num_rows($check) <= 1 && mysqli_num_rows($check_2) == 1) {
      echo "<tr><td>" . $row["userID"]. "</td>
 <td>" . $row["name"] . "</td>
 <td>" . $row["username"] . "</td>
@@ -439,7 +439,7 @@ while($row = $result->fetch_assoc()) {
 $id = $row["userID"];
 $check = mysqli_query($conn, "SELECT * from followerData where userID = $id AND followerID = $self_ID");
 $check_2 = mysqli_query($conn, "SELECT * from followerData where userID = $self_ID AND followerID = $id");
-if(mysqli_num_rows($check) == 1 && mysqli_num_rows($check_2) == 0) {
+if(mysqli_num_rows($check) == 1 && mysqli_num_rows($check_2) <= 1) {
      echo "<tr><td>" . $row["userID"]. "</td>
 <td>" . $row["name"] . "</td>
 <td>" . $row["username"] . "</td>
