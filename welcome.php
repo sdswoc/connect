@@ -47,9 +47,10 @@ mysqli_query($db, $sql_2);
         <link rel="stylesheet" type="text/css" href="dashboard.css">
         <link rel="stylesheet" type="text/css" href="rem.css">
         <script src="update_n_share.js"></script>
+       
     </head>
 
-    <body bgcolor="#FFFFFF">
+    <body bgcolor="#FFFFFF" >
         <link rel="icon" href="favicon.ico" type="image/x-icon" />
         <link href="https://fonts.googleapis.com/css?family=Amatic+SC&display=swap" rel="stylesheet">
 
@@ -108,6 +109,14 @@ mysqli_query($db, $sql_2);
                             <!-- Modal body -->
                             <div class="modal-body">
                             <input id = "msg_post" class = "col-xs-3 inputlg form-control" rows=1 style = "width: 80%; overflow: auto; "> </input><br>
+                            <input placeholder="Share with..?"  list = "audience" id = "audience_id" font-family= 'Comic Sans MS'>
+                                    
+                                    <datalist id="audience">
+                                        <option value="1">Friends
+                                            <option value="2">Followers
+                                                <option value="3">Public
+                                        
+                                    </datalist>
                             <p id="msg_status"></p>
                             </div>
 
@@ -115,6 +124,27 @@ mysqli_query($db, $sql_2);
                             <div class="modal-footer">
                            
                            <button type="button" class="btn btn-secondary" onclick = msg_post()>Share</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="view_messages" style = "overflow: auto;">
+                    <div class="modal-dialog">
+                        <div class="modal-content" style="width: 40vw;">
+
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">Messages from: FOLLOWING</h4>
+                            </div>
+
+                            <!-- Modal body -->
+                            <div class="modal-body" id="msg_window">
+                               No messages yet!
+                            </div>
+
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                             </div>
                         </div>

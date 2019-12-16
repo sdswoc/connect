@@ -1,8 +1,8 @@
 <?php
 
-
+session_start();
 $conn = mysqli_connect("localhost", "root", "abiit@2019", "rconnect");
-$id = $_GET['id'];
+$id = $_SESSION['id'];
 $notifications = mysqli_query($conn, "SELECT * FROM notificationData WHERE to_userID = $id && seen_status = 0");
 
 if(isset($_GET['id'])){
@@ -22,7 +22,7 @@ else{
 }
 
 if(isset($_GET['bio_update_id'])){
-    $selfID = $_GET['bio_update_id'];
+    $selfID = mysqli_real_escape_string($conn, $_GET['bio_update_id']);
     $bio_retrieve = addslashes($_GET['bio']);
     if(mysqli_query($conn, "UPDATE userData SET bio = '$bio_retrieve' WHERE userID = $selfID")){
         echo "Bio updated!";
@@ -33,8 +33,8 @@ if(isset($_GET['bio_update_id'])){
 }
 
 if(isset($_GET['bhawan_update_id'])){
-    $selfID = $_GET['bhawan_update_id'];
-    $bhawan_retrieve = $_GET['bhawan'];
+    $selfID = mysqli_real_escape_string($conn,$_GET['bhawan_update_id']);
+    $bhawan_retrieve = mysqli_real_escape_string($conn,$_GET['bhawan']);
     if(mysqli_query($conn, "UPDATE userData SET bhawan = '$bhawan_retrieve' WHERE userID = $selfID")){
         echo "Bhawan updated!";
     }

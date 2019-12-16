@@ -52,7 +52,7 @@ function msg_post(){
             document.getElementById('msg_post').value = "";
         }
     }
-    xhttp.open("GET", "feed.php?msg="+message, true);
+    xhttp.open("GET", "feed.php?msg="+message, false);
     xhttp.send();
    
 }
