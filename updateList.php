@@ -14,4 +14,17 @@ else{
     echo "Already added!";
 }
 }
+
+if(isset($_GET['delete_id'])){
+
+    $remove_id = mysqli_real_escape_string($conn, $_GET['delete_id']);
+    $delete_query = "DELETE FROM hobbieData WHERE userID = $selfID AND hobbie_ID = $remove_id";
+    if(mysqli_query($conn, $delete_query)){
+        echo "Deleted!";
+    }
+    else{
+        echo "Couldn't Delete!";
+    }
+    
+}
 ?>

@@ -278,7 +278,7 @@ while($row = $result->fetch_assoc()) {
                             <span onclick="add_goals()" class="addBtn">Add</span>
                         </div>
 
-                        <ul id="hobbieUL">
+                        <ul id="goalUL">
                             <li>Gymming</li>
                             <li>UPSC</li>
                             <li>Competitive Coding</li>
