@@ -161,9 +161,9 @@ mysqli_query($db, $sql_2);
 $userID = $_SESSION['id'];
 include('updateDP.php') ?>
                                 <form action="welcome.php" method="post" enctype="multipart/form-data">
-                                    <span class="img-div">
+<span class="img-div">
               <div class="img-placeholder"  onClick="triggerClick()">
-                <h4>Update image </h4>
+               <h4>Update image</h4>
               </div>
               <img src="userImages/<?php echo $_SESSION['img'] ?>"  onClick="triggerClick()" id="profileDisplay">
 </span>
