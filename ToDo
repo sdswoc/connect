@@ -1,5 +1,7 @@
 ON HOLD ----> #5 If already connected, then do not display Connect option
-#6 Storing Hobbies/Goals in DataBase
-#8 Share a message to all the followers
-#9 ProfileUpdate feature to be debugged
-#10 Unfollow Option to be introduced
+#6 Fix - Storing Hobbies/Goals in DataBase
+#8 Build - Share a message to all the followers
+#9 Fix - ProfileUpdate feature to be debugged
+#10 Add - Unfollow Option to be introduced
+#11 Fix - deleting hobbies/Goals
+#12 Build - Similar list like hobbies for Goals

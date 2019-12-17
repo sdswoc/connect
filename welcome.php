@@ -47,10 +47,12 @@ mysqli_query($db, $sql_2);
         <link rel="stylesheet" type="text/css" href="dashboard.css">
         <link rel="stylesheet" type="text/css" href="rem.css">
         <script src="update_n_share.js"></script>
+        <script src="list.js"></script>
+<script src="profileUpdate.js"></script>
        
     </head>
 
-    <body bgcolor="#FFFFFF" >
+    <body bgcolor="#FFFFFF" onload = add_cross()>
         <link rel="icon" href="favicon.ico" type="image/x-icon" />
         <link href="https://fonts.googleapis.com/css?family=Amatic+SC&display=swap" rel="stylesheet">
 
@@ -173,8 +175,7 @@ include('updateDP.php') ?>
                         <br>
 
                         <?php
-$conn = mysqli_connect("localhost", "root", "abiit@2019", "rconnect");
-// Check connection
+include('dbconfig.php');// Check connection
 $id = $_SESSION['id'];
 $sql = "SELECT follow_count, bio FROM userData where userID = $id";
 $result = mysqli_query($conn, $sql);
@@ -240,7 +241,7 @@ $conn->close();
                                                     <option value="Reading Novels">
                             </datalist>
 
-                            <span onclick="newElement()" class="addBtn">Add</span>
+                            <span onclick="add_hobbie()" class="addBtn">Add</span>
                         </div>
 
                         <ul id="hobbieUL">
@@ -254,8 +255,7 @@ function hobbieID_to_name($a){
   if($a==6){return "Reading Novels";}
 }
 $selfID = $_SESSION['id'];
-$conn = mysqli_connect("localhost", "root", "abiit@2019", "rconnect");
-
+include('dbconfig.php');
 $sql = "SELECT * from hobbieData where userID = $selfID";
 $result = mysqli_query($conn, $sql);
 if ($result->num_rows > 0) {
@@ -275,7 +275,7 @@ while($row = $result->fetch_assoc()) {
                         <div id="myDIV" class="hobbie_header">
                             <h2>GOALS</h2>
                             <input type="text" id="goalInput" placeholder="Title...">
-                            <span onclick="newElement()" class="addBtn">Add</span>
+                            <span onclick="add_goals()" class="addBtn">Add</span>
                         </div>
 
                         <ul id="hobbieUL">
@@ -323,8 +323,7 @@ while($row = $result->fetch_assoc()) {
                                         <th>Bio</th>
                                     </tr>
                                     <?php
-$conn = mysqli_connect("localhost", "root", "abiit@2019", "rconnect");
-// Check connection
+include('dbconfig.php');// Check connection
 
 $sql = "SELECT userID, name, username, img, bio FROM userData";
 $result = mysqli_query($conn, $sql);
@@ -389,8 +388,7 @@ $conn->close();
                                         <th>Bio</th>
                                     </tr>
                                     <?php
-$conn = mysqli_connect("localhost", "root", "abiit@2019", "rconnect");
-// Check connection
+include('dbconfig.php');// Check connection
 
 $sql = "SELECT userID, name, username, img, bio FROM userData";
 $result = mysqli_query($conn, $sql);
@@ -457,8 +455,7 @@ $conn->close();
                                         <th>Bio</th>
                                     </tr>
                                     <?php
-$conn = mysqli_connect("localhost", "root", "abiit@2019", "rconnect");
-// Check connection
+include('dbconfig.php');// Check connection
 
 $sql = "SELECT userID, name, username, img, bio FROM userData";
 $result = mysqli_query($conn, $sql);
@@ -511,5 +508,3 @@ $conn->close();
         </div>
 </body>
 </html>
-<script src="list.js"></script>
-<script src="profileUpdate.js"></script>

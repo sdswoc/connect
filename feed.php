@@ -1,6 +1,6 @@
 <?php 
 session_start();
-$conn = mysqli_connect("localhost", "root", "abiit@2019", "rconnect");
+include('dbconfig.php');
 $id = $_SESSION['id'];
 if(isset($_GET['msg'])){
 //share message to all the followers 

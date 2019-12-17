@@ -35,14 +35,14 @@
   
    
     /* Style the close button */
-  .close {
+  .closeHobbie {
     position: absolute;
     right: 0;
     top: 0;
     padding: 12px 16px 12px 16px;
   }
   
-  .close:hover {
+  .closeHobbie:hover {
     background-color: #f44336;
     color: white;
   }

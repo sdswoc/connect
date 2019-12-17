@@ -1,65 +1,66 @@
-var myNodelist = document.getElementsByTagName("LI");
+
+
+function add_cross(){
+  var hobbie_list = document.querySelectorAll("#hobbieUL li");
 var i;
-for (i = 0; i < myNodelist.length; i++) {
-  var span = document.createElement("SPAN");
+for(i = 0; i < hobbie_list.length;i++){
+  var span  = document.createElement("span");
   var txt = document.createTextNode("\u00D7");
-  span.className = "close";
+  span.className = "closeHobbie";
   span.appendChild(txt);
-  myNodelist[i].appendChild(span);
+  hobbie_list[i].appendChild(span);
 }
 
-// Click on a close button to hide the current list item
-var close = document.getElementsByClassName("close");
+var delete_hobbie = document.getElementsByClassName("closeHobbie");
 var i;
-for (i = 0; i < close.length; i++) {
-  close[i].onclick = function() {
+for(i = 0; i < delete_hobbie.length; i++){
+  delete_hobbie[i].onclick = function (){
     var div = this.parentElement;
-    div.style.display = "none";
+    div.style.display = "none" ;
   }
 }
 
-// Add a "checked" symbol when clicking on a list item
-var list = document.querySelector('ul');
-list.addEventListener('click', function(ev) {
-  if (ev.target.tagName === 'LI') {
-    ev.target.classList.toggle('checked');
-  }
-}, false);
+}
+
+
+
 
 // Create a new list item when clicking on the "Add" button
-function newElement() {
+function add_hobbie() {
   var li = document.createElement("li");
   var inputValue = document.getElementById("hobbieInput").value;
   var t = document.createTextNode(inputValue);
+  var hobbie_names = ["Dancing", "Listening Music", "Cricket", "Singing", "Fooseball", "Reading Novels"];
+  var hobbie_id = hobbie_names.indexOf(inputValue);
   li.appendChild(t);
   if (inputValue === '') {
     alert("You must write something!");
-  } else { 
+  } 
+  else {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function(){
         if(this.readyState==4 && this.status == 200){
            $txt = this.responseText; 
-           
-           if($txt === "canAdd"){document.getElementById("hobbieUL").appendChild(li);}
-           else{alert($txt);}
+           if($txt === "canAdd"){
+             document.getElementById("hobbieUL").appendChild(li);
+            }
+           if($txt === "Already added!"){alert($txt);}
         }
     }
-    xhttp.open("GET","updateList.php?id="+inputValue,true);
+    xhttp.open("GET","updateList.php?id="+(hobbie_id+1),true);
     xhttp.send();
   }
   document.getElementById("hobbieInput").value = "";
-
-  var span = document.createElement("SPAN");
+  
+  var span  = document.createElement("span");
   var txt = document.createTextNode("\u00D7");
-  span.className = "close";
+  span.className = "closeHobbie";
   span.appendChild(txt);
   li.appendChild(span);
-
-  for (i = 0; i < close.length; i++) {
-    close[i].onclick = function() {
-      var div = this.parentElement;
-      div.style.display = "none";
-    }
+   
+  span.onclick = function(){
+    var div = this.parentElement;
+    div.style.display = "none";
   }
 }
 

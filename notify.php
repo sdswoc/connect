@@ -1,8 +1,7 @@
 <?php
 
 session_start();
-$conn = mysqli_connect("localhost", "root", "abiit@2019", "rconnect");
-$id = $_SESSION['id'];
+include('dbconfig.php');$id = $_SESSION['id'];
 $notifications = mysqli_query($conn, "SELECT * FROM notificationData WHERE to_userID = $id && seen_status = 0");
 
 if(isset($_GET['id'])){
