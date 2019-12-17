@@ -272,18 +272,40 @@ while($row = $result->fetch_assoc()) {
                     <div class="goals" style="width: 45%; float:right">
                         <!--GOALS-->
 
-                        <div id="myDIV" class="hobbie_header">
+                        <div id="myDIV" class="goal_header">
                             <h2>GOALS</h2>
-                            <input type="text" id="goalInput" placeholder="Title...">
-                            <span onclick="add_goals()" class="addBtn">Add</span>
+                            <input type="text" id="goalInput" list = "goals" placeholder="Title...">
+                            <datalist id = "goals">
+                                <option value = "Gymming">
+                                <option value = "Tech Group">
+                                <option value = "UPSC">
+                                <option value = "Branch Change">
+                                <option value = "Internship">
+
+                            </datalist>
+                            <span onclick="add_goal()" class="addBtn">Add</span>
                         </div>
 
                         <ul id="goalUL">
-                            <li>Gymming</li>
-                            <li>UPSC</li>
-                            <li>Competitive Coding</li>
-                            <li>Branch Change</li>
-                            <li>Tech Group</li>
+                        <?php 
+function goalID_to_name($a){
+  if($a==1){return "Gymming";}
+  if($a==2){return "Tech Group";}
+  if($a==3){return "UPSC";}
+  if($a==4){return "Branch Change";}
+  if($a==5){return "Internship";}
+}
+$selfID = $_SESSION['id'];
+include('dbconfig.php');
+$sql = "SELECT * from goalData where userID = $selfID";
+$result = mysqli_query($conn, $sql);
+if ($result->num_rows > 0) {
+while($row = $result->fetch_assoc()) {
+  $goalName = goalID_to_name($row['goal_ID']);
+  echo "<li>".$goalName."</li>";
+}
+}
+?>
                         </ul>
 
                     </div>
