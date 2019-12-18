@@ -155,12 +155,12 @@ if($row['userID'] != $self_ID){
   echo "<tr><td>" . $row["userID"]. "</td>
 <td>" . $row["name"] . "</td>
 <td>" . $row["username"] . "</td>
-<td><img src = 'userImages/";
+<td><img src = '";
 
 if(isset($row["img"])){
-  echo $row['img'];
+  echo "userImages/".$row['img'];
 }
- else{ echo 'default.png';}
+ else{ echo 'res/default.jpeg';}
  echo "' style = 'border-radius: 50%' width = 50px height = 50px></td>
 <td>" . $row["bio"] . "</td>";
 echo "<td>";

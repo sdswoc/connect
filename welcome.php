@@ -165,7 +165,15 @@ include('updateDP.php') ?>
               <div class="img-placeholder"  onClick="triggerClick()">
                <h4>Update image</h4>
               </div>
-              <img src="userImages/<?php echo $_SESSION['img'] ?>"  onClick="triggerClick()" id="profileDisplay">
+              <img src="<?php 
+                if(isset($_SESSION['img'])){
+                    echo "userImages/".$_SESSION['img'];
+                }
+                else{
+                    echo "res/default.jpeg";
+                }
+              
+              ?>"  onClick="triggerClick()" id="profileDisplay">
 </span>
 
                                     <input type="file" name="profileImage" onChange="displayImage(this); this.form.submit();" id="profileImage" class="form-control" style="display: none;">
