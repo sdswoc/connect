@@ -36,8 +36,13 @@ $id = $_SESSION['id'];
  }
 else{
    $msg = $usrname." started following you! Follow Back?";
+          
           $notify = "INSERT INTO notificationData (typeOf, to_userID, from_userID, message, seen_status) VALUES('follow_request',$id_to_be_followed , $follower_id, '$msg',0)";
-          mysqli_query($db, $notify);
+          if(mysqli_query($db, $notify)){
+            $dyn_update = "SELECT @count:= follow_count from userData where userID = $id_to_be_followed;
+            SELECT @count := @count + 1; UPDATE userData SET follow_count = @count where userID = $id_to_be_followed";
+              mysqli_query($db, $dyn_update);
+          }
 }        
      }  
   }
@@ -116,6 +121,7 @@ else{
                             <th>Username</th>
                             <th>Profile Pic</th>  
                             <th>Bio</th>
+                            <th>No. of Followers </th>
                             <th>Follow Status</th>
                         </tr>
                         <?php
@@ -144,7 +150,7 @@ function follow_status($conn, $id, $self_ID){
   return $msg_return;
 }
 
-$sql = "SELECT userID, name, username, img, bio FROM userData";
+$sql = "SELECT userID, name, username, img, bio, follow_count FROM userData";
 $result = mysqli_query($conn, $sql);
 if ($result->num_rows > 0) {
 // output data of each row
@@ -163,6 +169,8 @@ if(isset($row["img"])){
  else{ echo 'res/default.jpeg';}
  echo "' style = 'border-radius: 50%' width = 50px height = 50px></td>
 <td>" . $row["bio"] . "</td>";
+echo "<td>" . $row["follow_count"] . "</td>";
+
 echo "<td>";
 $msg = follow_status($conn, $id, $self_ID);
 echo "<a class = 'google follow_status' style = 'padding-left: 5px; text-decoration:none; padding-right: 5px;' href = 'NewConnect.php?id=".$id."'>".$msg."</a>";

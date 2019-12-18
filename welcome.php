@@ -58,7 +58,14 @@ mysqli_query($db, $sql_2);
 
         <div class="test2">
             &nbsp;&nbsp;&nbsp;&nbsp;
-            <a href='index.php'><img src="res/gplogo2.png" height='110px' width='110px' style="border-radius: 10px;"></a>
+  
+
+  <a href='index.php'> <img src="res/gplogo2.png" height='110px' width='110px' style="border-radius: 10px;"> </a>
+            
+            
+            
+            
+            
             <object align="right">
                 <br>
                 <br>
@@ -142,7 +149,40 @@ mysqli_query($db, $sql_2);
 
                             <!-- Modal body -->
                             <div class="modal-body" id="msg_window">
-                               No messages yet!
+                                <table class = "table table-hover">
+                               <?php 
+                               
+                               include('dbconfig.php');
+                                $selfID = $_SESSION['id'];
+                               $fetch_following = mysqli_query($conn, "SELECT * FROM `followerData` where followerID = $selfID");
+                               while($row = $fetch_following->fetch_assoc()){
+                                   $target_id = $row['userID'];
+                                   $fetch_message = mysqli_query($conn, "SELECT * FROM `publicMessageData`where from_ID = $target_id");
+                                
+                                   if($fetch_message->num_rows > 0){
+                                       $fetch_name_dp = mysqli_query($conn, "SELECT name, img from userData where userID = $target_id");
+                                       while($dp = $fetch_name_dp->fetch_assoc()){
+                                        $target_dp = $dp['img'];
+                                        $target_name = $dp['name'];
+                                       }
+                                       while($msg_read = $fetch_message->fetch_assoc()){
+                                        echo "<tr><td><img src = ";
+
+                                        if(isset($target_dp)){
+                                            echo "'userImages/".$target_dp."'";
+                                          }
+                                           else{ echo "'res/default.jpeg'";}
+                                        echo "style = 'border-radius: 50%' width = 50px height = 50px></td>";
+                                        echo "<td>".$target_name." : </td><td>".$msg_read['message']."</td>";
+                                    }
+                                   }
+                                   
+
+                               }
+                                                             
+                               
+                               ?>
+                               </table>
                             </div>
 
                             <!-- Modal footer -->
@@ -368,12 +408,12 @@ if(mysqli_num_rows($check) == 1 && mysqli_num_rows($check_2) == 1){
      echo "<tr><td>" . $row["userID"]. "</td>
 <td>" . $row["name"] . "</td>
 <td>" . $row["username"] . "</td>
-<td><img src = 'userImages/";
+<td><img src = '";
 
 if(isset($row["img"])){
-  echo $row['img'];
-}
- else{ echo 'default.png';}
+    echo "userImages/".$row['img'];
+  }
+   else{ echo 'res/default.jpeg';}
  echo "' style = 'border-radius: 50%' width = 50px height = 50px></td>
 <td>" . $row["bio"] . "</td>";
 
@@ -433,12 +473,12 @@ if(mysqli_num_rows($check) <= 1 && mysqli_num_rows($check_2) == 1) {
      echo "<tr><td>" . $row["userID"]. "</td>
 <td>" . $row["name"] . "</td>
 <td>" . $row["username"] . "</td>
-<td><img src = 'userImages/";
+<td><img src = '";
 
 if(isset($row["img"])){
-  echo $row['img'];
-}
- else{ echo 'default.png';}
+    echo "userImages/".$row['img'];
+  }
+   else{ echo 'res/default.jpeg';}
  echo "' style = 'border-radius: 50%' width = 50px height = 50px></td>
 <td>" . $row["bio"] . "</td>";
 
@@ -500,12 +540,12 @@ if(mysqli_num_rows($check) == 1 && mysqli_num_rows($check_2) <= 1) {
      echo "<tr><td>" . $row["userID"]. "</td>
 <td>" . $row["name"] . "</td>
 <td>" . $row["username"] . "</td>
-<td><img src = 'userImages/";
+<td><img src = '";
 
 if(isset($row["img"])){
-  echo $row['img'];
-}
- else{ echo 'default.png';}
+    echo "userImages/".$row['img'];
+  }
+   else{ echo 'res/default.jpeg';}
  echo "' style = 'border-radius: 50%' width = 50px height = 50px></td>
 <td>" . $row["bio"] . "</td>";
 
@@ -529,6 +569,18 @@ $conn->close();
                 </div>
                 </center>
             </div>
+
+            <div id="circle">
+  <div class="loader">
+    <div class="loader">
+        <div class="loader">
+           <div class="loader">
+
+           </div>
+        </div>
+    </div>
+  </div>
+</div> 
 
             <?php endif; ?>
 
