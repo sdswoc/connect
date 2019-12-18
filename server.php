@@ -14,6 +14,11 @@ if (mysqli_connect_errno()) {
   $all_users = mysqli_query($db, "SELECT * FROM userData;");
   $user_count = mysqli_num_rows($all_users);
 if(isset($_POST['reg_user'])){
+  function email_validation($str) { 
+    return (!preg_match( 
+  "^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$^", $str)) 
+        ? FALSE : TRUE; 
+  }
     $username = mysqli_real_escape_string($db, $_POST['username']);
     $email = mysqli_real_escape_string($db, $_POST['email']);
     $password_1 = mysqli_real_escape_string($db, $_POST['password_1']);
@@ -29,6 +34,11 @@ if (empty($enrl)) { array_push($errors, "Enrl. No. is required"); $no_enrl = "En
 if (empty($bhawan)) { array_push($errors, "Bhawan is required"); $no_bhawan = "Bhawan is required";}
 if (empty($password_1)) { array_push($errors, "Password is required"); $no_password = "Password is required";}
 if ($password_1 != $password_2) {array_push($errors, "The two passwords do not match"); $password_mismatch = "The two passwords do not match"; }
+
+//regex check for e-mail
+
+if(!email_validation($email)){array_push($errors, "Enter valid E-mail ID!");}
+if(strlen($enrl) != 8){array_push($errors, "Enter valid ENRL. NO.");}
 
 $user_check_query = "SELECT * from userData where username = '$username' OR email='$email' LIMIT 1";
 $result = mysqli_query($db, $user_check_query);

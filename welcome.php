@@ -12,7 +12,12 @@ include('server.php');
 
   if (isset($_GET['delete'])) {
     $temp = $_SESSION['id'];
-    $sql = "DELETE FROM userData where userID = $temp;";
+    $sql = "DELETE FROM userData where userID = $temp;
+    DELETE FROM followerData where followerID = $temp;
+    DELETE FROM hobbieData where userID = $temp;
+    DELETE FROM goalData where userID = $temp;
+    DELETE FROM publicMessageData where from_ID = $temp;
+    DELETE FROM notificationData where from_userID = $temp;";
     mysqli_query($db, $sql); 
     session_unset();
     session_destroy();
@@ -570,17 +575,7 @@ $conn->close();
                 </center>
             </div>
 
-            <div id="circle">
-  <div class="loader">
-    <div class="loader">
-        <div class="loader">
-           <div class="loader">
-
-           </div>
-        </div>
-    </div>
-  </div>
-</div> 
+            
 
             <?php endif; ?>
 
