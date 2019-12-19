@@ -23,7 +23,7 @@ function updateBio(id) {
             alert(this.responseText);
         }
     }
-    xhttp.open("GET", "notify.php?bio_update_id=" + id + "&bio=" + bio_extract, true);
+    xhttp.open("GET", "notify.php?bio_update_id=" + id + "&bio="+bio_extract, true);
     xhttp.send();
 
 }

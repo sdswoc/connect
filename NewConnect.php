@@ -210,9 +210,24 @@ $conn->close();
 include('dbconfig.php');
 $sql = "SELECT userID, name, username, img, bio, follow_count FROM userData ORDER BY follow_count DESC";
 $result = mysqli_query($conn, $sql);
+function hobbieID_to_name($a){
+  if($a==1){return "Dancing";}
+  if($a==2){return "Listening Music";}
+  if($a==3){return "Cricket";}
+  if($a==4){return "Singing";}
+  if($a==5){return "Fooseball";}
+  if($a==6){return "Reading Novels";}
+}
+function goalID_to_name($a){
+  if($a==1){return "Gymming";}
+  if($a==2){return "Tech Group";}
+  if($a==3){return "UPSC";}
+  if($a==4){return "Branch Change";}
+  if($a==5){return "Internship";}
+}
 if ($result->num_rows > 0) {
 while($row = $result->fetch_assoc()){
-
+$id = $row['userID'];
   echo'
 <div class="modal fade" id="view_profile'.$row['userID'].'" style = "overflow: auto;">
  <div class="modal-dialog">
@@ -231,8 +246,33 @@ while($row = $result->fetch_assoc()){
         if(isset($row['img'])){
           echo "userImages/".$row['img'].'"';
         }
-         else{ echo 'res/default.jpeg';}
-         echo "' style = 'border-radius: 50%' width = 250px height = 250px></center>";
+         else{ echo 'res/default.jpeg"';}
+         echo "' style = 'border-radius: 50%' width = 250px height = 250px></center>
+         <hr>";
+$fetch_hobbies = mysqli_query($conn, "SELECT * from hobbieData where userID = $id");
+$fetch_goals = mysqli_query($conn, "SELECT * from goalData where userID = $id");
+$hobbie_count = $fetch_hobbies->num_rows;
+$goal_count = $fetch_goals->num_rows;
+
+echo '<table class="table table-hover"><th>Hobbies</th><th>Goals</th>';
+if($hobbie_count > $goal_count){
+  while($row_h = $fetch_hobbies->fetch_assoc()){
+  $row_g = $fetch_goals->fetch_assoc();
+echo '<tr><td>'.hobbieID_to_name($row_h['hobbie_ID']).'</td>';
+  echo '<td>'.goalID_to_name($row_g['goal_ID']).'</td></tr>';
+  }
+}
+else{
+  while($row_g = $fetch_goals->fetch_assoc()){
+    $row_h = $fetch_hobbies->fetch_assoc();
+  echo '<tr><td>'.hobbieID_to_name($row_h['hobbie_ID']).'</td>';
+    echo '<td>'.goalID_to_name($row_g['goal_ID']).'</td></tr>';
+    }
+}
+  
+echo '</table>';
+
+
        echo '</div>
 
         <!-- Modal footer -->
