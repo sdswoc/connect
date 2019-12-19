@@ -150,7 +150,7 @@ function follow_status($conn, $id, $self_ID){
   return $msg_return;
 }
 
-$sql = "SELECT userID, name, username, img, bio, follow_count FROM userData";
+$sql = "SELECT userID, name, username, img, bio, follow_count FROM userData ORDER BY userID DESC";
 $result = mysqli_query($conn, $sql);
 if ($result->num_rows > 0) {
 // output data of each row

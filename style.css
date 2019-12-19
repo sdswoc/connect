@@ -5,6 +5,7 @@ body {
     background-image: url('res/background.jpeg');
     background-repeat: no-repeat;
     background-attachment: fixed;
+    zoom: 85%
  }
  .test{
    width: 30rem;

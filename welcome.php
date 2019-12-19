@@ -54,6 +54,7 @@ mysqli_query($db, $sql_2);
         <script src="update_n_share.js"></script>
         <script src="list.js"></script>
 <script src="profileUpdate.js"></script>
+
        
     </head>
 
@@ -145,7 +146,7 @@ mysqli_query($db, $sql_2);
                 </div>
                 <div class="modal fade" id="view_messages" style = "overflow: auto;">
                     <div class="modal-dialog">
-                        <div class="modal-content" style="width: 40vw;">
+                        <div class="modal-content" style="width: 50vw;">
 
                             <!-- Modal Header -->
                             <div class="modal-header">
@@ -158,32 +159,33 @@ mysqli_query($db, $sql_2);
                                <?php 
                                
                                include('dbconfig.php');
-                                $selfID = $_SESSION['id'];
-                               $fetch_following = mysqli_query($conn, "SELECT * FROM `followerData` where followerID = $selfID");
-                               while($row = $fetch_following->fetch_assoc()){
-                                   $target_id = $row['userID'];
-                                   $fetch_message = mysqli_query($conn, "SELECT * FROM `publicMessageData`where from_ID = $target_id");
-                                
-                                   if($fetch_message->num_rows > 0){
-                                       $fetch_name_dp = mysqli_query($conn, "SELECT name, img from userData where userID = $target_id");
-                                       while($dp = $fetch_name_dp->fetch_assoc()){
-                                        $target_dp = $dp['img'];
-                                        $target_name = $dp['name'];
-                                       }
-                                       while($msg_read = $fetch_message->fetch_assoc()){
-                                        echo "<tr><td><img src = ";
+                               $selfID = $_SESSION['id'];
+                               
+function following_check($conn, $id_followed){
+    $selfID = $_SESSION['id'];
+    $result = mysqli_query($conn, "SELECT * FROM followerData WHERE userID = $id_followed AND followerID = $selfID");
+    return ($result->num_rows > 0) ? TRUE : FALSE ; 
+ }
+ $fetch_messages = mysqli_query($conn, "SELECT * FROM `publicMessageData` ORDER BY posting_time DESC");
+ 
+ while($read_msg = $fetch_messages->fetch_assoc()){
+     $test_id = $read_msg['from_ID'];
+     if(following_check($conn, $test_id)){
+        $fetch_name_dp = mysqli_query($conn, "SELECT name, img from userData where userID = $test_id");
+        while($dp = $fetch_name_dp->fetch_assoc()){
+            $target_dp = $dp['img'];
+            $target_name = $dp['name'];
+           }
+            echo "<tr><td><img src = ";
 
-                                        if(isset($target_dp)){
-                                            echo "'userImages/".$target_dp."'";
-                                          }
-                                           else{ echo "'res/default.jpeg'";}
-                                        echo "style = 'border-radius: 50%' width = 50px height = 50px></td>";
-                                        echo "<td>".$target_name." : </td><td>".$msg_read['message']."</td>";
-                                    }
-                                   }
-                                   
-
-                               }
+            if(isset($target_dp)){
+                echo "'userImages/".$target_dp."'";
+              }
+               else{ echo "'res/default.jpeg'";}
+            echo "style = 'border-radius: 50%' width = 50px height = 50px></td>";
+            echo "<td>".$target_name." : </td><td>".$read_msg['message']."</td><td>".$read_msg['posting_time']."</td>";
+     }
+ } 
                                                              
                                
                                ?>
@@ -197,7 +199,7 @@ mysqli_query($db, $sql_2);
                         </div>
                     </div>
                 </div>
-            <div class="row" style="z-index: 0;">
+            <div class="row" style="z-index: 0; flex-box: wrap;">
                 <div class="column">
                     <div class="signup_box" style="height: 400px; width: 90%; overflow: auto">
                         <br>

@@ -5,7 +5,7 @@ $id = $_SESSION['id'];
 $name = $_SESSION['username'];
 if(isset($_GET['msg'])){
 //share message to all the followers 
-
+ 
 $msg = mysqli_real_escape_string($conn, $_GET['msg']);
 if($msg != ""){
     if(mysqli_query($conn, "INSERT INTO `publicMessageData` (`from_ID`, `audience_ID`, `message`, `posting_time`) VALUES ($id, '1' , '$msg', CURRENT_TIMESTAMP())")){

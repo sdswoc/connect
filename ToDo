@@ -1,4 +1,8 @@
-ON HOLD ----> #5 If already connected, then do not display Connect option
----> Working Goal: #8 Build - Share a message to all the followers
-#10 Add - Unfollow Option to be introduced
-#11 Updating follow_count in userData dynamically.
+#1 Add - Unfollow Option to be introduced
+#2 Updating follow_count in userData dynamically.
+---> #3 Suggestion algo in view Connections to be improvised based on hobbies/goals
+---> #4 Messaging list to be integrated with CURRENT_TIMESTAMP()
+#5 Learning to build chat engine
+#6 I-card pop-up for view-profile section
+
+
