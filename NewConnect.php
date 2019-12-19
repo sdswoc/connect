@@ -10,6 +10,17 @@ include('server.php');
     header("location: welcome.php");
   }
 
+
+  if(isset($_GET['unfollow_id'])){
+    $self_ID = $_SESSION['id'];
+    $id_to_unfollow = $_GET['unfollow_id'];
+  if(mysqli_query($db, "DELETE FROM followerData where userID = $id_to_unfollow AND followerID = $self_ID")){
+    header("location: NewConnect.php");
+  }
+
+
+  }
+
 $id = $_SESSION['id'];
   $notifications = mysqli_query($db, "SELECT * FROM notificationData WHERE to_userID = $id && seen_status = 0");
   $notif_count = $notifications->num_rows;  
@@ -59,7 +70,6 @@ else{
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="style.css">
-        <link rel="stylesheet" type="text/css" href="sample.css">
         <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 
@@ -69,6 +79,7 @@ else{
         <link rel="stylesheet" type="text/css" href="dashboard.css">
         <link rel="stylesheet" type="text/css" href="rem.css">
         <script src = "update_n_share.js"></script>
+        
 
     </head>
 
@@ -125,7 +136,7 @@ else{
                             <th>Follow Status</th>
                         </tr>
                         <?php
-$conn = mysqli_connect("localhost", "root", "abiit@2019", "rconnect");
+include('dbconfig.php');
 // Check connection
 
 function follow_status($conn, $id, $self_ID){
@@ -150,7 +161,8 @@ function follow_status($conn, $id, $self_ID){
   return $msg_return;
 }
 
-$sql = "SELECT userID, name, username, img, bio, follow_count FROM userData ORDER BY userID DESC";
+
+$sql = "SELECT userID, name, username, img, bio, follow_count FROM userData ORDER BY follow_count DESC";
 $result = mysqli_query($conn, $sql);
 if ($result->num_rows > 0) {
 // output data of each row
@@ -161,13 +173,15 @@ if($row['userID'] != $self_ID){
   echo "<tr><td>" . $row["userID"]. "</td>
 <td>" . $row["name"] . "</td>
 <td>" . $row["username"] . "</td>
-<td><img src = '";
+<td>";
+echo '<button type="button" class="btn" data-toggle="modal" data-target="#view_profile'.$id.'">';
+echo "<img class = 'blue-border-image' src = '";
 
 if(isset($row["img"])){
   echo "userImages/".$row['img'];
 }
  else{ echo 'res/default.jpeg';}
- echo "' style = 'border-radius: 50%' width = 50px height = 50px></td>
+ echo "' style = 'border-radius: 50%' width = 50px height = 50px></button></td>
 <td>" . $row["bio"] . "</td>";
 echo "<td>" . $row["follow_count"] . "</td>";
 
@@ -175,20 +189,62 @@ echo "<td>";
 $msg = follow_status($conn, $id, $self_ID);
 echo "<a class = 'google follow_status' style = 'padding-left: 5px; text-decoration:none; padding-right: 5px;' href = 'NewConnect.php?id=".$id."'>".$msg."</a>";
 echo "</td>";
+if($msg === "Requested" || $msg === "Friends"){
+  echo "<td><a class = 'google follow_status' style = 'padding-left: 5px; text-decoration:none; padding-right: 5px;' href = 'NewConnect.php?unfollow_id=".$id."'>Unfollow</a></td>";
 }
+echo "</tr>";
+$msg="";
 
-
+}
 }
 } 
 else { echo "0 results"; }
 $conn->close(); 
 ?>
-                            </tr>
-
+                     
                     </table>
                 </div>
         </div>
         </center>
+<?php
+include('dbconfig.php');
+$sql = "SELECT userID, name, username, img, bio, follow_count FROM userData ORDER BY follow_count DESC";
+$result = mysqli_query($conn, $sql);
+if ($result->num_rows > 0) {
+while($row = $result->fetch_assoc()){
+
+  echo'
+<div class="modal fade" id="view_profile'.$row['userID'].'" style = "overflow: auto;">
+ <div class="modal-dialog">
+    <div class="modal-content" style = "width: 600px">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+            <h4 class="modal-title">About '.$row['name'].'</h4>
+            
+       </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+        <center><img class = "blue-border-image" src = "';
+
+        if(isset($row['img'])){
+          echo "userImages/".$row['img'].'"';
+        }
+         else{ echo 'res/default.jpeg';}
+         echo "' style = 'border-radius: 50%' width = 250px height = 250px></center>";
+       echo '</div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+ </div>
+</div>'  ;
+}
+}  
+?>
 
         <div class="userC">&nbsp;&nbsp;No. of Users:&nbsp;&nbsp;
             <b><?php echo $user_count ?>&nbsp;&nbsp;&nbsp;&nbsp;

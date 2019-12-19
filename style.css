@@ -2,7 +2,7 @@ body {
     font-family:Arial, Helvetica, sans-serif;
     font-size:14px;
     padding-right: 25px;
-    background-image: url('res/background.jpeg');
+    background-image: url('res/bg4.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
     zoom: 85%
@@ -88,6 +88,15 @@ a:hover{
 .btn.btn-primary:hover{
    color:blue;
    background-color:white;
+}
+
+.blue-border-image:hover{
+   border: solid 2px blueviolet;
+}
+
+.blue-border-card:hover{
+   width: 300px;
+   height: 300px;
 }
 
 #circle {
