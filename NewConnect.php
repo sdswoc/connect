@@ -192,6 +192,9 @@ echo "</td>";
 if($msg === "Requested" || $msg === "Friends"){
   echo "<td><a class = 'google follow_status' style = 'padding-left: 5px; text-decoration:none; padding-right: 5px;' href = 'NewConnect.php?unfollow_id=".$id."'>Unfollow</a></td>";
 }
+ if($msg === "Friends"){
+  echo "<td><a class = 'google follow_status' style = 'padding-left: 5px; text-decoration:none; padding-right: 5px;' href = 'NewConnect.php?chat=".$id."'>Chat Now</a></td>";
+}
 echo "</tr>";
 $msg="";
 
@@ -208,7 +211,7 @@ $conn->close();
         </center>
 <?php
 include('dbconfig.php');
-$sql = "SELECT userID, name, username, img, bio, follow_count FROM userData ORDER BY follow_count DESC";
+$sql = "SELECT userID, name, email, bhawan, username, img, bio, follow_count FROM userData ORDER BY follow_count DESC";
 $result = mysqli_query($conn, $sql);
 function hobbieID_to_name($a){
   if($a==1){return "Dancing";}
@@ -271,6 +274,10 @@ else{
 }
   
 echo '</table>';
+echo '<br><br><table class="table table-hover">
+<tr><td><b>Email :<b></td><td>'.$row['email'].'</td></tr>
+<tr><td><b>Bhawan :<b></td><td>'.$row['bhawan'].'</td></tr>
+</table>';
 
 
        echo '</div>
