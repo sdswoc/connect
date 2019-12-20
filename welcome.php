@@ -12,13 +12,14 @@ include('server.php');
 
   if (isset($_GET['delete'])) {
     $temp = $_SESSION['id'];
-    $sql = "DELETE FROM userData where userID = $temp;
-    DELETE FROM followerData where followerID = $temp;
-    DELETE FROM hobbieData where userID = $temp;
-    DELETE FROM goalData where userID = $temp;
-    DELETE FROM publicMessageData where from_ID = $temp;
-    DELETE FROM notificationData where from_userID = $temp;";
-    mysqli_query($db, $sql); 
+    $sql_1 = "DELETE FROM userData where userID = $temp";
+    $sql_2 = "DELETE FROM followerData where followerID = $temp";
+    $sql_3 = "DELETE FROM hobbieData where userID = $temp";
+    $sql_4 = "DELETE FROM goalData where userID = $temp";
+    mysqli_query($db, $sql_1); 
+    mysqli_query($db, $sql_2);
+    mysqli_query($db, $sql_3);
+    mysqli_query($db, $sql_4);
     session_unset();
     session_destroy();
     header("location: login.php") AND die();
@@ -232,27 +233,28 @@ include('updateDP.php') ?>
                         <?php
 include('dbconfig.php');// Check connection
 $id = $_SESSION['id'];
-$sql = "SELECT follow_count, bio FROM userData where userID = $id";
+$sql = "SELECT follow_count, bio, branch_y, email FROM userData where userID = $id";
 $result = mysqli_query($conn, $sql);
 if ($result->num_rows > 0) {
 // output data of each row
 $row = $result->fetch_assoc();
 $followers_count = $row['follow_count'];
+$email = $row['email'];
+$branch_y =  $row['branch_y'];
 $bio = $row['bio'];
 $bhawan = $_SESSION['bhawan'];
 }
 
 $conn->close();
 ?>
-                            <table class=table table-hover text-center " style = "color:white; ">
+                            <table class="table" style = "color:white; ">
     <div id = "I-card ">
         <th> </th>
      <th> <h4><?php echo $_SESSION['name']; ?></h4></th>
    <tr> <div class="form-group ">
- <td> <span> Bio:</span> </td><td><textarea id = "bio" class = "col-xs-3 inputsm " rows=1 style = "width: 80%; overflow: auto; " onchange=updateBio(<?php echo $_SESSION['id'] ?>) >
- <?php echo $bio ?></textarea></td></tr>
+ <td> <span> Bio:</span> </td><td><textarea id = "bio" class = "col-xs-3 inputsm form-control" rows=1 style = "width: 80%; overflow: auto; " onchange=updateBio(<?php echo $_SESSION['id'] ?>) ><?php echo $bio ?></textarea></td></tr>
  <tr><td> <span> Bhawan:</span> </td> 
- <td> <input placeholder="<?php echo $_SESSION['bhawan'] ?>" onchange=updateBhawan(<?php echo $_SESSION['id'] ?>) list = "bhawans" id = "bhawan" class = "box" font-family= 'Comic Sans MS'></td>
+ <td> <input placeholder="<?php echo $_SESSION['bhawan'] ?>" onchange=updateBhawan(<?php echo $_SESSION['id'] ?>) list = "bhawans" id = "bhawan" class = "form-control" font-family= 'Comic Sans MS'></td>
                                     </tr>
                                     <datalist id="bhawans">
                                         <option value="Rajendra Bhawan">
@@ -271,6 +273,19 @@ $conn->close();
                                             <?php echo $followers_count ?>
                                         </td>
                                     </tr>
+                                    <tr>
+                                        <td>Branch and Year: </td>
+                                        <td>
+                                        <textarea id = "branch" class = "col-xs-3 inputsm form-control" rows=1 style = "width: 80%; overflow: auto; " onchange=updateBranch(<?php echo $_SESSION['id'] ?>) ><?php echo $branch_y ?></textarea>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Email :</td>
+                                        <td>
+                                        <textarea id = "email" class = "col-xs-3 inputsm form-control" rows=1 style = "width: 80%; overflow: auto;" onchange=updateEmail(<?php echo $_SESSION['id'] ?>) ><?php echo $email ?></textarea>
+                                        </td>
+                                    </tr>
+
                     </div>
                 </div>
                 </table>

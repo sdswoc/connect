@@ -30,7 +30,7 @@
       </object> 
 </div></object></div><br><br><br>
       <div align = "center">
-         <div style = "width:30vw ; height: 50vw;" class="signup_box" >
+         <div style = "width:35vw ; height: auto;" class="signup_box" >
             <div style = " font-family:Comic sans MS; color:white; padding:20px; font-size:30px; text-align:center;"><b>SIGN UP</b></div>
 				
             <div style = "margin:5px">
@@ -60,7 +60,10 @@
     <option value="Ravindra Bhawan">  
   </datalist>
                   
-                  <br /><br /></div>
+                  <br /><br />
+                  <br><input placeholder="Branch & Year" style ="width: 80%" name = "branch_y" class = "form-control" font-family= 'Comic Sans MS'>
+
+                  </div>
                   <div align="right"><input type = "submit" value = "Submit " class="google" name="reg_user" align="right";/><br /></div><br><br>
                </form>
                <div style = "font-size:14px; color:#cc0000; margin-top:10px"><?php echo $success; ?></div>

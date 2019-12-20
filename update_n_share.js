@@ -27,6 +27,33 @@ function updateBio(id) {
     xhttp.send();
 
 }
+function updateBranch(id) {
+    var branch_extract = document.getElementById('branch').value;
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log("reached");
+            alert(this.responseText);
+        }
+    }
+    xhttp.open("GET", "notify.php?branch_update_id=" + id + "&branch="+branch_extract, true);
+    xhttp.send();
+
+}
+
+function updateEmail(id) {
+    var email_extract = document.getElementById('email').value;
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log("reached");
+            alert(this.responseText);
+        }
+    }
+    xhttp.open("GET", "notify.php?email_update_id=" + id + "&email="+email_extract, true);
+    xhttp.send();
+
+}
 
 function updateBhawan(id) {
 

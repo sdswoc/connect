@@ -211,7 +211,7 @@ $conn->close();
         </center>
 <?php
 include('dbconfig.php');
-$sql = "SELECT userID, name, email, bhawan, username, img, bio, follow_count FROM userData ORDER BY follow_count DESC";
+$sql = "SELECT userID, name, email, bhawan, username, img, bio, branch_y, follow_count FROM userData ORDER BY follow_count DESC";
 $result = mysqli_query($conn, $sql);
 function hobbieID_to_name($a){
   if($a==1){return "Dancing";}
@@ -277,6 +277,8 @@ echo '</table>';
 echo '<br><br><table class="table table-hover">
 <tr><td><b>Email :<b></td><td>'.$row['email'].'</td></tr>
 <tr><td><b>Bhawan :<b></td><td>'.$row['bhawan'].'</td></tr>
+<tr><td><b>Branch/Year :<b></td><td>'.$row['branch_y'].'</td></tr>
+
 </table>';
 
 

@@ -31,6 +31,28 @@ if(isset($_GET['bio_update_id'])){
     }
 }
 
+if(isset($_GET['branch_update_id'])){
+    $selfID = mysqli_real_escape_string($conn, $_GET['branch_update_id']);
+    $branch_retrieve = addslashes($_GET['branch']);
+    if(mysqli_query($conn, "UPDATE userData SET branch_y = '$branch_retrieve' WHERE userID = $selfID")){
+        echo "Branch/Year updated!";
+    }
+    else{
+        echo "Failed to update Branch/Year!";
+    }
+}
+
+if(isset($_GET['email_update_id'])){
+    $selfID = mysqli_real_escape_string($conn, $_GET['email_update_id']);
+    $email_retrieve = addslashes($_GET['email']);
+    if(mysqli_query($conn, "UPDATE userData SET email = '$email_retrieve' WHERE userID = $selfID")){
+        echo "Email updated!";
+    }
+    else{
+        echo "Failed to update Email!";
+    }
+}
+
 if(isset($_GET['bhawan_update_id'])){
     $selfID = mysqli_real_escape_string($conn,$_GET['bhawan_update_id']);
     $bhawan_retrieve = mysqli_real_escape_string($conn,$_GET['bhawan']);

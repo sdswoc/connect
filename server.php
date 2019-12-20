@@ -25,6 +25,7 @@ if(isset($_POST['reg_user'])){
     $password_2 = mysqli_real_escape_string($db, $_POST['password_2']); 
     $name = mysqli_real_escape_string($db, $_POST['name']);
     $enrl = mysqli_real_escape_string($db, $_POST['enrl']);
+    $branch_y = mysqli_real_escape_string($db, $_POST['branch_y']);
     $bhawan = mysqli_real_escape_string($db, $_POST['bhawan']);
     $bio = "Hey! I am ";
 if (empty($username)) { array_push($errors, "Username is required"); $no_username = "Username is required"; }
@@ -33,6 +34,8 @@ if (empty($name)) { array_push($errors, "Name is required"); $no_name = "Name is
 if (empty($enrl)) { array_push($errors, "Enrl. No. is required"); $no_enrl = "Enrl. No. is required"; }
 if (empty($bhawan)) { array_push($errors, "Bhawan is required"); $no_bhawan = "Bhawan is required";}
 if (empty($password_1)) { array_push($errors, "Password is required"); $no_password = "Password is required";}
+if (empty($branch_y)) { array_push($errors, "Branch/Year Required");}
+
 if ($password_1 != $password_2) {array_push($errors, "The two passwords do not match"); $password_mismatch = "The two passwords do not match"; }
 
 //regex check for e-mail
@@ -56,8 +59,8 @@ if ($user) { // if user exists
 
   if (count($errors) == 0) {
     $password = ($password_1);
-    $query = "INSERT INTO userData (name, enrl, bhawan, username, email, password, bio) 
-              VALUES('$name','$enrl','$bhawan','$username', '$email', '$password', '$bio$name');";
+    $query = "INSERT INTO userData (name, enrl, bhawan, username, email, password, bio, branch_y) 
+              VALUES('$name','$enrl','$bhawan','$username', '$email', '$password', '$bio$name', '$branch_y');";
     mysqli_query($db, $query);
         header('location: login.php');
     }
