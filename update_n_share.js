@@ -42,6 +42,7 @@ function updateBranch(id) {
 }
 
 function updateEmail(id) {
+
     var email_extract = document.getElementById('email').value;
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {

@@ -1,8 +1,9 @@
 ----- >>>> DONE #1 Add - Unfollow Option to be introduced
 #2 Updating follow_count in userData dynamically.
-**#3 Suggestion algo in view Connections to be improvised based on hobbies/goals
+#3 Suggestion algo in view Connections to be improvised based on hobbies/goals
 ----- >>>> DONE #4 Messaging list to be integrated with CURRENT_TIMESTAMP() 
 #5 Learning to build chat engine
-#6 I-card pop-up for view-profile section
+----- >>>> DONE #6 I-card pop-up for view-profile section
+#7 Scroll Cache problem to be resolved
 
 

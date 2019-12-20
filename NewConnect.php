@@ -49,11 +49,7 @@ else{
    $msg = $usrname." started following you! Follow Back?";
           
           $notify = "INSERT INTO notificationData (typeOf, to_userID, from_userID, message, seen_status) VALUES('follow_request',$id_to_be_followed , $follower_id, '$msg',0)";
-          if(mysqli_query($db, $notify)){
-            $dyn_update = "SELECT @count:= follow_count from userData where userID = $id_to_be_followed;
-            SELECT @count := @count + 1; UPDATE userData SET follow_count = @count where userID = $id_to_be_followed";
-              mysqli_query($db, $dyn_update);
-          }
+          
 }        
      }  
   }

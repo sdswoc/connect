@@ -13,6 +13,9 @@ if(isset($_SESSION['id'])){
 
    <body bgcolor = "#FFFFFF">
    <link rel="icon" href="favicon.ico" type="image/x-icon"/>
+   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
    <link href="https://fonts.googleapis.com/css?family=Amatic+SC&display=swap" rel="stylesheet">
 <div class="test2">
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href = ' index.php'><img id = "logo" src="res/gplogo2.png" height = '110px' width = '110px' style = "border-radius: 10px;"></a>
@@ -29,22 +32,29 @@ if(isset($_SESSION['id'])){
 </div></object></div><br><br><br>
 <center>
 <div  class="test">
-         <div style = "width:300px;" align = "center">
+         <div style = "width:300px; height: auto;" align = "center">
             <div style = "padding:3px; font-family: Century Gothic; font-size: 42px; color:white;" >
             <b>Connect - Login</b><br>
             </div>
 				
             <div style = "margin:30px">
             <?php if(!empty($errors)) : ?>
-               <div class="error">
-             <b>  <?php echo print_r($errors); ?> </b>
-               </div>
+               
+             <b>  <?php 
+             foreach($errors as $error){
+                echo '<div class="alert alert-primary" style = "width: 20vw;" role="alert">
+                '.$error.'<br>
+              </div>';
+             }
+             
+             ?></b>
+               
             <?php endif ; ?>   
                <br>
             <form method="post" action="login.php">
                   <input type = "text" name = "username" class = "box" placeholder="Username"/><br /><br />
                   <br><input type = "password" name = "password" class = "box" placeholder="Password" /><br/><br />
-                  <input type = "submit" onclick = "display_box()" class="google" name = "login_user" value = " Submit"/><br />
+                  <input type = "submit" class="google" name = "login_user" value = " Submit"/><br />
                </form>
                       
 					

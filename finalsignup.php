@@ -35,9 +35,16 @@
 				
             <div style = "margin:5px">
             <?php if(!empty($errors)) : ?>
-            <div class="error" id = "error_box" style = "width: 19vw;">
-             <b>  <?php echo print_r($errors) ?> </b>
-               </div>
+            
+             <b> <div class="alert alert-info" style = "width: 20vw;" role="alert"> <?php 
+             foreach($errors as $error){
+                echo $error."<br>";
+             }
+             
+             ?> 
+              </div>
+              </b>
+               
             <?php endif; ?>   
                <br>
             <form method="post"  action="finalsignup.php">
@@ -49,15 +56,12 @@
                   <br><input type = "text" placeholder="Enrl. No." style ="width: 80%" name = "enrl" class = "form-control" font-family= 'Comic Sans MS'/><br /><br />
                   <br><input placeholder="Bhawan" list = "bhawans" style ="width: 80%" name = "bhawan" class = "form-control" font-family= 'Comic Sans MS'>
  <datalist id="bhawans">
-    <option value="Rajendra Bhawan">
-    <option value="Sarojini Bhawan">
-    <option value="Radhakrishnan Bhawan">
-    <option value="Rajeev Bhawan">
-    <option value="Kasturba Bhawan"> 
-    <option value="Jawahar Bhawan">
-    <option value="Govind Bhawan">
-    <option value="Azad Bhawan">
-    <option value="Ravindra Bhawan">  
+ <?php 
+                                        $bhawans = array("Rajendra Bhawan", "Sarojini Bhawan", "Radhakrishnan Bhawan","Rajeev Bhawan","Kasturba Bhawan", "Jawahar Bhawan","Govind Bhawan", "Azad Bhawan", "Ravindra Bhawan" );
+                                        foreach($bhawans as $b){
+                                            echo '<option value="'.$b.'">';
+                                        }
+                                        ?> 
   </datalist>
                   
                   <br /><br />

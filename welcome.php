@@ -257,15 +257,14 @@ $conn->close();
  <td> <input placeholder="<?php echo $_SESSION['bhawan'] ?>" onchange=updateBhawan(<?php echo $_SESSION['id'] ?>) list = "bhawans" id = "bhawan" class = "form-control" font-family= 'Comic Sans MS'></td>
                                     </tr>
                                     <datalist id="bhawans">
-                                        <option value="Rajendra Bhawan">
-                                            <option value="Sarojini Bhawan">
-                                                <option value="Radhakrishnan Bhawan">
-                                                    <option value="Rajeev Bhawan">
-                                                        <option value="Kasturba Bhawan">
-                                                            <option value="Jawahar Bhawan">
-                                                                <option value="Govind Bhawan">
-                                                                    <option value="Azad Bhawan">
-                                                                        <option value="Ravindra Bhawan">
+                                        <?php 
+                                        $bhawans = array("Rajendra Bhawan", "Sarojini Bhawan", "Radhakrishnan Bhawan","Rajeev Bhawan","Kasturba Bhawan", "Jawahar Bhawan","Govind Bhawan", "Azad Bhawan", "Ravindra Bhawan" );
+                                        foreach($bhawans as $b){
+                                            echo '<option value="'.$b.'">';
+                                        }
+                                        ?>
+                                        
+                                            
                                     </datalist>
                                     <tr>
                                         <td>No. of followers :</td>
