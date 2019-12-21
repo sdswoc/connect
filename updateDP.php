@@ -1,7 +1,6 @@
 <?php 
 session_start();
-$db = mysqli_connect('localhost', 'root', 'abiit@2019', 'rconnect');
-
+include('dbconfig.php');
   $path_parts = pathinfo($_FILES["profileImage"]["name"]);
 $extension = $path_parts['extension'];
 $userID = $_SESSION['id'];
@@ -11,7 +10,7 @@ if(move_uploaded_file($_FILES["profileImage"]["tmp_name"], "userImages/".$newNam
  $_SESSION['img'] = $newName;
   
     $sql = "UPDATE userData SET img = '$newName' where userID = $userID";
-    if(mysqli_query($db, $sql)){
+    if(mysqli_query($conn, $sql)){
         
         header('location: welcome.php');
    }

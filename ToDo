@@ -5,5 +5,8 @@
 #5 Learning to build chat engine
 ----- >>>> DONE #6 I-card pop-up for view-profile section
 #7 Scroll Cache problem to be resolved
+#8 Change the backend of the friend-request sending algo
+#9 Major reframing of login/signup form validation
+   ---> Not resetting the whole form on one error
 
 

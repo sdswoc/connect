@@ -15,6 +15,13 @@ include('server.php');
     $self_ID = $_SESSION['id'];
     $id_to_unfollow = $_GET['unfollow_id'];
   if(mysqli_query($db, "DELETE FROM followerData where userID = $id_to_unfollow AND followerID = $self_ID")){
+      $qr_1 = "SELECT @count := follow_count from userData where userID = $id_to_unfollow";
+      $qr_2 = "SELECT @count := @count - 1";
+      $qr_3 = "UPDATE userData SET follow_count = @count where userID = $id_to_unfollow";
+      mysqli_query($db, $qr_1);
+      mysqli_query($db, $qr_2);
+      mysqli_query($db, $qr_3);
+    
     header("location: NewConnect.php");
   }
 
@@ -43,13 +50,27 @@ $id = $_SESSION['id'];
  if(mysqli_num_rows($check_1) == 1 && mysqli_num_rows($check_2) == 1 ){
    $msg = $usrname." followed you back!";
    $notify = "INSERT INTO notificationData (typeOf, to_userID, from_userID, message, seen_status) VALUES('accepted_request',$id_to_be_followed , $follower_id, '$msg',0)";
-   mysqli_query($db, $notify);
+   if(mysqli_query($db, $notify)){
+    $qr_1 = "SELECT @count := follow_count from userData where userID = $id_to_be_followed";
+    $qr_2 = "SELECT @count := @count + 1";
+    $qr_3 = "UPDATE userData SET follow_count = @count where userID = $id_to_be_followed";
+    mysqli_query($db, $qr_1);
+    mysqli_query($db, $qr_2);
+    mysqli_query($db, $qr_3);
+  }
  }
 else{
    $msg = $usrname." started following you! Follow Back?";
           
           $notify = "INSERT INTO notificationData (typeOf, to_userID, from_userID, message, seen_status) VALUES('follow_request',$id_to_be_followed , $follower_id, '$msg',0)";
-          
+          if(mysqli_query($db, $notify)){
+            $qr_1 = "SELECT @count := follow_count from userData where userID = $id_to_be_followed";
+            $qr_2 = "SELECT @count := @count + 1";
+            $qr_3 = "UPDATE userData SET follow_count = @count where userID = $id_to_be_followed";
+            mysqli_query($db, $qr_1);
+            mysqli_query($db, $qr_2);
+            mysqli_query($db, $qr_3);
+          }
 }        
      }  
   }
@@ -109,7 +130,6 @@ else{
                                 </button>
                                         <div class="dropdown-menu" style="z-index: 2;">
                                             <a class="dropdown-item google" href='welcome.php?logout=1'>Logout</a>
-                                            <a class="dropdown-item google" href='finalsignup.php'>Signup</a>
                                             <a class="dropdown-item google" href='welcome.php?delete=1'>Delete my Account</a>
                                         </div>
                                 <?php endif ?>
@@ -166,11 +186,11 @@ while($row = $result->fetch_assoc()) {
 $id = $row["userID"];
 $self_ID = $_SESSION['id'];
 if($row['userID'] != $self_ID){
-  echo "<tr><td>" . $row["userID"]. "</td>
-<td>" . $row["name"] . "</td>
-<td>" . $row["username"] . "</td>
+  echo "<tr><td data-toggle='modal' data-target='#view_profile".$id."'>" . $row["userID"]. "</td>
+<td data-toggle='modal' data-target='#view_profile".$id."'>" . $row["name"] . "</td>
+<td data-toggle='modal' data-target='#view_profile".$id."'>" . $row["username"] . "</td>
 <td>";
-echo '<button type="button" class="btn" data-toggle="modal" data-target="#view_profile'.$id.'">';
+echo '<button class="btn" data-toggle="modal" data-target="#view_profile'.$id.'">';
 echo "<img class = 'blue-border-image' src = '";
 
 if(isset($row["img"])){
@@ -178,18 +198,18 @@ if(isset($row["img"])){
 }
  else{ echo 'res/default.jpeg';}
  echo "' style = 'border-radius: 50%' width = 50px height = 50px></button></td>
-<td>" . $row["bio"] . "</td>";
-echo "<td>" . $row["follow_count"] . "</td>";
+<td data-toggle='modal' data-target='#view_profile".$id."'>" . $row["bio"] . "</td>";
+echo "<td data-toggle='modal' data-target='#view_profile".$id."'>" . $row["follow_count"] . "</td>";
 
-echo "<td>";
+echo "<td data-toggle='modal' data-target='#view_profile".$id."'>";
 $msg = follow_status($conn, $id, $self_ID);
 echo "<a class = 'google follow_status' style = 'padding-left: 5px; text-decoration:none; padding-right: 5px;' href = 'NewConnect.php?id=".$id."'>".$msg."</a>";
 echo "</td>";
 if($msg === "Requested" || $msg === "Friends"){
-  echo "<td><a class = 'google follow_status' style = 'padding-left: 5px; text-decoration:none; padding-right: 5px;' href = 'NewConnect.php?unfollow_id=".$id."'>Unfollow</a></td>";
+  echo "<td data-toggle='modal' data-target='#view_profile".$id."'><a class = 'google follow_status' style = 'padding-left: 5px; text-decoration:none; padding-right: 5px;' href = 'NewConnect.php?unfollow_id=".$id."'>Unfollow</a></td>";
 }
  if($msg === "Friends"){
-  echo "<td><a class = 'google follow_status' style = 'padding-left: 5px; text-decoration:none; padding-right: 5px;' href = 'NewConnect.php?chat=".$id."'>Chat Now</a></td>";
+  echo "<td data-toggle='modal' data-target='#view_profile".$id."'><a class = 'google follow_status' style = 'padding-left: 5px; text-decoration:none; padding-right: 5px;' href = 'NewConnect.php?chat=".$id."'>Chat Now</a></td>";
 }
 echo "</tr>";
 $msg="";

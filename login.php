@@ -26,13 +26,13 @@ if(isset($_SESSION['id'])){
          <?php if(isset($_SESSION['id'])) : ?>
 <a class = "google" href = ' NewConnect.php'>&nbsp;&nbsp;Find New Connections&nbsp;&nbsp;</a>&nbsp;&nbsp;&nbsp;&nbsp;
          <?php endif ; ?>
-        <a class = "google" href = ' login.php'>&nbsp;&nbsp;Login&nbsp;&nbsp;</a>&nbsp;&nbsp;&nbsp;&nbsp;
-        <a class = "google" href = 'finalsignup.php'>&nbsp;Signup&nbsp;&nbsp;</a>
+        <a class = "google" href = ' login.php' style="text-decoration: none;">&nbsp;&nbsp;Login&nbsp;&nbsp;</a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a class = "google" href = 'finalsignup.php' style="text-decoration: none;">&nbsp;Signup&nbsp;&nbsp;</a>
       </object>  
 </div></object></div><br><br><br>
 <center>
-<div  class="test">
-         <div style = "width:300px; height: auto;" align = "center">
+<div  class="test" style = "height:auto; width: 500px;padding-bottom: 10px;">
+         <div style = "width:400px; height: auto;" align = "center">
             <div style = "padding:3px; font-family: Century Gothic; font-size: 42px; color:white;" >
             <b>Connect - Login</b><br>
             </div>

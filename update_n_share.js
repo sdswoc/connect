@@ -82,5 +82,15 @@ function msg_post(){
     }
     xhttp.open("GET", "feed.php?msg="+message, false);
     xhttp.send();
-   
+}
+
+function view_messages(){
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById('public-message-container').innerHTML = this.responseText;
+        }
+    }
+    xhttp.open("GET", "view_messages.php", true);
+    xhttp.send();
 }
