@@ -77,7 +77,7 @@ mysqli_query($db, $sql_2);
                 <br>
                 <br>
                 <object align='right'>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#view_messages">&ensp;
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#view_messages"  onclick = view_messages()>&ensp;
                 <i class="fa fa-comment"></i>&ensp;View Message-Posts&ensp;</button>&emsp;
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#post_message">&ensp;
                 <i class="fa fa-envelope"></i>&ensp;Post something&ensp;</button>
@@ -144,7 +144,7 @@ mysqli_query($db, $sql_2);
                         </div>
                     </div>
                 </div>
-                <div class="modal fade" id="view_messages" onclick = view_messages()>
+                <div class="modal fade" id="view_messages">
                     <div class="modal-dialog">
                         <div class="modal-content" style="width: 50vw; height: 40vw; overflow: auto;">
 

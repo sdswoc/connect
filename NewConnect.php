@@ -96,6 +96,8 @@ else{
         <link rel="stylesheet" type="text/css" href="dashboard.css">
         <link rel="stylesheet" type="text/css" href="rem.css">
         <script src = "update_n_share.js"></script>
+        <script src = "manage_rel.js"></script>
+
         
 
     </head>
@@ -201,15 +203,15 @@ if(isset($row["img"])){
 <td data-toggle='modal' data-target='#view_profile".$id."'>" . $row["bio"] . "</td>";
 echo "<td data-toggle='modal' data-target='#view_profile".$id."'>" . $row["follow_count"] . "</td>";
 
-echo "<td data-toggle='modal' data-target='#view_profile".$id."'>";
+echo "<td>";
 $msg = follow_status($conn, $id, $self_ID);
 echo "<a class = 'google follow_status' style = 'padding-left: 5px; text-decoration:none; padding-right: 5px;' href = 'NewConnect.php?id=".$id."'>".$msg."</a>";
 echo "</td>";
 if($msg === "Requested" || $msg === "Friends"){
-  echo "<td data-toggle='modal' data-target='#view_profile".$id."'><a class = 'google follow_status' style = 'padding-left: 5px; text-decoration:none; padding-right: 5px;' href = 'NewConnect.php?unfollow_id=".$id."'>Unfollow</a></td>";
+  echo "<td><button class = 'google follow_status' style = 'padding-left: 5px; padding-right: 5px;' onclick = unfollow(".$id.")>Unfollow</button></td>";
 }
  if($msg === "Friends"){
-  echo "<td data-toggle='modal' data-target='#view_profile".$id."'><a class = 'google follow_status' style = 'padding-left: 5px; text-decoration:none; padding-right: 5px;' href = 'NewConnect.php?chat=".$id."'>Chat Now</a></td>";
+  echo "<td><a class = 'google follow_status' style = 'padding-left: 5px; text-decoration:none; padding-right: 5px;' href = 'NewConnect.php?chat=".$id."'>Chat Now</a></td>";
 }
 echo "</tr>";
 $msg="";
