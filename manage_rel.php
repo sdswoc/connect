@@ -14,5 +14,6 @@ if(isset($_GET['unfollow_id'])){
       echo "Unfollowed";
   }
   }
+
   ?>
 

@@ -2,6 +2,8 @@
 
 $(document).ready(function(){
 
+notif_count();
+
 setInterval(function(){
     update_login_status();
     notif_count();
