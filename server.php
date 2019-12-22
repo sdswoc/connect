@@ -74,12 +74,12 @@ if ($user) { // if user exists
 if (empty($username)) { array_push($errors, "Username is required"); 
 $no_username = "Username is required";
 }
-else{
+
   if (empty($password)) { array_push($errors, "Password is required");
   $no_password = "Password is required";
   }
 
-}
+
 
 if(count($errors) == 0){
     $query = "SELECT * FROM userData WHERE username='$username' AND password='$password'";
@@ -94,8 +94,17 @@ if(count($errors) == 0){
             $_SESSION['bio'] = $row['bio'];
         }
 $id = $_SESSION['id'];
-        $last_activity = "INSERT INTO login_details (userID, last_activity) VALUES ($id, NOW())";
-        mysqli_query($db, $last_activity);
+
+$fetch_last_activity = mysqli_query($db, "SELECT * from login_details where userID =$id");
+if($fetch_last_activity->num_rows == 0){
+  $last_activity = "INSERT INTO login_details (userID, last_activity) VALUES ($id, NOW())";
+  mysqli_query($db, $last_activity);
+}
+else{
+  $last_activity = "UPDATE login_details SET last_activity = NOW() where userID = $id";
+  mysqli_query($db, $last_activity);
+}
+       
             $_SESSION['username'] = $username;  
             $_SESSION['success'] = 1;
         header('location: welcome.php');

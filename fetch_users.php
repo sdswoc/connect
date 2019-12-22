@@ -2,27 +2,7 @@
 include('dbconfig.php');
 // Check connection
 
-function follow_status($conn, $id, $self_ID){
-
-  $query = "SELECT * from followerData where userID = $id AND followerID = $self_ID";
-  $check = mysqli_query($conn, $query);
-  $friend_query = "SELECT * from followerData where userID = $self_ID AND followerID = $id";
-  $check_2 = mysqli_query($conn, $friend_query);
-  if(mysqli_num_rows($check) == 1 && mysqli_num_rows($check_2) == 1){
-    $msg_return = "Friends";
-  };
-  if(mysqli_num_rows($check) == 0 && mysqli_num_rows($check_2) == 1){
-    $msg_return = "Follow Back";
-  };
-  if(mysqli_num_rows($check) == 1 && mysqli_num_rows($check_2) == 0){
-    $msg_return = "Requested";
-  };
-  if(mysqli_num_rows($check) == 0 && mysqli_num_rows($check_2) == 0){
-    $msg_return = "Follow";
-  };
-
-  return $msg_return;
-}
+session_start();
 
 echo '<tr>
 <th>Id</th>
@@ -40,10 +20,52 @@ echo '<tr>
 $sql = "SELECT userID, name, username, img, bio, follow_count FROM userData ORDER BY follow_count DESC";
 $result = mysqli_query($conn, $sql);
 if ($result->num_rows > 0) {
+    function follow_status($conn, $id, $self_ID){
+
+        $query = "SELECT * from followerData where userID = $id AND followerID = $self_ID";
+        $check = mysqli_query($conn, $query);
+        $friend_query = "SELECT * from followerData where userID = $self_ID AND followerID = $id";
+        $check_2 = mysqli_query($conn, $friend_query);
+        if(mysqli_num_rows($check) == 1 && mysqli_num_rows($check_2) == 1){
+          $msg_return = "Friends";
+        };
+        if(mysqli_num_rows($check) == 0 && mysqli_num_rows($check_2) == 1){
+          $msg_return = "Follow Back";
+        };
+        if(mysqli_num_rows($check) == 1 && mysqli_num_rows($check_2) == 0){
+          $msg_return = "Requested";
+        };
+        if(mysqli_num_rows($check) == 0 && mysqli_num_rows($check_2) == 0){
+          $msg_return = "Follow";
+        };
+      
+        return $msg_return;
+      }
 // output data of each row
 while($row = $result->fetch_assoc()) {
+  
+
+//$time = mysqli_query($conn, "")
+
 $id = $row["userID"];
 $self_ID = $_SESSION['id'];
+
+$fetch_last_activity = mysqli_query($conn, "SELECT * from login_details where userID =$id");
+$row_time = $fetch_last_activity->fetch_assoc();
+
+$user_last_activity = $row_time['last_activity'];
+
+$current_timestamp = strtotime(date("Y-m-d H:i:s") . '- 10 second');
+ $current_timestamp = date('Y-m-d H:i:s', $current_timestamp);
+
+ if($user_last_activity > $current_timestamp){
+   $status = "ONLINE";
+ }
+ else{
+   $status = "OFFLINE";
+ }
+
+
 if($row['userID'] != $self_ID){
   echo "<tr><td data-toggle='modal' data-target='#view_profile".$id."'>" . $row["userID"]. "</td>
 <td data-toggle='modal' data-target='#view_profile".$id."'>" . $row["name"] . "</td>
@@ -68,11 +90,9 @@ if($msg === "Requested" || $msg === "Friends"){
 }
  if($msg === "Friends"){
   echo "<td><a class = 'google follow_status' style = 'padding-left: 5px; text-decoration:none; padding-right: 5px;' href = 'NewConnect.php?chat=".$id."'>Chat Now</a></td>";
-  echo '<td id = "login_status'.$id.'" >Offline</td>';
+  echo '<td>'.$status.'</td>';
 }
 echo "</tr>";
-$msg="";
-
 }
 }
 } 
