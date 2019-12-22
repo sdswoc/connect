@@ -1,3 +1,30 @@
+
+
+$(document).ready(function(){
+
+setInterval(function(){
+    update_login_status();
+    notif_count();
+}, 5000)
+
+    function update_login_status(){
+        $.ajax({
+            url:"updateList.php?update_login_status_id=1"
+        })
+    }
+
+    function notif_count(){
+        $.ajax({
+            url:"updateList.php?notif_count=1",
+            success: function(result){
+                $('#notif_count').html(result);
+            }
+        })
+    }
+})
+
+
+
 function notify_alert(id) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
@@ -6,7 +33,6 @@ function notify_alert(id) {
 
             if (message !== "0") {
                 alert(message);
-                location.reload(true);
             }
 
         }

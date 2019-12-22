@@ -1,5 +1,5 @@
 ----- >>>> DONE #1 Add - Unfollow Option to be introduced
-#2 Updating follow_count in userData dynamically.
+----- >>>> DONE #2 Updating follow_count in userData dynamically.
 #3 Suggestion algo in view Connections to be improvised based on hobbies/goals
 ----- >>>> DONE #4 Messaging list to be integrated with CURRENT_TIMESTAMP() 
 #5 Learning to build chat engine
@@ -8,5 +8,8 @@
 #8 Change the backend of the friend-request sending algo
 #9 Major reframing of login/signup form validation
    ---> Not resetting the whole form on one error
+#10 Setting up separate chatrooms per hobby and feature of mentioning someone
+#11 Displaying users who are online
+
 
 

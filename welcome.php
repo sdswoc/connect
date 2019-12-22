@@ -83,7 +83,7 @@ mysqli_query($db, $sql_2);
                 <i class="fa fa-envelope"></i>&ensp;Post something&ensp;</button>
                
        &emsp;             <a id="notif_trigger" href="#" onclick = notify_alert(<?php echo $_SESSION[ 'id'] ?>) style = "text-decoration: none;"><i class = "fa fa-bell"></i>
-                &nbsp;&nbsp;<span style="color:white" ><?php echo $notif_count ?></span</a> &nbsp;&nbsp;
+                &nbsp;&nbsp;<span id = "notif_count" style="color:white" ><?php echo $notif_count ?></span</a> &nbsp;&nbsp;
                     <a class="btn btn-primary" role = "button" href='NewConnect.php' style="text-decoration: none;">&nbsp;&nbsp;View Connections&nbsp;&nbsp;</a>&nbsp;&nbsp;&nbsp;&nbsp;
 
                     <?php  if (!isset($_SESSION['username'])) : ?>

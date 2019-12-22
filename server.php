@@ -61,7 +61,7 @@ if ($user) { // if user exists
     $password = ($password_1);
     $query = "INSERT INTO userData (name, enrl, bhawan, username, email, password, bio, branch_y) 
               VALUES('$name','$enrl','$bhawan','$username', '$email', '$password', '$bio$name', '$branch_y');";
-    mysqli_query($db, $query);
+        mysqli_query($db, $query);
         header('location: login.php');
     }
    
@@ -93,6 +93,9 @@ if(count($errors) == 0){
             $_SESSION['img'] = $row['img'];
             $_SESSION['bio'] = $row['bio'];
         }
+$id = $_SESSION['id'];
+        $last_activity = "INSERT INTO login_details (userID, last_activity) VALUES ($id, NOW())";
+        mysqli_query($db, $last_activity);
             $_SESSION['username'] = $username;  
             $_SESSION['success'] = 1;
         header('location: welcome.php');

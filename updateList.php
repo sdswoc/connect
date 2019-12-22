@@ -3,6 +3,19 @@ session_start();
 $selfID = $_SESSION['id'];
 include('dbconfig.php');
 
+if(isset($_GET['update_login_status_id'])){
+$selfID = $_SESSION['id'];
+   $last_activity = "UPDATE login_details SET last_activity = now() where userID = $selfID";
+   mysqli_query($conn, $last_activity);
+}
+
+if(isset($_GET['notif_count'])){
+    $id = $_SESSION['id'];
+    $notifications = mysqli_query($conn, "SELECT * FROM notificationData WHERE to_userID = $id && seen_status = 0");
+  $notif_count = $notifications->num_rows;
+  echo $notif_count;  
+}
+
 if(isset($_GET['h_id'])){
 
 $hobbieID = mysqli_real_escape_string($conn, $_GET['h_id']); 

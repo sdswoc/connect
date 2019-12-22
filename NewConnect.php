@@ -124,7 +124,7 @@ else{
 
                             <?php  if (isset($_SESSION['username'])) : ?>
                               <a id="notif_trigger" href="#" onclick = notify_alert(<?php echo $_SESSION[ 'id'] ?>) style = "text-decoration: none;"><i class = "fa fa-bell"></i>
-                &nbsp;&nbsp;<span style="color:white" ><?php echo $notif_count ?></span</a> &nbsp;&nbsp;
+                &nbsp;&nbsp;<span id="notif_count" style="color:white" ><?php echo $notif_count ?></span</a> &nbsp;&nbsp;
                                 <a class="google" href='  welcome.php' style="text-decoration: none;">&nbsp;&nbsp;Back to Dashboard&nbsp;&nbsp;</a>&nbsp;&nbsp;&nbsp;&nbsp;
 
                                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
