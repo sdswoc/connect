@@ -89,9 +89,11 @@ if($msg === "Requested" || $msg === "Friends"){
   echo "<td><button class = 'google follow_status' style = 'padding-left: 5px; padding-right: 5px;' onclick = unfollow(".$id.")>Unfollow</button></td>";
 }
  if($msg === "Friends"){
-  echo "<td><a class = 'google follow_status' style = 'padding-left: 5px; text-decoration:none; padding-right: 5px;' href = 'NewConnect.php?chat=".$id."'>Chat Now</a></td>";
+  echo "<td><button class = 'start_chat' data-touserid='".$row['userID']."' data-tousername='".$row['username']."' style = 'padding-left: 5px; text-decoration:none; padding-right: 5px;'>
+  Chat Now</button></td>";
   echo '<td>'.$status.'</td>';
 }
+
 echo "</tr>";
 }
 }
