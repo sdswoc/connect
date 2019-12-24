@@ -37,7 +37,38 @@ function fetch_users(){
     })
 }
 
+
  function append_chat_box(to_user_id, to_user_name){
+    function get_img(to_id){
+        var img_url = '';
+        $.ajax({
+            url: "get_chats.php?get_img_id="+to_id,
+            method: "GET",
+            success: function(data){
+                if( data !== ''){img_url = "userImages/"+data;}
+                else{ img_url += "res/default.jpeg"}
+                console.log(img_url);
+                return img_url;
+                }
+               
+        })
+           
+       
+    }
+var img_url = get_img(to_user_id);
+console.log(img_url);
+var selfID = $('#hidden_selfID').val();
+    $.ajax({
+        url: "get_chats.php?to_ID="+to_user_id,
+        method: "GET",
+        success: function(data){
+            console.log("MESSAGES RETRIEVED!");
+            console.log(data);
+            $('#msg_card_to_user_'+to_user_id).html(data);
+        }
+    })
+
+    
 
     var modal_content = '<div class="container-fluid h-100" id="user_dialog_'+to_user_id+'">';
    modal_content+= '<div class="row justify-content-center h-100">';
@@ -46,7 +77,7 @@ function fetch_users(){
    modal_content+= '<div class="card" style="width: 400px"><div class="card-header msg_head">';
                 
    modal_content+= '<div class="d-flex bd-highlight">';
-   modal_content+= '<div class="img_cont"><img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg" class="rounded-circle user_img"><span class="online_icon"></span></div>';
+   modal_content+= '<div class="img_cont"><img src="'+get_img(to_user_id)+'" class="rounded-circle user_img"><span class="online_icon"></span></div>';
    modal_content+= '<div class="user_info"><span>Chat with '+to_user_name+'</span><p>1767 Messages</p></div></div></div>';
    modal_content+= '<div class="card-body msg_card_body" id="msg_card_to_user_'+to_user_id+'">';
    modal_content+= '</div>';

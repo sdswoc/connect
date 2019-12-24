@@ -71,15 +71,17 @@ if($row['userID'] != $self_ID){
 <td data-toggle='modal' data-target='#view_profile".$id."'>" . $row["name"] . "</td>
 <td data-toggle='modal' data-target='#view_profile".$id."'>" . $row["username"] . "</td>
 <td>";
-echo '<button class="btn" data-toggle="modal" data-target="#view_profile'.$id.'">';
-echo "<img class = 'blue-border-image' src = '";
+echo '<div><button class="btn" data-toggle="modal" data-target="#view_profile'.$id.'">';
+echo "<img class='rounded-circle user_img' src = '";
 
 if(isset($row["img"])){
   echo "userImages/".$row['img'];
 }
  else{ echo 'res/default.jpeg';}
- echo "' style = 'border-radius: 50%' width = 50px height = 50px></button></td>
-<td data-toggle='modal' data-target='#view_profile".$id."'>" . $row["bio"] . "</td>";
+ echo "'></button></div>";
+ 
+echo '</td>';
+echo "<td data-toggle='modal' data-target='#view_profile".$id."'>" . $row["bio"] . "</td>";
 echo "<td data-toggle='modal' data-target='#view_profile".$id."'>" . $row["follow_count"] . "</td>";
 echo "<td>";
 $msg = follow_status($conn, $id, $self_ID);

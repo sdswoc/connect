@@ -240,7 +240,7 @@ echo '<br><br><table class="table table-hover">
 }  
 ?>
 
-<input id = "hidden_selfID" value="<?php echo $_SESSION['id'] ?>"/>
+<input id = "hidden_selfID" type="hidden" value="<?php echo $_SESSION['id'] ?>"/>
 
         <div class="userC">&nbsp;&nbsp;No. of Users:&nbsp;&nbsp;
             <b><?php echo $user_count ?>&nbsp;&nbsp;&nbsp;&nbsp;
