@@ -3,13 +3,16 @@
 #3 Suggestion algo in view Connections to be improvised based on hobbies/goals
 ----- >>>> DONE #4 Messaging list to be integrated with CURRENT_TIMESTAMP() 
 #5 Learning to build chat engine
+   #5.1 Establish connection and talk b/w browsers
+   #5.2 Store these messages in MySQL server.
+
 ----- >>>> DONE #6 I-card pop-up for view-profile section
 #7 Scroll Cache problem to be resolved
 #8 Change the backend of the friend-request sending algo
 #9 Major reframing of login/signup form validation
    ---> Not resetting the whole form on one error
 #10 Setting up separate chatrooms per hobby and feature of mentioning someone
-#11 Displaying users who are online
+----- >>>> DONE #11 Displaying users who are online
 
 
 

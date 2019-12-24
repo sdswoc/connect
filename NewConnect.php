@@ -94,6 +94,9 @@ else{
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <link rel="stylesheet" type="text/css" href="dashboard.css">
         <link rel="stylesheet" type="text/css" href="rem.css">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.js"></script>
+        <link rel="stylesheet" href="chat_box.css">
         <script src = "update_n_share.js"></script>
         <script src = "manage_rel.js"></script>
 
@@ -149,7 +152,7 @@ else{
                 </div>
         </div>
 
-        <div id="user_model_details"></div>        
+        <div id="user_model_details" style="width: 400px"></div>        
         </center>
 <?php
 include('dbconfig.php');
@@ -236,6 +239,8 @@ echo '<br><br><table class="table table-hover">
 }
 }  
 ?>
+
+<input id = "hidden_selfID" value="<?php echo $_SESSION['id'] ?>"/>
 
         <div class="userC">&nbsp;&nbsp;No. of Users:&nbsp;&nbsp;
             <b><?php echo $user_count ?>&nbsp;&nbsp;&nbsp;&nbsp;
