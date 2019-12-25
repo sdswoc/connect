@@ -93,7 +93,7 @@ if($msg === "Requested" || $msg === "Friends"){
  if($msg === "Friends"){
   echo "<td><button class = 'start_chat' data-touserid='".$row['userID']."' data-tousername='".$row['username']."' style = 'padding-left: 5px; text-decoration:none; padding-right: 5px;'>
   Chat Now</button></td>";
-  echo '<td>'.$status.'</td>';
+  echo '<td id="status_'.$row['userID'].'">'.$status.'</td>';
 }
 
 echo "</tr>";
