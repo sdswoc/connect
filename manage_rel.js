@@ -166,19 +166,7 @@ function fetch_users(){
     $('#user_dialog_'+to_user_id).dialog('open');
     $('#msg_card_to_user_'+to_user_id).animate({scrollTop:$("#msg_card_to_user_"+to_user_id)[0].scrollHeight}, 1000); 
 
-  
-
-    document.getElementById('chat_message_'+to_user_id).onkeypress = function(e){
-        if(e.which == 13 && !e.shiftKey){
-            $('.send_chat').click();
-        }
-    }
-
    });
-
-  
-
-  
 
 $(document).on('click', '.send_chat', function(){
 
@@ -228,7 +216,6 @@ $(document).on('click', '.send_chat', function(){
         }
     })
     get_img_self(from_user_id);
-    
 
  }
 
