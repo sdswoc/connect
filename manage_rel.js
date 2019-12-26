@@ -147,7 +147,7 @@ function fetch_users(){
                 
    modal_content+= '<div class="card-footer"><div class="input-group">';
    modal_content+= '<textarea id="chat_message_'+to_user_id+'" class="form-control type_msg" placeholder="Type your message..."></textarea>';
-   modal_content+= '<div class="input-group-append"><button type="button" name="send_chat" id="send_chat_to_'+to_user_id+'" class="btn btn-info send_chat">Send</button></div>';
+   modal_content+= '<div class="input-group-append"><button type="button" name="send_chat" id="'+to_user_id+'" class="btn btn-info send_chat">Send</button></div>';
    modal_content+= '</div></div></div></div></div></div>';
    $('#user_model_details').html(modal_content);
 
@@ -166,7 +166,19 @@ function fetch_users(){
     $('#user_dialog_'+to_user_id).dialog('open');
     $('#msg_card_to_user_'+to_user_id).animate({scrollTop:$("#msg_card_to_user_"+to_user_id)[0].scrollHeight}, 1000); 
 
+  
+
+    document.getElementById('chat_message_'+to_user_id).onkeypress = function(e){
+        if(e.which == 13 && !e.shiftKey){
+            $('.send_chat').click();
+        }
+    }
+
    });
+
+  
+
+  
 
 $(document).on('click', '.send_chat', function(){
 
@@ -216,6 +228,7 @@ $(document).on('click', '.send_chat', function(){
         }
     })
     get_img_self(from_user_id);
+    
 
  }
 
