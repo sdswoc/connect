@@ -121,7 +121,7 @@ else{
                         <a class="google" href='  login.php'>
         &nbsp;&nbsp;Login&nbsp;&nbsp;
       </a>&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a class="google" href='  finalsignup.php'>&nbsp;Signup&nbsp;&nbsp;</a>
+                        <a class="google" href='login.php'>&nbsp;Signup&nbsp;&nbsp;</a>
                         <?php endif ?>
 
                             <?php  if (isset($_SESSION['username'])) : ?>

@@ -170,7 +170,7 @@ function fetch_users(){
 
     document.getElementById('chat_message_'+to_user_id).onkeypress = function(e){
         if(e.which == 13 && !e.shiftKey){
-            $('.send_chat').click();
+           $('.send_chat').click();
         }
     }
 
