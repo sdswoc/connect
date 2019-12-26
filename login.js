@@ -151,6 +151,8 @@ $(document).ready(function () {
                 branch_y: branch_y,
                 bhawan: bhawan
             });
+
+            
         }
     });
 

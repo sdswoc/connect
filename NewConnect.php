@@ -1,6 +1,6 @@
 <?php 
 include('server.php');
-  if (!isset($_SESSION['username'])) {
+  if (!isset($_SESSION['id'])) {
   	$_SESSION['msg'] = "You must log in first";
   	header('location: login.php');
   }
@@ -115,7 +115,7 @@ else{
                 <br>
                 <object align='right'>
 
-                    <?php  if (!isset($_SESSION['username'])) : ?>
+                    <?php  if (!isset($_SESSION['id'])) : ?>
                         <a class="google" href='  NewConnect.php'>&nbsp;&nbsp;Find New Connections&nbsp;&nbsp;</a>&nbsp;&nbsp;&nbsp;&nbsp;
 
                         <a class="google" href='  login.php'>
@@ -124,7 +124,7 @@ else{
                         <a class="google" href='login.php'>&nbsp;Signup&nbsp;&nbsp;</a>
                         <?php endif ?>
 
-                            <?php  if (isset($_SESSION['username'])) : ?>
+                            <?php  if (isset($_SESSION['id'])) : ?>
                               <a id="notif_trigger" href="#" onclick = notify_alert(<?php echo $_SESSION[ 'id'] ?>) style = "text-decoration: none;"><i class = "fa fa-bell"></i>
                 &nbsp;&nbsp;<span id="notif_count" style="color:white" ><?php echo $notif_count ?></span></a> &nbsp;&nbsp;
                                 <a class="google" href='  welcome.php' style="text-decoration: none;">&nbsp;&nbsp;Back to Dashboard&nbsp;&nbsp;</a>&nbsp;&nbsp;&nbsp;&nbsp;

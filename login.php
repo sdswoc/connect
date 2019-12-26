@@ -49,7 +49,7 @@ if(isset($_SESSION['id'])){
 
             <div class="success-msg">
                <p>Great! You are one of our members now</p>
-               <a href="#" class="profile">Your Profile</a>
+               <a href="welcome.php" class="profile">Your Profile</a>
             </div>
          </div>
 

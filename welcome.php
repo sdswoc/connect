@@ -3,6 +3,7 @@
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);*/
 include('server.php');
+session_start();
   if (!isset($_SESSION['id'])) {
   	$_SESSION['msg'] = "You must log in first";
   	header('location: login.php');
@@ -87,14 +88,14 @@ mysqli_query($db, $sql_2);
                 &nbsp;&nbsp;<span id = "notif_count" style="color:white" class="counter counter-lg"><?php echo $notif_count ?></span></a> &nbsp;&nbsp;
                     <a class="btn btn-primary" role = "button" href='NewConnect.php' style="text-decoration: none;">&nbsp;&nbsp;View Connections&nbsp;&nbsp;</a>&nbsp;&nbsp;&nbsp;&nbsp;
 
-                    <?php  if (!isset($_SESSION['username'])) : ?>
+                    <?php  if (!isset($_SESSION['id'])) : ?>
                         <a class="google" href='login.php'>
         &nbsp;&nbsp;Login&nbsp;&nbsp;
       </a>&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a class="google" href='finalsignup.php'>&nbsp;Signup&nbsp;&nbsp;</a>
+                        <a class="google" href='login.php'>&nbsp;Signup&nbsp;&nbsp;</a>
                         <?php endif ?>
 
-                            <?php  if (isset($_SESSION['username'])) : ?>
+                            <?php  if (isset($_SESSION['id'])) : ?>
                                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                                     More Options..
                                 </button>
@@ -112,7 +113,7 @@ mysqli_query($db, $sql_2);
         <br>
         <br>
         <br>
-        <?php  if (isset($_SESSION['username'])) : ?>
+        <?php  if (isset($_SESSION['id'])) : ?>
             <div class="modal fade" id="post_message" style = "overflow: auto;">
                     <div class="modal-dialog">
                         <div class="modal-content" style="width: 30vw;">
