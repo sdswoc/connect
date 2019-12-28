@@ -174,12 +174,14 @@ $(document).ready(function () {
             login_user: 1,
             username: username,
             password: password
-        }, function(data){
-           console.log(data);
-           alert(data);
-        });
-
-    });
+        }, function(res){
+            if(res === "1"){location.replace('welcome.php');}
+            else{
+                $('#loginPassword').val('');
+                $('#loginPassword').siblings('span.error').text('Incorrect Password!').fadeIn().parent('.form-group').addClass('hasError');
+            }
+        })
+    })
 
     // Reload page
     $('a.profile').on('click', function () {

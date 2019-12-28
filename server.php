@@ -92,15 +92,43 @@ if ($user) { // if user exists
     //password_matching_code
     $get_password = mysqli_query($db, "SELECT password from userData where username='$username'");
     $user_pass = $get_password->fetch_assoc();
-    if($user_pass === $password){
-      echo "Success!";
+    if($user_pass['password'] === $password){
+      echo "1";
+      $query = "SELECT * FROM userData WHERE username='$username' AND password='$password'";
+    $result = mysqli_query($db, $query);
+
+    if(mysqli_num_rows($result) == 1){
+        while($row = mysqli_fetch_array($result)){
+            $_SESSION['id'] = $row['userID'];
+            $_SESSION['bhawan'] = $row['bhawan'];
+            $_SESSION['name'] = $row['name'];
+            $_SESSION['img'] = $row['img'];
+            $_SESSION['bio'] = $row['bio'];
+        }
+$id = $_SESSION['id'];
+
+$fetch_last_activity = mysqli_query($db, "SELECT * from login_details where userID =$id");
+if($fetch_last_activity->num_rows == 0){
+  $last_activity = "INSERT INTO login_details (userID, last_activity) VALUES ($id, NOW())";
+  mysqli_query($db, $last_activity);
+}
+else{
+  $last_activity = "UPDATE login_details SET last_activity = NOW() where userID = $id";
+  mysqli_query($db, $last_activity);
+}
+       
+            $_SESSION['username'] = $username;  
+            $_SESSION['success'] = 1;
+        //header('location: welcome.php');
+}
     }
     else{
-      array_push($errors, "Invalid password!");
-      echo "Invalid Password!";
+      array_push($errors, "1");
+      echo "Error!";
     }
+    
 
-if(count($errors) == 0){
+/*if(count($errors) == 0){
     $query = "SELECT * FROM userData WHERE username='$username' AND password='$password'";
     $result = mysqli_query($db, $query);
 
@@ -128,7 +156,7 @@ else{
             $_SESSION['success'] = 1;
         header('location: welcome.php');
 }
-}
+}*/
 }
   
 ?>
