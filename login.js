@@ -92,6 +92,16 @@ $(document).ready(function () {
             }
         }
 
+       //password_check
+       if($(this).hasClass('login_password')){
+           if($(this).val().length === 0){
+            $(this).siblings('span.error').text('Please enter the password').fadeIn().parent('.form-group').addClass('hasError');
+        } else{
+            $(this).siblings('.error').text('').fadeOut().parent('.form-group').removeClass('hasError');
+        }
+
+       }
+
         // label effect
         if ($(this).val().length > 0) {
             $(this).siblings('label').addClass('active');
@@ -156,9 +166,24 @@ $(document).ready(function () {
         }
     });
 
+    $('form.login-form').submit(function (e){
+        e.preventDefault();
+        var username = $('#username').val();
+        var password = $('#loginPassword').val();
+        $.post("server.php",{
+            login_user: 1,
+            username: username,
+            password: password
+        }, function(data){
+           console.log(data);
+           alert(data);
+        });
+
+    });
+
     // Reload page
     $('a.profile').on('click', function () {
-        location.reload(true);
+        location.replace('welcome.php');
     });
 
 

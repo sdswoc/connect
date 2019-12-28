@@ -5,7 +5,7 @@
 #5 Learning to build chat engine
   ----- >>>> DONE #5.1 Establish connection and talk b/w browsers
   ----- >>>> DONE #5.2 Store these messages in MySQL server and displaying Chat History.
-   #5.3 Optimization of UI
+   **#5.3 Optimization of UI
  ----- >>>> DONE  #5.4 scrollTo down of chat
   ---->>>OBSOLETE <<!!NOT REALLY REQURED!!>> **#5.5 Clicking on img would open profile.
    #5.6 Integrating it with notification system.
@@ -14,12 +14,15 @@
 ----- >>>> DONE #6 I-card pop-up for view-profile section
 #7 Scroll Cache problem to be resolved
 #8 Change the backend of the friend-request sending algo
-** #9 Major reframing of login/signup form validation
-   ---> Not resetting the whole form on one error
+----- >>>> DONE #9 Major reframing of login/signup form validation
+                     ---> Not resetting the whole form on one error
 #10 Setting up separate chatrooms per hobby and feature of mentioning someone
 ----- >>>> DONE #11 Displaying users who are online
 ----- >>>> DONE #12 Displaying green button if online
-#13 Completely revamping of Login and signup form.
-#14 Designing the forms for better UI/UX
+----- >>>> DONE #13 Completely revamping of Login and signup form.
+----- >>>> DONE #14 Designing the forms for better UI/UX
+**#15 Polishing of Login/Sigup backend
+#16 Logo Change
+   
 
 

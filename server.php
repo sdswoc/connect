@@ -88,16 +88,17 @@ if ($user) { // if user exists
   if(isset($_POST['login_user'])){
     $username = mysqli_real_escape_string($db, $_POST['username']);
     $password = mysqli_real_escape_string($db, $_POST['password']);
-    
-if (empty($username)) { array_push($errors, "Username is required"); 
-$no_username = "Username is required";
-}
 
-  if (empty($password)) { array_push($errors, "Password is required");
-  $no_password = "Password is required";
-  }
-
-
+    //password_matching_code
+    $get_password = mysqli_query($db, "SELECT password from userData where username='$username'");
+    $user_pass = $get_password->fetch_assoc();
+    if($user_pass === $password){
+      echo "Success!";
+    }
+    else{
+      array_push($errors, "Invalid password!");
+      echo "Invalid Password!";
+    }
 
 if(count($errors) == 0){
     $query = "SELECT * FROM userData WHERE username='$username' AND password='$password'";

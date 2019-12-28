@@ -79,9 +79,9 @@ mysqli_query($db, $sql_2);
                 <br>
                 <br>
                 <object align='right'>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#view_messages"  onclick = view_messages()>&ensp;
+                <button type="button" class="shiney-button" data-toggle="modal" data-target="#view_messages"  onclick = view_messages()>&ensp;
                 <i class="fa fa-comment"></i>&ensp;View Message-Posts&ensp;</button>&emsp;
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#post_message">&ensp;
+                <button type="button" class="shiney-button-2" data-toggle="modal" data-target="#post_message">&ensp;
                 <i class="fa fa-envelope"></i>&ensp;Post something&ensp;</button>
                
        &emsp;             <a id="notif_trigger" href="#" onclick = notify_alert(<?php echo $_SESSION[ 'id'] ?>) style = "text-decoration: none;"><i class = "fa fa-bell"></i>

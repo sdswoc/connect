@@ -29,7 +29,7 @@ if(isset($_SESSION['id'])){
          <?php if(isset($_SESSION['id'])) : ?>
 <a class = "google" href = ' NewConnect.php'>&nbsp;&nbsp;Find New Connections&nbsp;&nbsp;</a>&nbsp;&nbsp;&nbsp;&nbsp;
          <?php endif ; ?>
-        <a class = "google switch_2_login" style="text-decoration: none;">&nbsp;&nbsp;Login&nbsp;&nbsp;</a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a class = "shiney-button switch_2_login" style="text-decoration: none; font-size: 18px">Signup</a>&nbsp;&nbsp;&nbsp;&nbsp;
       </object>  
 </div></object></div>
 <!-- partial:index.partial.html -->
@@ -58,16 +58,18 @@ if(isset($_SESSION['id'])){
          <div class="col-sm-6 form">
 
             <!-- Login Form -->
-            <div class="login form-peice switched">
+            <div class="login form-peice">
                <form class="login-form" action="login.php" method="post">
                   <div class="form-group">
                      <label for="username">Username</label>
-                     <input type="text" name="username" id="username" required>
+                     <input type="text" name="username" id="username" class="username" required>
+                     <span class="error"></span>
                   </div>
 
                   <div class="form-group">
                      <label for="loginPassword" >Password</label>
-                     <input type="password" name="password" id="loginPassword" required>
+                     <input type="password" name="password" id="loginPassword" class="login_password" required>
+                     <span class="error"></span>
                   </div>
 
                   <div class="CTA">
@@ -79,7 +81,7 @@ if(isset($_SESSION['id'])){
 
 
             <!-- Signup Form -->
-            <div class="signup form-peice">
+            <div class="signup form-peice switched">
                <form class="signup-form" action="login.php" method="post">
 
                   <div class="form-group">
