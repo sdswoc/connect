@@ -65,6 +65,10 @@ function fetch_users(){
         update_login_status(to_user_id);
         msg_count(to_user_id);
     }, 3000);
+
+    setInterval(function(){
+        update_chats();
+    }, 1000);
     function update_login_status(to_user_id){
         var status = $('#status_'+to_user_id).html();
         if(status === "ONLINE"){
@@ -118,7 +122,9 @@ function fetch_users(){
         }) 
        
     }
- $.ajax({
+    update_chats();
+ function update_chats(){
+     $.ajax({
         url: "get_chats.php?to_ID="+to_user_id,
         method: "GET",
         success: function(data){
@@ -128,6 +134,8 @@ function fetch_users(){
             
         }
     })
+ }
+ 
     var from_user_id = $('#hidden_selfID').val();
     get_img(to_user_id);
     get_img_self(from_user_id);
