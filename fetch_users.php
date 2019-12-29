@@ -1,5 +1,6 @@
 <?php
 include('dbconfig.php');
+include('sort_users.php');
 // Check connection
 
 session_start();
@@ -14,10 +15,11 @@ echo '<tr>
 <th>Follow Status</th>
 <th></th><th></th>
 <th>Status</th>
+<th>Relative Match</th>
 </tr>';
 
 
-$sql = "SELECT userID, name, username, img, bio, follow_count FROM userData ORDER BY follow_count DESC";
+$sql = "SELECT userID, name, username, img, bio, follow_count, rwd_pts FROM reward_pts ORDER BY rwd_pts DESC, follow_count DESC";
 $result = mysqli_query($conn, $sql);
 if ($result->num_rows > 0) {
     function follow_status($conn, $id, $self_ID){
@@ -90,12 +92,16 @@ echo "</td>";
 if($msg === "Requested" || $msg === "Friends"){
   echo "<td><button class = 'google follow_status' style = 'padding-left: 5px; padding-right: 5px;' onclick = unfollow(".$id.")>Unfollow</button></td>";
 }
+else{echo "<td></td><td></td>";}
+if($msg === "Requested"){echo "<td></td>";}
  if($msg === "Friends"){
   echo "<td><button class = 'start_chat' data-touserid='".$row['userID']."' data-tousername='".$row['username']."' style = 'padding-left: 5px; text-decoration:none; padding-right: 5px;'>
   Chat Now</button></td>";
   echo '<td id="status_'.$row['userID'].'">'.$status.'</td>';
 }
+else{echo "<td></td>";}
 
+echo "<td>".$row['rwd_pts']."</td>";
 echo "</tr>";
 }
 }

@@ -143,7 +143,7 @@ else{
         <br>
         <div class="connect">
             <center>
-                <div class="signup_box info" style="height: 600px; width: 90%; overflow:auto;">
+                <div class="signup_box info" style="height: 600px; width: 100%; overflow:auto;">
                     <br>
                     <table class="table table-dark table-hover" id="user-details">
                         
