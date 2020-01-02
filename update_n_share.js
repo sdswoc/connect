@@ -34,7 +34,6 @@ function notify_alert(id) {
             var message = this.responseText;
 
             if (message !== "0") {
-                alert(message);
                 document.getElementById("notif_panel").innerHTML = message;
             }
 

@@ -116,11 +116,11 @@ mysqli_query($db, $sql_2);
         <?php  if (isset($_SESSION['id'])) : ?>
             <div class="modal fade" id="view_notif">
                     <div class="modal-dialog">
-                        <div class="modal-content" style="width: 30vw; height: auto; overflow: auto;">
+                        <div class="modal-content" style="width: 35vw; height: auto; overflow: auto;">
 
                             <!-- Modal Header -->
                             <div class="modal-header">
-                                <h4 class="modal-title">Notifications! <i class="fa fa-bell" style="color: blue"></i></h4>
+                                <h4 class="modal-title">Notifications! &emsp;&emsp;<i class="fa fa-bell" style="color: blue"></i></h4>
                             </div>
 
                             <!-- Modal body -->

@@ -4,17 +4,22 @@ session_start();
 include('dbconfig.php');$id = $_SESSION['id'];
 $notifications = mysqli_query($conn, "SELECT * FROM notificationData WHERE to_userID = $id && seen_status = 0");
 
+mysqli_query($conn, "DELETE from notificationData WHERE seen_status = 1");
 if(isset($_GET['id'])){ 
     
     if ($notifications->num_rows > 0) {
     // output data of each row
     $i = 1;
-    echo "  <tr><th>Sr. No.</th><th>Message</th></tr>";
+    echo "  <tr><th>Sr. No.</th><th>Message</th><th></th></tr>";
     while($row = $notifications->fetch_assoc()) {
     $ntf_id = $row['notif_id'];
-       echo "<tr><td>".$i."</td><td>".$row['message']."</td></tr>";
-       mysqli_query($conn, "UPDATE notificationData SET seen_status = 1 WHERE notif_id = $ntf_id");
+       echo "<tr><td>".$i."</td><td>".$row['message']."<span class='label label-success'>".$row['notif_time']."</span></td>";
+       mysqli_query($conn, "UPDATE notificationData SET seen_status Success Label= 1 WHERE notif_id = $ntf_id");
        $i += 1;
+       if($row['typeOf'] == "follow_request"){echo "<td><a class='google' style='text-decoration: none' href='NewConnect.php'>Follow Back</a></td></tr>";}
+       elseif($row['typeOf'] == "accepted_request"){echo "<td><a class='google' style='text-decoration: none' href='NewConnect.php'>Chat Now</a></td></tr>";}
+       else{echo "</tr>";}
+
     }
 }
 else{

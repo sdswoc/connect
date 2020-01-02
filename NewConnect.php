@@ -47,7 +47,7 @@ $id = $_SESSION['id'];
         $check_2 = mysqli_query($db,"SELECT * from followerData where userID = $follower_id AND followerID = $id_to_be_followed");
  if(mysqli_num_rows($check_1) == 1 && mysqli_num_rows($check_2) == 1 ){
    $msg = $usrname." followed you back!";
-   $notify = "INSERT INTO notificationData (typeOf, to_userID, from_userID, message, seen_status) VALUES('accepted_request',$id_to_be_followed , $follower_id, '$msg',0)";
+   $notify = "INSERT INTO notificationData (typeOf, to_userID, from_userID, message,notif_time ,seen_status) VALUES('accepted_request',$id_to_be_followed , $follower_id, '$msg',NOW(),0)";
    if(mysqli_query($db, $notify)){
     $qr_1 = "SELECT @count := follow_count from userData where userID = $id_to_be_followed";
     $qr_2 = "SELECT @count := @count + 1";
@@ -60,7 +60,7 @@ $id = $_SESSION['id'];
 else{
    $msg = $usrname." started following you! Follow Back?";
           
-          $notify = "INSERT INTO notificationData (typeOf, to_userID, from_userID, message, seen_status) VALUES('follow_request',$id_to_be_followed , $follower_id, '$msg',0)";
+          $notify = "INSERT INTO notificationData (typeOf, to_userID, from_userID, message,notif_time , seen_status) VALUES('follow_request',$id_to_be_followed , $follower_id, '$msg', NOW(),0)";
           if(mysqli_query($db, $notify)){
             $qr_1 = "SELECT @count := follow_count from userData where userID = $id_to_be_followed";
             $qr_2 = "SELECT @count := @count + 1";
@@ -125,7 +125,8 @@ else{
                         <?php endif ?>
 
                             <?php  if (isset($_SESSION['id'])) : ?>
-                              <a id="notif_trigger" href="#" onclick = notify_alert(<?php echo $_SESSION[ 'id'] ?>) style = "text-decoration: none;"><i class = "fa fa-bell"></i>
+                              
+                              <a id="notif_trigger" href="#" data-toggle="modal" data-target="#view_notif"  onclick = notify_alert(<?php echo $_SESSION[ 'id'] ?>) style = "text-decoration: none;"><i class = "fa fa-bell"></i>
                 &nbsp;&nbsp;<span id="notif_count" style="color:white" ><?php echo $notif_count ?></span></a> &nbsp;&nbsp;
                                 <a class="google" href='  welcome.php' style="text-decoration: none">&nbsp;&nbsp;Back to Dashboard&nbsp;&nbsp;</a>&nbsp;&nbsp;&nbsp;&nbsp;
 
@@ -138,33 +139,7 @@ else{
                                         </div>
 
 
-
-                                        <div class="modal fade" id="view_notif" style = "overflow: auto;">
-                    <div class="modal-dialog">
-                        <div class="modal-content" style="width: 40vw;">
-
-                            <!-- Modal Header -->
-                            <div class="modal-header">
-                                <h4 class="modal-title">Notifications</h4>
-                            </div>
-
-                            <!-- Modal body -->
-                            <div class="modal-body">
-                                <table class="table table-hover">
-                                   
-                                    
-
-                                </table>
-                            </div>
-
-                            <!-- Modal footer -->
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+                                        
 
 
 
@@ -269,7 +244,30 @@ echo '<br><br><table class="table table-hover">
 ?>
 
 <input id = "hidden_selfID" type="hidden" value="<?php echo $_SESSION['id'] ?>"/>
+<div class="modal fade" id="view_notif">
+                    <div class="modal-dialog">
+                        <div class="modal-content" style="width: 35vw; height: auto; overflow: auto;">
 
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">Notifications! &emsp;&emsp;<i class="fa fa-bell" style="color: blue"></i></h4>
+                            </div>
+
+                            <!-- Modal body -->
+                            <div class="modal-body" id="msg_window">
+                                <table id='notif_panel' class="table table-hover text-center">
+                                  
+                            
+                                </table>
+                            </div>
+
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
         <div class="userC">&nbsp;&nbsp;No. of Users:&nbsp;&nbsp;
             <b><?php echo $user_count ?>&nbsp;&nbsp;&nbsp;&nbsp;
            <object align = 'right'><?php echo $_SESSION['username'] ?></object>
