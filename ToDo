@@ -12,8 +12,8 @@
    #5.7 Changing time format to WhatsApp format.
 
 ----- >>>> DONE #6 I-card pop-up for view-profile section
-#7 Scroll Cache problem to be resolved
-#8 Change the backend of the friend-request sending algo
+ ---->>>OBSOLETE <<!!NOT REALLY REQURED!!>> #7 Scroll Cache problem to be resolved
+ ---->>>OBSOLETE <<!!NOT REALLY REQURED!!>> #8 Change the backend of the friend-request sending algo
 ----- >>>> DONE #9 Major reframing of login/signup form validation
                      ---> Not resetting the whole form on one error
 #10 Setting up separate chatrooms per hobby and feature of mentioning someone
@@ -22,7 +22,19 @@
 ----- >>>> DONE #13 Completely revamping of Login and signup form.
 ----- >>>> DONE #14 Designing the forms for better UI/UX
 ----- >>>> DONE #15 Polishing of Login/Sigup backend
-#16 Logo Change
+**#16 Make notification panel responsive
+
+//Some features to be added
+
+#17 Option to add any hobbie/goal of user choice
+#18 Chat-rooms pop-up for a particular id.
+----- >>>> DONE #19 Password Hashing!
+
    
+<<<<<---------MOST IMPORTANT FEATURES---------->>>>
+
+1. Feed section
+2. Mentioning
+3. Notification panel responsive
 
 

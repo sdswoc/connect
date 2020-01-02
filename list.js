@@ -2,11 +2,11 @@
 var hobbie_names = ["Dancing", "Listening Music", "Cricket", "Singing", "Fooseball", "Reading Novels"];
 var goal_names = ["Gymming", "Tech Group", "UPSC", "Branch Change", "Internship"];
 
-function n_2_i_h(a){
+function name_to_index_hobbie(a){
   var res = hobbie_names.indexOf(a);
   return res;
 }
-function n_2_i_g(a){
+function name_to_index_goal(a){
   var res = goal_names.indexOf(a);
   return res;
 }
@@ -40,7 +40,7 @@ for(i = 0; i < delete_goal.length; i++){
     var div = this.parentElement;
     let inter = div.innerText;
     let final = inter.substring(0, inter.length - 2);
-    var goal_id = n_2_i_g(final);
+    var goal_id = name_to_index_goal(final);
     
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function(){
@@ -63,7 +63,7 @@ for(i = 0; i < delete_hobbie.length; i++){
     var div = this.parentElement;
     let inter = div.innerText;
     let final = inter.substring(0, inter.length - 2);
-    var hobbie_id = n_2_i_h(final);
+    var hobbie_id = name_to_index_hobbie(final);
     
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function(){

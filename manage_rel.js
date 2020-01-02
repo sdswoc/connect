@@ -66,9 +66,7 @@ function fetch_users(){
         msg_count(to_user_id);
     }, 3000);
 
-    setInterval(function(){
-        update_chats();
-    }, 1000);
+   
     function update_login_status(to_user_id){
         var status = $('#status_'+to_user_id).html();
         if(status === "ONLINE"){
@@ -117,7 +115,6 @@ function fetch_users(){
                 else{ img_url += "res/default.jpeg"}
                 $("#img_"+to_user_id).attr('src',img_url);
                 $(".img_sml_"+to_user_id).attr('src',img_url);
-
                 }
         }) 
        
@@ -134,11 +131,12 @@ function fetch_users(){
             
         }
     })
- }
- 
     var from_user_id = $('#hidden_selfID').val();
     get_img(to_user_id);
-    get_img_self(from_user_id);
+ get_img_self(from_user_id);
+ }
+ 
+ 
 
     var modal_content = '<div class="container-fluid h-100" id="user_dialog_'+to_user_id+'">';
    modal_content+= '<div class="row justify-content-center h-100">';

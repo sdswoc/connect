@@ -14,8 +14,9 @@ if (mysqli_connect_errno()) {
     exit();
   }
  
-  $all_users = mysqli_query($db, "SELECT * FROM userData;");
-  $user_count = mysqli_num_rows($all_users);
+  $all_users = mysqli_query($db, "SELECT COUNT(*) AS COUNT FROM userData;");
+  $count = $all_users->fetch_assoc();
+  $user_count = $count['COUNT'];  
 if(isset($_POST['reg_user'])){
   /*function email_validation($str) { 
     return (!preg_match( 
@@ -62,14 +63,14 @@ if ($user) { // if user exists
 
 
   if (count($errors) == 0) {
-    $password = ($password_1);
+    $hashed_password = password_hash($password_1, PASSWORD_BCRYPT);
     $query = "INSERT INTO userData (name, enrl, bhawan, username, email, password, bio, branch_y) 
-              VALUES('$name','$enrl','$bhawan','$username', '$email', '$password', '$bio$name', '$branch_y');";
+              VALUES('$name','$enrl','$bhawan','$username', '$email', '$hashed_password', '$bio$name', '$branch_y');";
         if(mysqli_query($db, $query)){
           echo "Success!";
         }
 
-        $get_user = "SELECT * FROM userData WHERE username='$username' AND password='$password'";
+        $get_user = "SELECT * FROM userData WHERE username='$username'";
         $result = mysqli_query($db, $get_user);
     
         if(mysqli_num_rows($result) == 1){
@@ -79,6 +80,7 @@ if ($user) { // if user exists
                 $_SESSION['name'] = $row['name'];
                 $_SESSION['img'] = $row['img'];
                 $_SESSION['bio'] = $row['bio'];
+                $_SESSION['username'] = $row['username'];
             }
     }
    
@@ -90,11 +92,11 @@ if ($user) { // if user exists
     $password = mysqli_real_escape_string($db, $_POST['password']);
 
     //password_matching_code
-    $get_password = mysqli_query($db, "SELECT password from userData where username='$username'");
-    $user_pass = $get_password->fetch_assoc();
-    if($user_pass['password'] === $password){
+    $get_hash = mysqli_query($db, "SELECT password from userData where username='$username'");
+    $user_pass = $get_hash->fetch_assoc();
+    if(password_verify($password, $user_pass['password'])){
       echo "1";
-      $query = "SELECT * FROM userData WHERE username='$username' AND password='$password'";
+      $query = "SELECT * FROM userData WHERE username='$username'";
     $result = mysqli_query($db, $query);
 
     if(mysqli_num_rows($result) == 1){
@@ -104,6 +106,7 @@ if ($user) { // if user exists
             $_SESSION['name'] = $row['name'];
             $_SESSION['img'] = $row['img'];
             $_SESSION['bio'] = $row['bio'];
+            $_SESSION['username'] = $row['username'];
         }
 $id = $_SESSION['id'];
 
@@ -127,36 +130,6 @@ else{
       echo "Error!";
     }
     
-
-/*if(count($errors) == 0){
-    $query = "SELECT * FROM userData WHERE username='$username' AND password='$password'";
-    $result = mysqli_query($db, $query);
-
-    if(mysqli_num_rows($result) == 1){
-        while($row = mysqli_fetch_array($result)){
-            $_SESSION['id'] = $row['userID'];
-            $_SESSION['bhawan'] = $row['bhawan'];
-            $_SESSION['name'] = $row['name'];
-            $_SESSION['img'] = $row['img'];
-            $_SESSION['bio'] = $row['bio'];
-        }
-$id = $_SESSION['id'];
-
-$fetch_last_activity = mysqli_query($db, "SELECT * from login_details where userID =$id");
-if($fetch_last_activity->num_rows == 0){
-  $last_activity = "INSERT INTO login_details (userID, last_activity) VALUES ($id, NOW())";
-  mysqli_query($db, $last_activity);
-}
-else{
-  $last_activity = "UPDATE login_details SET last_activity = NOW() where userID = $id";
-  mysqli_query($db, $last_activity);
-}
-       
-            $_SESSION['username'] = $username;  
-            $_SESSION['success'] = 1;
-        header('location: welcome.php');
-}
-}*/
 }
   
 ?>

@@ -127,7 +127,7 @@ else{
                             <?php  if (isset($_SESSION['id'])) : ?>
                               <a id="notif_trigger" href="#" onclick = notify_alert(<?php echo $_SESSION[ 'id'] ?>) style = "text-decoration: none;"><i class = "fa fa-bell"></i>
                 &nbsp;&nbsp;<span id="notif_count" style="color:white" ><?php echo $notif_count ?></span></a> &nbsp;&nbsp;
-                                <a class="google" href='  welcome.php' style="text-decoration: none;">&nbsp;&nbsp;Back to Dashboard&nbsp;&nbsp;</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                <a class="google" href='  welcome.php' style="text-decoration: none">&nbsp;&nbsp;Back to Dashboard&nbsp;&nbsp;</a>&nbsp;&nbsp;&nbsp;&nbsp;
 
                                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                                             More Options..
@@ -136,6 +136,41 @@ else{
                                             <a class="dropdown-item google" href='welcome.php?logout=1'>Logout</a>
                                             <a class="dropdown-item google" href='welcome.php?delete=1'>Delete my Account</a>
                                         </div>
+
+
+
+                                        <div class="modal fade" id="view_notif" style = "overflow: auto;">
+                    <div class="modal-dialog">
+                        <div class="modal-content" style="width: 40vw;">
+
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">Notifications</h4>
+                            </div>
+
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                                <table class="table table-hover">
+                                   
+                                    
+
+                                </table>
+                            </div>
+
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+
                                 <?php endif ?>
                 </object>
             </object>
@@ -159,19 +194,12 @@ include('dbconfig.php');
 $sql = "SELECT userID, name, email, bhawan, username, img, bio, branch_y, follow_count FROM userData ORDER BY follow_count DESC";
 $result = mysqli_query($conn, $sql);
 function hobbieID_to_name($a){
-  if($a==1){return "Dancing";}
-  if($a==2){return "Listening Music";}
-  if($a==3){return "Cricket";}
-  if($a==4){return "Singing";}
-  if($a==5){return "Fooseball";}
-  if($a==6){return "Reading Novels";}
+  $hobbies = array("Dancing", "Listening Music", "Cricket", "Singing", "Fooseball", "Reading Novels");
+  return $hobbies[$a - 1];
 }
 function goalID_to_name($a){
-  if($a==1){return "Gymming";}
-  if($a==2){return "Tech Group";}
-  if($a==3){return "UPSC";}
-  if($a==4){return "Branch Change";}
-  if($a==5){return "Internship";}
+  $goals = array("Gymming", "Tech Group", "UPSC", "Branch Change", "Internship");
+  return $goals[$a - 1];
 }
 if ($result->num_rows > 0) {
 while($row = $result->fetch_assoc()){

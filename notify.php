@@ -4,14 +4,17 @@ session_start();
 include('dbconfig.php');$id = $_SESSION['id'];
 $notifications = mysqli_query($conn, "SELECT * FROM notificationData WHERE to_userID = $id && seen_status = 0");
 
-if(isset($_GET['id'])){
+if(isset($_GET['id'])){ 
     
     if ($notifications->num_rows > 0) {
     // output data of each row
+    $i = 1;
+    echo "  <tr><th>Sr. No.</th><th>Message</th></tr>";
     while($row = $notifications->fetch_assoc()) {
     $ntf_id = $row['notif_id'];
-       echo $row['message']."\n";
+       echo "<tr><td>".$i."</td><td>".$row['message']."</td></tr>";
        mysqli_query($conn, "UPDATE notificationData SET seen_status = 1 WHERE notif_id = $ntf_id");
+       $i += 1;
     }
 }
 else{

@@ -41,7 +41,7 @@ mysqli_query($db, $sql_2);
     <head>
         <title>Welcome
             <?php echo $_SESSION['name'] ?>
-        </title>
+        </title> 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="style.css">
@@ -84,7 +84,7 @@ mysqli_query($db, $sql_2);
                 <button type="button" class="shiney-button-2" data-toggle="modal" data-target="#post_message">&ensp;
                 <i class="fa fa-envelope"></i>&ensp;Post something&ensp;</button>
                
-       &emsp;             <a id="notif_trigger" href="#" onclick = notify_alert(<?php echo $_SESSION[ 'id'] ?>) style = "text-decoration: none;"><i class = "fa fa-bell"></i>
+       &emsp;             <a id="notif_trigger" href="#" onclick=notify_alert(<?php echo $_SESSION['id'] ?>) data-toggle="modal" data-target="#view_notif" style = "text-decoration: none;"><i class = "fa fa-bell"></i>
                 &nbsp;&nbsp;<span id = "notif_count" style="color:white" class="counter counter-lg"><?php echo $notif_count ?></span></a> &nbsp;&nbsp;
                     <a class="btn btn-primary" role = "button" href='NewConnect.php' style="text-decoration: none;">&nbsp;&nbsp;View Connections&nbsp;&nbsp;</a>&nbsp;&nbsp;&nbsp;&nbsp;
 
@@ -114,6 +114,30 @@ mysqli_query($db, $sql_2);
         <br>
         <br>
         <?php  if (isset($_SESSION['id'])) : ?>
+            <div class="modal fade" id="view_notif">
+                    <div class="modal-dialog">
+                        <div class="modal-content" style="width: 30vw; height: auto; overflow: auto;">
+
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">Notifications! <i class="fa fa-bell" style="color: blue"></i></h4>
+                            </div>
+
+                            <!-- Modal body -->
+                            <div class="modal-body" id="msg_window">
+                                <table id='notif_panel' class="table table-hover text-center">
+                                  
+                            
+                                </table>
+                            </div>
+
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             <div class="modal fade" id="post_message" style = "overflow: auto;">
                     <div class="modal-dialog">
                         <div class="modal-content" style="width: 30vw;">
@@ -285,12 +309,8 @@ $conn->close();
                         <ul id="hobbieUL">
                             <?php 
 function hobbieID_to_name($a){
-  if($a==1){return "Dancing";}
-  if($a==2){return "Listening Music";}
-  if($a==3){return "Cricket";}
-  if($a==4){return "Singing";}
-  if($a==5){return "Fooseball";}
-  if($a==6){return "Reading Novels";}
+    $hobbies = array("Dancing", "Listening Music", "Cricket", "Singing", "Fooseball", "Reading Novels");
+    return $hobbies[$a - 1];
 }
 $selfID = $_SESSION['id'];
 include('dbconfig.php');
@@ -327,12 +347,9 @@ while($row = $result->fetch_assoc()) {
                         <ul id="goalUL">
                         <?php 
 function goalID_to_name($a){
-  if($a==1){return "Gymming";}
-  if($a==2){return "Tech Group";}
-  if($a==3){return "UPSC";}
-  if($a==4){return "Branch Change";}
-  if($a==5){return "Internship";}
-}
+    $goals = array("Gymming", "Tech Group", "UPSC", "Branch Change", "Internship");
+    return $goals[$a - 1];
+  }
 $selfID = $_SESSION['id'];
 include('dbconfig.php');
 $sql = "SELECT * from goalData where userID = $selfID";

@@ -35,6 +35,7 @@ function notify_alert(id) {
 
             if (message !== "0") {
                 alert(message);
+                document.getElementById("notif_panel").innerHTML = message;
             }
 
         }

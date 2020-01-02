@@ -22,7 +22,6 @@ $(document).ready(function () {
 
     // Label effect
     $('input').focus(function () {
-
         $(this).siblings('label').addClass('active');
     });
 
@@ -124,7 +123,7 @@ $(document).ready(function () {
     });
 
 
-    // Form submit
+    // Form submit(sg)
     $('form.signup-form').submit(function (event) {
        
         event.preventDefault();
@@ -175,6 +174,7 @@ $(document).ready(function () {
             username: username,
             password: password
         }, function(res){
+            console.log(res);
             if(res === "1"){location.replace('welcome.php');}
             else{
                 $('#loginPassword').val('');
