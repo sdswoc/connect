@@ -36,6 +36,5 @@ We're now completely ready for using the website
 >Open a browser window and goto `http://localhost/connect/` for opening the website.
 >If you want to test the chat-engine featurem then open a normal browser window and an Incognito window and cascade them side by side for chatting.
 
-##This project was made under Winter of Code(2019), organized by SDSLabs
-##mentored under Mohit Sharma, Leshna Balara, and Ashutosh Bharambe.
+##This project was made under Winter of Code(2019), organized by SDSLabs mentored under Mohit Sharma, Leshna Balara, and Ashutosh Bharambe.
 
