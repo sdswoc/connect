@@ -13,14 +13,17 @@ $msg_count = $get_chats_query->num_rows;
 $output =  '';
 while($row = $get_chats_query->fetch_assoc()){
 if($row['to_user_id'] == $self_id && $row['from_user_id'] == $to_id){
+   $date=date_create($row['msg_time']);
+
    $output .= '<div class="d-flex justify-content-start mb-4">';
    $output .= '<div class="img_cont_msg"><img src="" class="rounded-circle user_img_msg img_sml_'.$to_id.'"></div>';
-   $output .= '<div class="msg_cotainer">'.$row['chat_message'].'<span class="msg_time">'.$row['msg_time'].'</span></div>';
+   $output .= '<div class="msg_cotainer">'.$row['chat_message'].'<span class="msg_time">'.date_format($date,"d/m/y h:i a").'</span></div>';
    $output .= '</div>';
 }
 if($row['to_user_id'] == $to_id && $row['from_user_id'] == $self_id){
+   $date=date_create($row['msg_time']);
    $output .= '<div class="d-flex justify-content-end mb-4">';
-   $output .= '<div class="msg_cotainer_send">'.$row['chat_message'].'<span class="msg_time_send">'.$row['msg_time'].'</span></div>';
+   $output .= '<div class="msg_cotainer_send">'.$row['chat_message'].'<span class="msg_time_send">'.date_format($date,"d/m/y h:i a").'</span></div>';
    $output .= '<div class="img_cont_msg"><img src="" class="rounded-circle user_img_msg img_sml_self_'.$self_id.'"></div>';
    $output .= '</div>';
 }

@@ -45,7 +45,9 @@ echo $from_id;
            $data['from_userID'] = $data['from_userID'];
             $data['from_username'] = $row['username'];
             $data['msg'] = $data['msg'];
-            $data['dt'] = date("d-m-Y h:i:s");
+            $date=date_create($row['notif_time']);
+
+            $data['dt'] = date_format($date,"d/m/y h:i a");
        }
 
         foreach ($this->clients as $client) {
