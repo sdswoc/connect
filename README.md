@@ -17,6 +17,10 @@ Some pre-requisites:
 
 If your system is equipped with the pre-requisites now, then proceed with the following steps!
 
-> Open terminal using `Ctrl+Alt+T` and navigate to `var/www/html/` and type `git clone https://github.com/sdswoc/connect.git` 
+> Open terminal using `Ctrl+Alt+T` and navigate to `var/www/html/` and type `git clone https://github.com/sdswoc/connect.git`
+
+> Open browser and navigate to `localhost/phpmyadmin`(if it shows a error on logging:
+```Failed to set session cookie``` 
+then open the browser in incognito mode)
 
 
