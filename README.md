@@ -11,7 +11,8 @@ For installing it on Linux Environment, follow the following steps:
 
 Some pre-requisites:
 
-> LAMP Stack installed(if not installed, then refer https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-ubuntu-18-04 )
-> Make sure to enable php-mysqli extension
+> LAMP Stack installed(if not installed, then refer https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-ubuntu-18-04 ) and make sure to enable php-mysqli extension.
+
+> phpmyadmin installed(if not installed, then refer https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-phpmyadmin-on-ubuntu-18-04 )
 
 
