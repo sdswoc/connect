@@ -1,0 +1,93 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  /* Remove margins and padding from the list */
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Style the list items */
+  #hobbieUL li, #goalUL li {
+    cursor: pointer;
+    position: relative;
+    padding: 12px 8px 12px 40px;
+    background: #eee;
+    font-size: 18px;
+    transition: 0.2s;
+    list-style-type: none;
+    /* make the list items unselectable */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* Set all odd list items to a different color (zebra-stripes) */
+#hobbieUL li:nth-child(odd), #goalUL li:nth-child(odd){ background: #f9f9f9;
+  }
+  
+  /* Darker background-color on hover */
+#hobbieUL li:hover,#goalUL li:hover {
+    background: #ddd;
+  }
+  
+   
+    /* Style the close button */
+  .closeHobbie , .closeGoal{
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 12px 16px 12px 16px;
+  }
+  
+  .closeHobbie:hover, .closeGoal:hover {
+    background-color: #f44336;
+    color: white;
+  }
+  
+  /* Style the header */
+  .hobbie_header, .goal_header{
+    background-color: #f44336;
+    padding: 10px 20px;
+    color: white;
+    text-align: center;
+  }
+  
+  /* Clear floats after the header */
+  .hobbie_header:after,.goal_header:after  {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* Style the input */
+  #hobbieInput, #goalInput{
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    width: 75%;
+    padding: 10px;
+    float: left;
+    font-size: 16px;
+  }
+  
+  
+  /* Style the "Add" button */
+  .addBtn {
+    padding: 10px;
+    width: 25%;
+    background: #d9d9d9;
+    color: #555;
+    float: left;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 0;
+  }
+  
+  .addBtn:hover {
+    background-color: #bbb;
+  }

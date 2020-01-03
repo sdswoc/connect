@@ -1,0 +1,44 @@
+----- >>>> DONE #1 Add - Unfollow Option to be introduced
+----- >>>> DONE #2 Updating follow_count in userData dynamically.
+----- >>>> DONE #3 Suggestion algo in view Connections to be improvised based on hobbies/goals
+----- >>>> DONE #4 Messaging list to be integrated with CURRENT_TIMESTAMP() 
+#5 Learning to build chat engine
+  ----- >>>> DONE #5.1 Establish connection and talk b/w browsers
+  ----- >>>> DONE #5.2 Store these messages in MySQL server and displaying Chat History.
+   **#5.3 Optimization of UI
+ ----- >>>> DONE  #5.4 scrollTo down of chat
+  ---->>>OBSOLETE <<!!NOT REALLY REQURED!!>> **#5.5 Clicking on img would open profile.
+   #5.6 Integrating it with notification system.
+ ----- >>>> DONE  #5.7 Changing time format to WhatsApp format.
+
+----- >>>> DONE #6 I-card pop-up for view-profile section
+ ---->>>OBSOLETE <<!!NOT REALLY REQURED!!>> #7 Scroll Cache problem to be resolved
+ ---->>>OBSOLETE <<!!NOT REALLY REQURED!!>> #8 Change the backend of the friend-request sending algo
+----- >>>> DONE #9 Major reframing of login/signup form validation
+                     ---> Not resetting the whole form on one error
+#10 Setting up separate chatrooms per hobby and feature of mentioning someone
+----- >>>> DONE #11 Displaying users who are online
+----- >>>> DONE #12 Displaying green button if online
+----- >>>> DONE #13 Completely revamping of Login and signup form.
+----- >>>> DONE #14 Designing the forms for better UI/UX
+----- >>>> DONE #15 Polishing of Login/Sigup backend
+----- >>>> DONE #16 Make notification panel responsive
+
+//Some features to be added
+
+#17 Option to add any hobbie/goal of user choice
+#18 Chat-rooms pop-up for a particular id.
+----- >>>> DONE #19 Password Hashing!
+
+   
+<<<<<---------MOST IMPORTANT FEATURES---------->>>>
+
+1. Feed section
+2. Chat rooms per hobby
+----- >>>> DONE 3. Notification panel responsive
+
+
+
+...................................../?????????????????!!!!!!!!!!!
+
+1. create dbconfg.php
