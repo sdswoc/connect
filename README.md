@@ -15,4 +15,8 @@ Some pre-requisites:
 
 > phpmyadmin installed(if not installed, then refer https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-phpmyadmin-on-ubuntu-18-04 )
 
+If your system is equipped with the pre-requisites now, then proceed with the following steps!
+
+> Open terminal using `Ctrl+Alt+T` and navigate to `var/www/html/` and type `git clone https://github.com/sdswoc/connect.git` 
+
 
