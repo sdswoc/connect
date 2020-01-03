@@ -10,6 +10,8 @@ CONNECTIONS.
 For installing it on Linux Environment, follow the following steps:
 
 Some pre-requisites:
-1. LAMP Stack installed(if not installed, then refer https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-ubuntu-18-04 for installation)
+
+> LAMP Stack installed(if not installed, then refer https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-ubuntu-18-04 )
+> Make sure to enable php-mysqli extension
 
 
