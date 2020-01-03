@@ -29,12 +29,12 @@ then open the browser in incognito mode)
 
 > Open a new window of terminal in the same directory and type `php bin/chat-server.php` , it should show Server Started! if the WebSocket server is succesfully started!
 
-> Now, we need to create a `dbconfig.php` file(refer https://stackoverflow.com/questions/29763358/best-way-to-create-configuration-fileconfig-php-php ) (PS: please refer `server.php' file in /connect directory` for the login details and keep `$conn` as name of the return link of successful connection)
+> Now, we need to create a `dbconfig.php` file(refer https://stackoverflow.com/questions/29763358/best-way-to-create-configuration-fileconfig-php-php ) (PS: please refer `server.php file in /connect directory` for the login details and keep `$conn` as name of the return link of successful connection)
 
 We're now completely ready for using the website
 
 >Open a browser window and goto `http://localhost/connect/` for opening the website.
 >If you want to test the chat-engine featurem then open a normal browser window and an Incognito window and cascade them side by side for chatting.
 
-##This project was made under Winter of Code(2019), organized by SDSLabs mentored under Mohit Sharma, Leshna Balara, and Ashutosh Bharambe.
+## This project was made under Winter of Code(2019), organized by SDSLabs mentored under Mohit Sharma, Leshna Balara, and Ashutosh Bharambe.
 
