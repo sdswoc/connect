@@ -101,7 +101,7 @@ if($msg === "Requested"){echo "<td></td>";}
 }
 else{echo "<td></td>";}
 
-echo "<td>".$row['rwd_pts']."</td>";
+echo "<td>".$row['rwd_pts']." % </td>";
 echo "</tr>";
 }
 }
